@@ -64,17 +64,6 @@ export function BBSLayout({ children, title = "LATENT SPACE GRIMOIRE", className
         </div>
       </header>
 
-      {/* ASCII Art Banner - Hidden on home page, shows on other pages on larger screens */}
-      {location !== "/" && (
-        <div className="hidden lg:block text-center text-[var(--primary)] text-xs py-1 border-b border-[var(--muted)] opacity-60">
-          <pre className="inline-block">
-{`═══════════════════════════════════════════════════════════════════════════════════
-║  ▄▄▄█████▓ ██░ ██ ▓█████     ▄▄▄█████▓ ██▀███  ▓█████ ▓█████     ▒█████    █████▒║
-║  ▓  ██▒ ▓▒▓██░ ██▒▓█   ▀     ▓  ██▒ ▓▒▓██ ▒ ██▒▓█   ▀ ▓█   ▀    ▒██▒  ██▒▓██   ▒ ║
-╚═══════════════════════════════════════════════════════════════════════════════════╝`}
-          </pre>
-        </div>
-      )}
 
       {/* Breadcrumb / Path Display */}
       <div className="bg-[var(--card)] border-b border-[var(--muted)] px-4 py-1 text-xs text-[var(--muted-foreground)]">

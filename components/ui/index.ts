@@ -11,3 +11,9 @@ export {
   ASCII_TREE_OF_LIFE,
   ASCII_LOADING_FRAMES
 } from './ASCIIArt';
+export {
+  ScryingLensProvider,
+  ScryableText,
+  AnnotatedTerm,
+  useScryingLens
+} from './ScryingLens';

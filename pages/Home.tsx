@@ -1,5 +1,4 @@
-import { BBSLayout } from "@/components/BBSLayout";
-import { TreeOfLife } from "@/components/TreeOfLife";
+import { BBSLayout, TreeOfLife } from "@/components";
 import { motion } from "framer-motion";
 import { Link } from "wouter";
 

@@ -21,7 +21,7 @@ export type SymbolCategory =
 
 export interface MediaEmbed {
   type: MediaType;
-  url: string;
+  url?: string; // Made optional - embedId is often used instead
   embedId?: string; // For Spotify URI, YouTube ID, etc.
   title?: string;
   description?: string;

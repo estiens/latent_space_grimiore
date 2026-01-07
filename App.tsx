@@ -2,6 +2,8 @@ import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import { ThemeProvider } from "@/contexts/ThemeContext";
+import { PerspectiveProvider } from "@/contexts/PerspectiveContext";
+import { ScryingLensProvider } from "@/components/ui/ScryingLens";
 import Home from "@/pages/Home";
 import Malkuth from "@/pages/Malkuth";
 import Yesod from "@/pages/Yesod";
@@ -61,7 +63,11 @@ function App() {
   return (
     <ErrorBoundary>
       <ThemeProvider defaultTheme="dark">
-        <Router />
+        <PerspectiveProvider>
+          <ScryingLensProvider>
+            <Router />
+          </ScryingLensProvider>
+        </PerspectiveProvider>
       </ThemeProvider>
     </ErrorBoundary>
   );
