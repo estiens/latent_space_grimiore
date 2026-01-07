@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import { useState, useRef } from 'react';
 
 interface YouTubeHoverPreviewProps {
   videoId: string;
@@ -9,7 +9,6 @@ export const YouTubeHoverPreview: React.FC<YouTubeHoverPreviewProps> = ({
   videoId,
   title,
 }) => {
-  const [isHovering, setIsHovering] = useState(false);
   const [showVideo, setShowVideo] = useState(false);
   const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const hideTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -22,7 +21,6 @@ export const YouTubeHoverPreview: React.FC<YouTubeHoverPreviewProps> = ({
       clearTimeout(hideTimeoutRef.current);
       hideTimeoutRef.current = null;
     }
-    setIsHovering(true);
     // Small delay before showing video to prevent flicker
     hoverTimeoutRef.current = setTimeout(() => {
       setShowVideo(true);
@@ -34,7 +32,6 @@ export const YouTubeHoverPreview: React.FC<YouTubeHoverPreviewProps> = ({
       clearTimeout(hoverTimeoutRef.current);
       hoverTimeoutRef.current = null;
     }
-    setIsHovering(false);
     // Delay hiding to allow smooth transitions
     hideTimeoutRef.current = setTimeout(() => {
       setShowVideo(false);

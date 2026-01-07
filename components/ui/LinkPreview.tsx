@@ -1,4 +1,4 @@
-import React from 'react';
+import { ReactNode } from 'react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { BBSHeader } from '@/components/shared/BBSHeader';
@@ -23,15 +23,6 @@ const urlToDosPath = (url: string): string => {
     return `C:\\NET\\${domain}${path || '\\'}`;
   } catch {
     return 'C:\\NET\\UNKNOWN';
-  }
-};
-
-// Extract domain from URL
-const getDomain = (url: string): string => {
-  try {
-    return new URL(url).hostname;
-  } catch {
-    return url;
   }
 };
 
@@ -152,7 +143,7 @@ export const LinkPreview = ({
 // Simple external link component
 interface ExternalLinkProps {
   href: string;
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
 }
 

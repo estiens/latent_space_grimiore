@@ -1,4 +1,3 @@
-import React from 'react';
 import { BBSLayout } from '@/components/BBSLayout';
 
 const ArchivePage = () => {

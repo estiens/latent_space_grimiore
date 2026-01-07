@@ -2,7 +2,7 @@
 // Interactive visualization of how temperature affects generation
 
 import { useState, useCallback, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import {
   getOpenRouterClient,
   setOpenRouterApiKey,
@@ -245,7 +245,7 @@ export function EntropyAltar({ className = '' }: EntropyAltarProps) {
 
     // Flatten distribution as temp increases
     const flatness = temp / 2; // 0 to 1
-    const flattened = baseProbs.map((p, i) => {
+    const flattened = baseProbs.map((p, _i) => {
       const uniform = 1 / baseProbs.length;
       return p * (1 - flatness) + uniform * flatness;
     });

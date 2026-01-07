@@ -1,4 +1,3 @@
-import React from 'react';
 import { BBSLayout } from '@/components/BBSLayout';
 
 const Card = ({ title, subtitle, body, llm }: { title: string, subtitle: string, body: string, llm: string }) => (
