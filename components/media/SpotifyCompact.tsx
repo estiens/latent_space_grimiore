@@ -47,13 +47,14 @@ export const SpotifyCompact: React.FC<SpotifyCompactProps> = ({
   const handleMouseLeave = () => setShowEmbed(false);
 
   // Calculate preview position
-  const embedHeight = type === 'track' ? 80 : 152;
+  const embedHeight = type === 'track' ? 152 : 352; // Bigger embeds
+  const previewWidth = 400;
   const previewStyle = buttonRect
     ? {
         position: 'fixed' as const,
-        top: `${buttonRect.top - embedHeight - 50}px`, // Position above button with margin
-        left: `${Math.max(10, buttonRect.left - 320 + buttonRect.width)}px`, // Align right edge
-        width: '320px',
+        top: `${Math.max(10, buttonRect.top - embedHeight - 50)}px`, // Position above button with margin
+        left: `${Math.max(10, Math.min(window.innerWidth - previewWidth - 10, buttonRect.left - previewWidth + buttonRect.width))}px`, // Smart positioning
+        width: `${previewWidth}px`,
       }
     : {};
 
