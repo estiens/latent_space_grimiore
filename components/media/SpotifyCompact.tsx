@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { useState, useRef } from 'react';
+import { createPortal } from 'react-dom';
 
 interface SpotifyCompactProps {
   uri: string;
@@ -12,6 +13,8 @@ export const SpotifyCompact: React.FC<SpotifyCompactProps> = ({
   title,
 }) => {
   const [showEmbed, setShowEmbed] = useState(false);
+  const [buttonRect, setButtonRect] = useState<DOMRect | null>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   // Extract ID from various URI formats
   const extractId = (input: string): string => {
@@ -34,13 +37,31 @@ export const SpotifyCompact: React.FC<SpotifyCompactProps> = ({
     window.open(spotifyUrl, '_blank', 'noopener,noreferrer');
   };
 
-  const handleMouseEnter = () => setShowEmbed(true);
+  const handleMouseEnter = () => {
+    if (buttonRef.current) {
+      setButtonRect(buttonRef.current.getBoundingClientRect());
+    }
+    setShowEmbed(true);
+  };
+
   const handleMouseLeave = () => setShowEmbed(false);
 
+  // Calculate preview position
+  const embedHeight = type === 'track' ? 80 : 152;
+  const previewStyle = buttonRect
+    ? {
+        position: 'fixed' as const,
+        top: `${buttonRect.top - embedHeight - 50}px`, // Position above button with margin
+        left: `${Math.max(10, buttonRect.left - 320 + buttonRect.width)}px`, // Align right edge
+        width: '320px',
+      }
+    : {};
+
   return (
-    <div className="relative inline-block">
+    <>
       {/* Compact button */}
       <button
+        ref={buttonRef}
         onClick={handleClick}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
@@ -56,10 +77,11 @@ export const SpotifyCompact: React.FC<SpotifyCompactProps> = ({
         </span>
       </button>
 
-      {/* Hover embed preview */}
-      {showEmbed && spotifyId && (
+      {/* Hover embed preview - rendered as portal */}
+      {showEmbed && spotifyId && buttonRect && createPortal(
         <div
-          className="absolute z-[9999] bottom-full right-0 mb-2 w-80 shadow-lg animate-in fade-in slide-in-from-bottom-2 duration-200"
+          style={previewStyle}
+          className="z-[9999] shadow-2xl animate-in fade-in duration-200"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
@@ -67,7 +89,7 @@ export const SpotifyCompact: React.FC<SpotifyCompactProps> = ({
             <iframe
               src={`https://open.spotify.com/embed/${type}/${spotifyId}?utm_source=generator&theme=0`}
               width="100%"
-              height={type === 'track' ? '80' : '152'}
+              height={embedHeight}
               frameBorder="0"
               allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
               loading="lazy"
@@ -77,8 +99,9 @@ export const SpotifyCompact: React.FC<SpotifyCompactProps> = ({
               Click button to open Spotify
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
-    </div>
+    </>
   );
 };

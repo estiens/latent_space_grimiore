@@ -1,4 +1,5 @@
 import { useState, useRef } from 'react';
+import { createPortal } from 'react-dom';
 
 interface YouTubeHoverPreviewProps {
   videoId: string;
@@ -10,8 +11,10 @@ export const YouTubeHoverPreview: React.FC<YouTubeHoverPreviewProps> = ({
   title,
 }) => {
   const [showVideo, setShowVideo] = useState(false);
+  const [buttonRect, setButtonRect] = useState<DOMRect | null>(null);
   const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const hideTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   // Extract YouTube ID from various formats
   const extractYouTubeId = (input: string): string => {
@@ -47,6 +50,10 @@ export const YouTubeHoverPreview: React.FC<YouTubeHoverPreviewProps> = ({
       clearTimeout(hideTimeoutRef.current);
       hideTimeoutRef.current = null;
     }
+    // Capture button position
+    if (buttonRef.current) {
+      setButtonRect(buttonRef.current.getBoundingClientRect());
+    }
     // Small delay before showing video to prevent flicker
     hoverTimeoutRef.current = setTimeout(() => {
       setShowVideo(true);
@@ -70,10 +77,21 @@ export const YouTubeHoverPreview: React.FC<YouTubeHoverPreviewProps> = ({
     window.open(youtubeUrl, '_blank', 'noopener,noreferrer');
   };
 
+  // Calculate preview position
+  const previewStyle = buttonRect
+    ? {
+        position: 'fixed' as const,
+        top: `${buttonRect.top - 280}px`, // 280px is approximately the height of the preview
+        left: `${Math.max(10, buttonRect.left - 384 + buttonRect.width)}px`, // Align right edge with some margin
+        width: '384px',
+      }
+    : {};
+
   return (
-    <div className="relative inline-block">
+    <>
       {/* Thumbnail button */}
       <button
+        ref={buttonRef}
         onClick={handleClick}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
@@ -102,10 +120,11 @@ export const YouTubeHoverPreview: React.FC<YouTubeHoverPreviewProps> = ({
         </div>
       </button>
 
-      {/* Hover video preview */}
-      {showVideo && extractedId && (
+      {/* Hover video preview - rendered as portal */}
+      {showVideo && extractedId && buttonRect && createPortal(
         <div
-          className="absolute z-[9999] bottom-full right-0 mb-2 w-96 shadow-lg animate-in fade-in slide-in-from-bottom-2 duration-200"
+          style={previewStyle}
+          className="z-[9999] shadow-2xl animate-in fade-in duration-200"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
@@ -117,7 +136,7 @@ export const YouTubeHoverPreview: React.FC<YouTubeHoverPreviewProps> = ({
             {/* Video */}
             <div className="relative aspect-video">
               <iframe
-                src={`https://www.youtube.com/embed/${extractedId}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&showinfo=0`}
+                src={`https://www.youtube.com/embed/${extractedId}?autoplay=1&mute=1&modestbranding=1&rel=0`}
                 title={title || 'YouTube preview'}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 className="absolute inset-0 w-full h-full"
@@ -128,8 +147,9 @@ export const YouTubeHoverPreview: React.FC<YouTubeHoverPreviewProps> = ({
               Click thumbnail to open YouTube
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
-    </div>
+    </>
   );
 };
