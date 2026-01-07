@@ -6,10 +6,10 @@ import {
   SpotifyEmbed,
   BandcampEmbed,
   SoundCloudEmbed,
-  LinkPreview,
   YouTubeHoverPreview,
   SpotifyCompact,
-} from '@/components';
+} from '@/components/media';
+import { LinkPreview } from '@/components/ui';
 import type { SymbolAnnotation, SymbolCategory, MediaEmbed } from '@/types/annotations';
 
 interface CanonSectionProps {
@@ -60,6 +60,8 @@ export const CanonSection: React.FC<CanonSectionProps> = ({
           <div className="flex flex-wrap gap-0 border-b-2 border-[var(--primary)]">
             <button
               onClick={() => setActiveTab('all')}
+              aria-label={`Show all ${symbols.length} symbols`}
+              aria-pressed={activeTab === 'all'}
               className={`
                 px-4 py-2 text-sm font-bold transition-all border-r-2 border-[var(--primary)]
                 ${activeTab === 'all'

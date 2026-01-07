@@ -57,9 +57,9 @@ export const SpotifyCompact: React.FC<SpotifyCompactProps> = ({
       </button>
 
       {/* Hover embed preview */}
-      {showEmbed && (
+      {showEmbed && spotifyId && (
         <div
-          className="absolute z-50 bottom-full left-0 mb-2 w-72 shadow-lg animate-in fade-in slide-in-from-bottom-2 duration-200"
+          className="absolute z-[9999] bottom-full right-0 mb-2 w-80 shadow-lg animate-in fade-in slide-in-from-bottom-2 duration-200"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >

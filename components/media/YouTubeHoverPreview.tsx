@@ -13,8 +13,34 @@ export const YouTubeHoverPreview: React.FC<YouTubeHoverPreviewProps> = ({
   const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const hideTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`;
-  const youtubeUrl = `https://www.youtube.com/watch?v=${videoId}`;
+  // Extract YouTube ID from various formats
+  const extractYouTubeId = (input: string): string => {
+    if (!input) return '';
+
+    // Already just an ID
+    if (input.length === 11 && !input.includes('/') && !input.includes('?')) {
+      return input;
+    }
+
+    // Handle various YouTube URL formats
+    const patterns = [
+      /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([a-zA-Z0-9_-]{11})/,
+      /youtube\.com\/watch\?.*v=([a-zA-Z0-9_-]{11})/,
+    ];
+
+    for (const pattern of patterns) {
+      const match = input.match(pattern);
+      if (match && match[1]) {
+        return match[1];
+      }
+    }
+
+    return input; // Return as-is if no pattern matches
+  };
+
+  const extractedId = extractYouTubeId(videoId);
+  const thumbnailUrl = `https://img.youtube.com/vi/${extractedId}/mqdefault.jpg`;
+  const youtubeUrl = `https://www.youtube.com/watch?v=${extractedId}`;
 
   const handleMouseEnter = () => {
     if (hideTimeoutRef.current) {
@@ -77,9 +103,9 @@ export const YouTubeHoverPreview: React.FC<YouTubeHoverPreviewProps> = ({
       </button>
 
       {/* Hover video preview */}
-      {showVideo && (
+      {showVideo && extractedId && (
         <div
-          className="absolute z-50 bottom-full left-0 mb-2 w-64 shadow-lg animate-in fade-in slide-in-from-bottom-2 duration-200"
+          className="absolute z-[9999] bottom-full right-0 mb-2 w-96 shadow-lg animate-in fade-in slide-in-from-bottom-2 duration-200"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
@@ -91,7 +117,7 @@ export const YouTubeHoverPreview: React.FC<YouTubeHoverPreviewProps> = ({
             {/* Video */}
             <div className="relative aspect-video">
               <iframe
-                src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&showinfo=0`}
+                src={`https://www.youtube.com/embed/${extractedId}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&showinfo=0`}
                 title={title || 'YouTube preview'}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 className="absolute inset-0 w-full h-full"
