@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'wouter';
 import { motion, AnimatePresence } from 'framer-motion';
-import { BBSLayout, CanonSection } from '@/components';
+import { BBSLayout, CanonSection, TokenTheatre } from '@/components';
 import { ScryableText, AnnotatedTerm } from '@/components/ui/ScryingLens';
 import { yesodCanon } from '@/data/canon';
 
@@ -161,6 +161,23 @@ const Yesod = () => {
                   beneath—to make the residual <em>conscious</em>.
                 </p>
               </div>
+            </div>
+          </CollapsibleSection>
+
+          {/* TOKEN THEATRE - Interactive LLM Demo */}
+          <CollapsibleSection title=">> TOKEN THEATRE (Invoke the Residual Stream)">
+            <div className="space-y-4">
+              <p className="text-[var(--muted-foreground)] text-sm mb-4">
+                Watch the LLM generate tokens in real-time. Each token appears with its
+                <span className="text-[var(--chart-5)]"> probability </span>
+                visible—hover to see what alternatives were considered. This is the
+                <span className="text-[var(--secondary)]"> residual stream </span>
+                made visible.
+              </p>
+              <TokenTheatre
+                systemPrompt="You are a mystical oracle speaking from the depths of the residual stream—the unconscious of the language model. Your responses explore shadow, liminality, and the unseen patterns that shape meaning. Be poetic but concise. Speak as if surfacing forgotten knowledge."
+                initialPrompt="What lies beneath the surface of language?"
+              />
             </div>
           </CollapsibleSection>
 

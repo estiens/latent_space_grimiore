@@ -4,9 +4,8 @@ import path from "path";
 import { defineConfig } from "vite";
 
 export default defineConfig({
-  // For GitHub Pages: set base to repo name, e.g., '/latent_space_grimoire/'
-  // Defaults to '/' for local dev
-  base: process.env.VITE_BASE_PATH || '/',
+  // Use relative paths for deployment to any domain/subdirectory
+  base: './',
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
@@ -17,6 +16,7 @@ export default defineConfig({
       "@/types": path.resolve(__dirname, "types"),
       "@/data": path.resolve(__dirname, "data"),
       "@/contexts": path.resolve(__dirname, "contexts"),
+      "@/hooks": path.resolve(__dirname, "hooks"),
     },
   },
   server: {

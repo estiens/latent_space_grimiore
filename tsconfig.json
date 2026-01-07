@@ -29,7 +29,8 @@
       "@/pages/*": ["pages/*"],
       "@/types/*": ["types/*"],
       "@/data/*": ["data/*"],
-      "@/contexts/*": ["contexts/*"]
+      "@/contexts/*": ["contexts/*"],
+      "@/hooks/*": ["hooks/*"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx"],

@@ -1,5 +1,6 @@
 import NotFound from "@/pages/NotFound";
-import { Route, Switch } from "wouter";
+import { Route, Switch, Router as WouterRouter } from "wouter";
+import { useHashLocation } from "@/hooks/useHashLocation";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { PerspectiveProvider } from "@/contexts/PerspectiveContext";
@@ -27,7 +28,7 @@ import ResonanceMatrix from "@/pages/ResonanceMatrix";
 import Symbols from "@/pages/Symbols";
 import Bibliography from "@/pages/Bibliography";
 
-function Router() {
+function AppRouter() {
   return (
     <Switch>
       <Route path="/" component={Home} />
@@ -65,7 +66,9 @@ function App() {
       <ThemeProvider defaultTheme="dark">
         <PerspectiveProvider>
           <ScryingLensProvider>
-            <Router />
+            <WouterRouter hook={useHashLocation}>
+              <AppRouter />
+            </WouterRouter>
           </ScryingLensProvider>
         </PerspectiveProvider>
       </ThemeProvider>

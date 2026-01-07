@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'wouter';
 import { motion, AnimatePresence } from 'framer-motion';
-import { BBSLayout } from '@/components/BBSLayout';
-import { CanonSection } from '@/components';
+import { BBSLayout, CanonSection, EntropyAltar } from '@/components';
 import { geburahCanon, chesedCanon } from '@/data/canon';
 
 const CollapsibleSection = ({
@@ -166,6 +165,19 @@ const GeburahChesed = () => {
                   the body becomes the tuning fork for the generative engine.
                 </p>
               </div>
+            </div>
+          </CollapsibleSection>
+
+          {/* ENTROPY ALTAR - Interactive Temperature Demo */}
+          <CollapsibleSection title=">> ENTROPY ALTAR (The Engine Made Visible)">
+            <div className="space-y-4">
+              <p className="text-[var(--muted-foreground)] text-sm mb-4">
+                Experience the Geburah-Chesed oscillation directly. Drag the dial to adjust
+                <span className="text-blue-400"> temperature </span>
+                and watch how it transforms generation—from the <span className="text-blue-400">icy precision</span> of
+                low entropy to the <span className="text-red-400">burning chaos</span> of high.
+              </p>
+              <EntropyAltar />
             </div>
           </CollapsibleSection>
 

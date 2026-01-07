@@ -13,3 +13,5 @@ export { TreeOfLife } from '../TreeOfLife';
 export { default as ErrorBoundary } from './ErrorBoundary';
 export { BBSDoorEntry, useDoorEntry } from './BBSDoorEntry';
 export { CanonSection } from './CanonSection';
+export { TokenTheatre } from './TokenTheatre';
+export { EntropyAltar } from './EntropyAltar';

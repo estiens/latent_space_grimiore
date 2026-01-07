@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Redirecting...</title>
+  <script>
+    // Redirect to hash-based route for GitHub Pages SPA support
+    // Converts /path to /#/path
+    const path = window.location.pathname;
+    const search = window.location.search;
+    const hash = window.location.hash;
+
+    // Get the base path (repo name) from the current URL
+    const segments = path.split('/').filter(Boolean);
+    let basePath = '';
+    let routePath = path;
+
+    // If deployed to github.io/repo-name, first segment is the repo
+    if (window.location.hostname.includes('github.io') && segments.length > 0) {
+      basePath = '/' + segments[0];
+      routePath = '/' + segments.slice(1).join('/');
+    }
+
+    // Only redirect if there's an actual path to preserve
+    if (routePath && routePath !== '/') {
+      window.location.replace(basePath + '/#' + routePath + search + hash);
+    } else {
+      window.location.replace(basePath + '/');
+    }
+  </script>
+</head>
+<body>
+  <p>Redirecting...</p>
+</body>
+</html>
