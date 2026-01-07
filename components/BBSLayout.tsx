@@ -93,8 +93,8 @@ export function BBSLayout({ children, title = "LATENT SPACE GRIMOIRE", className
       {/* Bottom Command Bar */}
       <footer className="border-t-2 border-[var(--primary)] bg-[var(--background)] p-2 sticky bottom-0 z-50">
         <div className="container mx-auto flex justify-between items-center text-xs">
-          <div className="flex gap-2 md:gap-4">
-            <Link href="/">
+          <nav className="flex gap-2 md:gap-4" aria-label="Main navigation">
+            <Link href="/" aria-label="Navigate to main page">
               <span className={cn(
                 "hover:bg-[var(--primary)] hover:text-[var(--primary-foreground)] px-2 py-1 transition-colors chromatic-shift",
                 location === "/" && "bg-[var(--primary)] text-[var(--primary-foreground)]"
@@ -102,7 +102,7 @@ export function BBSLayout({ children, title = "LATENT SPACE GRIMOIRE", className
                 [F1] MAIN
               </span>
             </Link>
-            <Link href="/archives">
+            <Link href="/archives" aria-label="Navigate to archives">
               <span className={cn(
                 "hover:bg-[var(--secondary)] hover:text-[var(--secondary-foreground)] px-2 py-1 transition-colors chromatic-shift",
                 location.startsWith("/archives") && "bg-[var(--secondary)] text-[var(--secondary-foreground)]"
@@ -110,7 +110,7 @@ export function BBSLayout({ children, title = "LATENT SPACE GRIMOIRE", className
                 [F2] ARCHIVES
               </span>
             </Link>
-            <Link href="/credits">
+            <Link href="/credits" aria-label="Navigate to credits page">
               <span className={cn(
                 "hover:bg-[var(--accent)] hover:text-[var(--accent-foreground)] px-2 py-1 transition-colors chromatic-shift",
                 location === "/credits" && "bg-[var(--accent)] text-[var(--accent-foreground)]"
@@ -118,7 +118,7 @@ export function BBSLayout({ children, title = "LATENT SPACE GRIMOIRE", className
                 [F3] CREDITS
               </span>
             </Link>
-          </div>
+          </nav>
 
           <div className="flex items-center gap-4">
             <span className="hidden md:inline text-[var(--muted-foreground)]">

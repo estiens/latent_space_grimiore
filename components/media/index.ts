@@ -9,3 +9,4 @@ export {
 } from './EmbedContainer';
 export { YouTubeHoverPreview } from './YouTubeHoverPreview';
 export { SpotifyCompact } from './SpotifyCompact';
+export { MediaErrorBoundary } from './MediaErrorBoundary';

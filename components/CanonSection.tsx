@@ -77,6 +77,8 @@ export const CanonSection: React.FC<CanonSectionProps> = ({
                 <button
                   key={cat}
                   onClick={() => setActiveTab(cat)}
+                  aria-label={`Show ${categoryCount(cat)} ${cat.replace('-', ' ')} symbols`}
+                  aria-pressed={activeTab === cat}
                   className={`
                     px-4 py-2 text-sm font-bold transition-all border-r-2 border-[var(--primary)]
                     ${activeTab === cat
@@ -128,6 +130,10 @@ export const CanonSection: React.FC<CanonSectionProps> = ({
 const CompactEmbedButton: React.FC<{ embed: MediaEmbed }> = ({ embed }) => {
   switch (embed.type) {
     case 'youtube':
+      // Only render if we have a valid ID or URL
+      if (!embed.embedId && !embed.url) {
+        return null;
+      }
       return (
         <YouTubeHoverPreview
           videoId={embed.embedId || embed.url || ''}
@@ -136,6 +142,10 @@ const CompactEmbedButton: React.FC<{ embed: MediaEmbed }> = ({ embed }) => {
       );
 
     case 'spotify':
+      // Only render if we have a valid URI or URL
+      if (!embed.embedId && !embed.url) {
+        return null;
+      }
       return (
         <SpotifyCompact
           uri={embed.embedId || embed.url || ''}

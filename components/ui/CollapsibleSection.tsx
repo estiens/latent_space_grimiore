@@ -29,6 +29,12 @@ export const CollapsibleSection = ({
     <div className={cn(variantClasses[variant], 'mb-4', className)}>
       <button
         onClick={() => setIsOpen(!isOpen)}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            setIsOpen(!isOpen);
+          }
+        }}
         className={cn(
           'w-full text-left p-3 flex justify-between items-center transition-colors',
           'bg-[rgba(0,0,0,0.3)] hover:bg-[rgba(0,0,0,0.5)]',
@@ -107,6 +113,12 @@ export const Accordion = ({ items, allowMultiple = false, className }: Accordion
         <div key={index} className="border border-[var(--muted)]">
           <button
             onClick={() => toggleIndex(index)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggleIndex(index);
+              }
+            }}
             className="w-full text-left p-3 flex justify-between items-center bg-[rgba(0,0,0,0.3)] hover:bg-[rgba(0,0,0,0.5)] transition-colors"
             aria-expanded={openIndices.has(index)}
           >
