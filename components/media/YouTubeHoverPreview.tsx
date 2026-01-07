@@ -78,12 +78,14 @@ export const YouTubeHoverPreview: React.FC<YouTubeHoverPreviewProps> = ({
   };
 
   // Calculate preview position
+  const previewWidth = 480;
+  const previewHeight = 320;
   const previewStyle = buttonRect
     ? {
         position: 'fixed' as const,
-        top: `${buttonRect.top - 280}px`, // 280px is approximately the height of the preview
-        left: `${Math.max(10, buttonRect.left - 384 + buttonRect.width)}px`, // Align right edge with some margin
-        width: '384px',
+        top: `${Math.max(10, buttonRect.top - previewHeight - 10)}px`, // Position above with margin, ensure visible
+        left: `${Math.max(10, Math.min(window.innerWidth - previewWidth - 10, buttonRect.left - previewWidth + buttonRect.width))}px`, // Smart positioning
+        width: `${previewWidth}px`,
       }
     : {};
 
@@ -136,15 +138,16 @@ export const YouTubeHoverPreview: React.FC<YouTubeHoverPreviewProps> = ({
             {/* Video */}
             <div className="relative aspect-video">
               <iframe
-                src={`https://www.youtube.com/embed/${extractedId}?autoplay=1&mute=1&modestbranding=1&rel=0`}
+                src={`https://www.youtube.com/embed/${extractedId}?rel=0&modestbranding=1`}
                 title={title || 'YouTube preview'}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                allowFullScreen
                 className="absolute inset-0 w-full h-full"
               />
             </div>
             {/* Footer hint */}
             <div className="px-2 py-1 text-[10px] text-[var(--muted-foreground)] text-center border-t border-[var(--muted)]">
-              Click thumbnail to open YouTube
+              Click play to watch • Click thumbnail for YouTube
             </div>
           </div>
         </div>,
