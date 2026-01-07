@@ -26,7 +26,6 @@ export const CanonSection: React.FC<CanonSectionProps> = ({
   showCategoryTabs = true,
 }) => {
   const [activeTab, setActiveTab] = useState<TabMode>(defaultCategory || 'all');
-  const [expandedSymbol, setExpandedSymbol] = useState<string | null>(null);
 
   // Group symbols by category - memoized to avoid recalculation on every render
   const symbolsByCategory = useMemo(() => {
@@ -107,10 +106,6 @@ export const CanonSection: React.FC<CanonSectionProps> = ({
             <SymbolCard
               key={symbol.id}
               symbol={symbol}
-              isExpanded={expandedSymbol === symbol.id}
-              onToggleExpand={() =>
-                setExpandedSymbol(expandedSymbol === symbol.id ? null : symbol.id)
-              }
             />
           ))}
         </AnimatePresence>
@@ -210,24 +205,18 @@ const CompactEmbedButton: React.FC<{ embed: MediaEmbed }> = ({ embed }) => {
 // Individual Symbol Card Component
 interface SymbolCardProps {
   symbol: SymbolAnnotation;
-  isExpanded: boolean;
-  onToggleExpand: () => void;
 }
 
-const SymbolCard: React.FC<SymbolCardProps> = ({ symbol, isExpanded, onToggleExpand }) => {
-  // Only show expand if there are quotes (don't duplicate description/analysis)
-  const hasQuotes = symbol.deepDive?.quotes && symbol.deepDive.quotes.length > 0;
-
+const SymbolCard: React.FC<SymbolCardProps> = ({ symbol }) => {
   return (
     <motion.div
-      layout
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
       className="border-2 border-[var(--muted)] hover:border-[var(--primary)] transition-all bg-[rgba(0,0,0,0.3)] neon-border-subtle"
     >
-      {/* Header - Always Visible */}
-      <div className="p-3">
+      <div className="p-3 space-y-3">
+        {/* Header */}
         <div className="flex justify-between items-start gap-3">
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 flex-wrap">
@@ -246,7 +235,7 @@ const SymbolCard: React.FC<SymbolCardProps> = ({ symbol, isExpanded, onToggleExp
             </div>
           </div>
 
-          {/* Inline Embeds - Always visible */}
+          {/* Inline Embeds - Hover to preview */}
           {symbol.embeds.length > 0 && (
             <div className="flex items-center gap-2 flex-shrink-0">
               {symbol.embeds.map((embed, idx) => (
@@ -256,24 +245,33 @@ const SymbolCard: React.FC<SymbolCardProps> = ({ symbol, isExpanded, onToggleExp
           )}
         </div>
 
-        {/* Full description - always shown */}
-        <p className="text-sm text-[var(--muted-foreground)] mt-2">
+        {/* Full description */}
+        <p className="text-sm text-[var(--muted-foreground)]">
           {symbol.deepDive?.analysis || symbol.description}
         </p>
 
-        {/* Expand button for quotes only */}
-        {hasQuotes && (
-          <button
-            onClick={onToggleExpand}
-            className="mt-2 text-xs text-[var(--secondary)] hover:text-[var(--primary)] transition-colors"
-          >
-            {isExpanded ? '[-] HIDE QUOTES' : '[+] QUOTES'}
-          </button>
+        {/* Quotes - Always shown if present */}
+        {symbol.deepDive?.quotes && symbol.deepDive.quotes.length > 0 && (
+          <div className="space-y-2 pt-2 border-t border-[var(--muted)]">
+            {symbol.deepDive.quotes.map((quote, idx) => (
+              <blockquote
+                key={idx}
+                className="border-l-2 border-[var(--chart-3)] pl-3 text-sm italic"
+              >
+                "{quote.text}"
+                {quote.source && (
+                  <cite className="block text-xs text-[var(--muted-foreground)] mt-1 not-italic">
+                    — {quote.source}
+                  </cite>
+                )}
+              </blockquote>
+            ))}
+          </div>
         )}
 
-        {/* Metadata Tags - Always visible */}
+        {/* Metadata Tags */}
         {(symbol.convergencePoints || symbol.voices) && (
-          <div className="flex flex-wrap gap-1.5 text-xs mt-2">
+          <div className="flex flex-wrap gap-1.5 text-xs pt-2 border-t border-[var(--muted)]">
             {symbol.convergencePoints && symbol.convergencePoints.map((cp) => (
               <span
                 key={cp}
@@ -293,34 +291,6 @@ const SymbolCard: React.FC<SymbolCardProps> = ({ symbol, isExpanded, onToggleExp
           </div>
         )}
       </div>
-
-      {/* Expanded Content - Quotes Only */}
-      <AnimatePresence>
-        {isExpanded && hasQuotes && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            className="border-t-2 border-[var(--muted)] overflow-hidden"
-          >
-            <div className="p-3 space-y-2">
-              {symbol.deepDive?.quotes && symbol.deepDive.quotes.map((quote, idx) => (
-                <blockquote
-                  key={idx}
-                  className="border-l-2 border-[var(--chart-3)] pl-3 text-sm italic"
-                >
-                  "{quote.text}"
-                  {quote.source && (
-                    <cite className="block text-xs text-[var(--muted-foreground)] mt-1 not-italic">
-                      — {quote.source}
-                    </cite>
-                  )}
-                </blockquote>
-              ))}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </motion.div>
   );
 };
@@ -342,10 +312,14 @@ const MediaEmbedRenderer: React.FC<MediaEmbedRendererProps> = ({ embed }) => {
       );
 
     case 'bandcamp':
+      // Only render if we have an albumId (required prop)
+      if (!embed.bandcampAlbumId) {
+        return null;
+      }
       return (
         <BandcampEmbed
-          albumId={embed.bandcampAlbumId || undefined}
-          trackId={embed.bandcampTrackId || undefined}
+          albumId={embed.bandcampAlbumId}
+          trackId={embed.bandcampTrackId}
           size="large"
         />
       );
