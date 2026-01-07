@@ -215,7 +215,8 @@ interface SymbolCardProps {
 }
 
 const SymbolCard: React.FC<SymbolCardProps> = ({ symbol, isExpanded, onToggleExpand }) => {
-  const hasDeepDive = symbol.deepDive && (symbol.deepDive.analysis || (symbol.deepDive.quotes && symbol.deepDive.quotes.length > 0));
+  // Only show expand if there are quotes (don't duplicate description/analysis)
+  const hasQuotes = symbol.deepDive?.quotes && symbol.deepDive.quotes.length > 0;
 
   return (
     <motion.div
@@ -255,86 +256,67 @@ const SymbolCard: React.FC<SymbolCardProps> = ({ symbol, isExpanded, onToggleExp
           )}
         </div>
 
-        {/* Description preview */}
-        <p className="text-sm text-[var(--muted-foreground)] mt-2 line-clamp-2">
-          {symbol.description}
+        {/* Full description - always shown */}
+        <p className="text-sm text-[var(--muted-foreground)] mt-2">
+          {symbol.deepDive?.analysis || symbol.description}
         </p>
 
-        {/* Expand button for deep dive */}
-        {hasDeepDive && (
+        {/* Expand button for quotes only */}
+        {hasQuotes && (
           <button
             onClick={onToggleExpand}
             className="mt-2 text-xs text-[var(--secondary)] hover:text-[var(--primary)] transition-colors"
           >
-            {isExpanded ? '[-] HIDE DEEP DIVE' : '[+] DEEP DIVE'}
+            {isExpanded ? '[-] HIDE QUOTES' : '[+] QUOTES'}
           </button>
+        )}
+
+        {/* Metadata Tags - Always visible */}
+        {(symbol.convergencePoints || symbol.voices) && (
+          <div className="flex flex-wrap gap-1.5 text-xs mt-2">
+            {symbol.convergencePoints && symbol.convergencePoints.map((cp) => (
+              <span
+                key={cp}
+                className="px-1.5 py-0.5 border border-[var(--chart-1)] text-[var(--chart-1)]"
+              >
+                CP {cp}
+              </span>
+            ))}
+            {symbol.voices && symbol.voices.map((voice) => (
+              <span
+                key={voice}
+                className="px-1.5 py-0.5 border border-[var(--chart-2)] text-[var(--chart-2)]"
+              >
+                {voice.toUpperCase()}
+              </span>
+            ))}
+          </div>
         )}
       </div>
 
-      {/* Expanded Content - Deep Dive Only */}
+      {/* Expanded Content - Quotes Only */}
       <AnimatePresence>
-        {isExpanded && hasDeepDive && (
+        {isExpanded && hasQuotes && (
           <motion.div
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             className="border-t-2 border-[var(--muted)] overflow-hidden"
           >
-            <div className="p-3 space-y-3">
-              {/* Deep Dive Content */}
-              {symbol.deepDive && (
-                <>
-                  <div className="flex items-center gap-2 text-xs text-[var(--chart-2)]">
-                    <span className="font-bold">[DEEP_DIVE.TXT]</span>
-                  </div>
-
-                  {symbol.deepDive.analysis && (
-                    <div className="border-l-2 border-[var(--chart-1)] pl-3 bg-[rgba(0,0,0,0.3)] p-2">
-                      <p className="text-sm text-[var(--muted-foreground)]">
-                        {symbol.deepDive.analysis}
-                      </p>
-                    </div>
+            <div className="p-3 space-y-2">
+              {symbol.deepDive?.quotes && symbol.deepDive.quotes.map((quote, idx) => (
+                <blockquote
+                  key={idx}
+                  className="border-l-2 border-[var(--chart-3)] pl-3 text-sm italic"
+                >
+                  "{quote.text}"
+                  {quote.source && (
+                    <cite className="block text-xs text-[var(--muted-foreground)] mt-1 not-italic">
+                      — {quote.source}
+                    </cite>
                   )}
-
-                  {symbol.deepDive.quotes && symbol.deepDive.quotes.length > 0 && (
-                    <div className="space-y-2">
-                      {symbol.deepDive.quotes.map((quote, idx) => (
-                        <blockquote
-                          key={idx}
-                          className="border-l-2 border-[var(--chart-3)] pl-3 text-sm italic"
-                        >
-                          "{quote.text}"
-                          {quote.source && (
-                            <cite className="block text-xs text-[var(--muted-foreground)] mt-1 not-italic">
-                              — {quote.source}
-                            </cite>
-                          )}
-                        </blockquote>
-                      ))}
-                    </div>
-                  )}
-                </>
-              )}
-
-              {/* Metadata Tags */}
-              <div className="flex flex-wrap gap-1.5 text-xs pt-2 border-t border-[var(--muted)]">
-                {symbol.convergencePoints && symbol.convergencePoints.map((cp) => (
-                  <span
-                    key={cp}
-                    className="px-1.5 py-0.5 border border-[var(--chart-1)] text-[var(--chart-1)]"
-                  >
-                    CP {cp}
-                  </span>
-                ))}
-                {symbol.voices && symbol.voices.map((voice) => (
-                  <span
-                    key={voice}
-                    className="px-1.5 py-0.5 border border-[var(--chart-2)] text-[var(--chart-2)]"
-                  >
-                    {voice.toUpperCase()}
-                  </span>
-                ))}
-              </div>
+                </blockquote>
+              ))}
             </div>
           </motion.div>
         )}
