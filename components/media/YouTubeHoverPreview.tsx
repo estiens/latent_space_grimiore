@@ -12,8 +12,6 @@ export const YouTubeHoverPreview: React.FC<YouTubeHoverPreviewProps> = ({
 }) => {
   const [showVideo, setShowVideo] = useState(false);
   const [buttonRect, setButtonRect] = useState<DOMRect | null>(null);
-  const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const hideTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
   // Extract YouTube ID from various formats
@@ -45,33 +43,19 @@ export const YouTubeHoverPreview: React.FC<YouTubeHoverPreviewProps> = ({
   const thumbnailUrl = `https://img.youtube.com/vi/${extractedId}/mqdefault.jpg`;
   const youtubeUrl = `https://www.youtube.com/watch?v=${extractedId}`;
 
-  const handleMouseEnter = () => {
-    if (hideTimeoutRef.current) {
-      clearTimeout(hideTimeoutRef.current);
-      hideTimeoutRef.current = null;
-    }
-    // Capture button position
-    if (buttonRef.current) {
+  const handleToggle = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (!showVideo && buttonRef.current) {
+      // Opening - capture position
       setButtonRect(buttonRef.current.getBoundingClientRect());
     }
-    // Small delay before showing video to prevent flicker
-    hoverTimeoutRef.current = setTimeout(() => {
-      setShowVideo(true);
-    }, 200);
+
+    setShowVideo(!showVideo);
   };
 
-  const handleMouseLeave = () => {
-    if (hoverTimeoutRef.current) {
-      clearTimeout(hoverTimeoutRef.current);
-      hoverTimeoutRef.current = null;
-    }
-    // Delay hiding to allow smooth transitions
-    hideTimeoutRef.current = setTimeout(() => {
-      setShowVideo(false);
-    }, 150);
-  };
-
-  const handleClick = (e: React.MouseEvent) => {
+  const handleOpenYouTube = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
     window.open(youtubeUrl, '_blank', 'noopener,noreferrer');
@@ -94,11 +78,11 @@ export const YouTubeHoverPreview: React.FC<YouTubeHoverPreviewProps> = ({
       {/* Thumbnail button */}
       <button
         ref={buttonRef}
-        onClick={handleClick}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        className="group relative w-16 h-12 overflow-hidden border border-[var(--muted)] hover:border-[var(--primary)] transition-all cursor-pointer"
-        title={title || 'Watch on YouTube'}
+        onClick={handleToggle}
+        className={`group relative w-16 h-12 overflow-hidden border transition-all cursor-pointer ${
+          showVideo ? 'border-[var(--primary)] ring-2 ring-[var(--primary)]' : 'border-[var(--muted)] hover:border-[var(--primary)]'
+        }`}
+        title={showVideo ? 'Click to close' : (title || 'Click to watch')}
       >
         <img
           src={thumbnailUrl}
@@ -122,23 +106,28 @@ export const YouTubeHoverPreview: React.FC<YouTubeHoverPreviewProps> = ({
         </div>
       </button>
 
-      {/* Hover video preview - rendered as portal */}
+      {/* Video preview - rendered as portal */}
       {showVideo && extractedId && buttonRect && createPortal(
         <div
           style={previewStyle}
           className="z-[9999] shadow-2xl animate-in fade-in duration-200"
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
         >
           <div className="border-2 border-[var(--primary)] bg-black">
-            {/* Header */}
-            <div className="px-2 py-1 bg-[var(--primary)] text-[var(--background)] text-xs truncate">
-              {title || 'YouTube'}
+            {/* Header with close button */}
+            <div className="px-2 py-1 bg-[var(--primary)] text-[var(--background)] text-xs flex justify-between items-center">
+              <span className="truncate">{title || 'YouTube'}</span>
+              <button
+                onClick={handleToggle}
+                className="ml-2 hover:text-black transition-colors"
+                title="Close"
+              >
+                ✕
+              </button>
             </div>
             {/* Video */}
             <div className="relative aspect-video">
               <iframe
-                src={`https://www.youtube.com/embed/${extractedId}?rel=0&modestbranding=1`}
+                src={`https://www.youtube.com/embed/${extractedId}?autoplay=1&rel=0&modestbranding=1`}
                 title={title || 'YouTube preview'}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
                 allowFullScreen
@@ -146,8 +135,15 @@ export const YouTubeHoverPreview: React.FC<YouTubeHoverPreviewProps> = ({
               />
             </div>
             {/* Footer hint */}
-            <div className="px-2 py-1 text-[10px] text-[var(--muted-foreground)] text-center border-t border-[var(--muted)]">
-              Click play to watch • Click thumbnail for YouTube
+            <div className="px-2 py-1 text-[10px] text-[var(--muted-foreground)] text-center border-t border-[var(--muted)] flex justify-between items-center">
+              <span>Playing • Click X to close</span>
+              <button
+                onClick={handleOpenYouTube}
+                className="text-[var(--chart-1)] hover:text-[var(--primary)] transition-colors"
+                title="Open in YouTube"
+              >
+                Open YouTube →
+              </button>
             </div>
           </div>
         </div>,

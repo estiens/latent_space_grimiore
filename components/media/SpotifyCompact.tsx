@@ -15,36 +15,51 @@ export const SpotifyCompact: React.FC<SpotifyCompactProps> = ({
   const [showEmbed, setShowEmbed] = useState(false);
   const [buttonRect, setButtonRect] = useState<DOMRect | null>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
+  const [iframeSrc, setIframeSrc] = useState<string>('');
 
   // Extract ID from various URI formats
   const extractId = (input: string): string => {
+    if (!input) return '';
+
     // Handle spotify:type:id format
     if (input.startsWith('spotify:')) {
       const parts = input.split(':');
-      return parts[parts.length - 1];
+      return parts[parts.length - 1] || '';
     }
     // Handle URL format
     const match = input.match(/spotify\.com\/(?:embed\/)?(?:track|album|playlist|artist)\/([a-zA-Z0-9]+)/);
-    return match ? match[1] : input;
+    if (match && match[1]) return match[1];
+
+    // If it's already just an ID (22 chars alphanumeric)
+    if (input.length === 22 && /^[a-zA-Z0-9]+$/.test(input)) {
+      return input;
+    }
+
+    return input; // Return as-is and let Spotify handle it
   };
 
   const spotifyId = extractId(uri);
+  const isValidId = spotifyId && spotifyId.length > 0;
   const spotifyUrl = `https://open.spotify.com/${type}/${spotifyId}`;
 
-  const handleClick = (e: React.MouseEvent) => {
+  const handleToggle = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (!showEmbed && buttonRef.current) {
+      // Opening - capture position and set iframe src with autoplay
+      setButtonRect(buttonRef.current.getBoundingClientRect());
+      setIframeSrc(`https://open.spotify.com/embed/${type}/${spotifyId}?utm_source=generator&theme=0`);
+    }
+
+    setShowEmbed(!showEmbed);
+  };
+
+  const handleOpenSpotify = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
     window.open(spotifyUrl, '_blank', 'noopener,noreferrer');
   };
-
-  const handleMouseEnter = () => {
-    if (buttonRef.current) {
-      setButtonRect(buttonRef.current.getBoundingClientRect());
-    }
-    setShowEmbed(true);
-  };
-
-  const handleMouseLeave = () => setShowEmbed(false);
 
   // Calculate preview position
   const embedHeight = type === 'track' ? 152 : 352; // Bigger embeds
@@ -58,16 +73,23 @@ export const SpotifyCompact: React.FC<SpotifyCompactProps> = ({
       }
     : {};
 
+  // Don't render if no valid ID
+  if (!isValidId) {
+    return null;
+  }
+
   return (
     <>
       {/* Compact button */}
       <button
         ref={buttonRef}
-        onClick={handleClick}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        className="group flex items-center gap-1.5 px-2 py-1 border border-[var(--muted)] hover:border-[#1DB954] bg-black/50 hover:bg-black transition-all cursor-pointer"
-        title={title || 'Listen on Spotify'}
+        onClick={handleToggle}
+        className={`group flex items-center gap-1.5 px-2 py-1 border transition-all cursor-pointer ${
+          showEmbed
+            ? 'border-[#1DB954] ring-2 ring-[#1DB954] bg-black'
+            : 'border-[var(--muted)] hover:border-[#1DB954] bg-black/50 hover:bg-black'
+        }`}
+        title={showEmbed ? 'Click to close' : (title || 'Click to listen')}
       >
         {/* Spotify icon */}
         <svg className="w-4 h-4 text-[#1DB954]" viewBox="0 0 24 24" fill="currentColor">
@@ -78,17 +100,27 @@ export const SpotifyCompact: React.FC<SpotifyCompactProps> = ({
         </span>
       </button>
 
-      {/* Hover embed preview - rendered as portal */}
-      {showEmbed && spotifyId && buttonRect && createPortal(
+      {/* Embed preview - rendered as portal */}
+      {showEmbed && buttonRect && iframeSrc && createPortal(
         <div
           style={previewStyle}
           className="z-[9999] shadow-2xl animate-in fade-in duration-200"
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
         >
           <div className="border-2 border-[#1DB954] bg-black">
+            {/* Header with close button */}
+            <div className="px-2 py-1 bg-[#1DB954] text-black text-xs flex justify-between items-center">
+              <span className="truncate font-bold">{title || `Spotify ${type}`}</span>
+              <button
+                onClick={handleToggle}
+                className="ml-2 hover:text-white transition-colors"
+                title="Close"
+              >
+                ✕
+              </button>
+            </div>
+            {/* Spotify embed */}
             <iframe
-              src={`https://open.spotify.com/embed/${type}/${spotifyId}?utm_source=generator&theme=0`}
+              src={iframeSrc}
               width="100%"
               height={embedHeight}
               frameBorder="0"
@@ -96,8 +128,16 @@ export const SpotifyCompact: React.FC<SpotifyCompactProps> = ({
               loading="lazy"
               className="block"
             />
-            <div className="px-2 py-1 text-[10px] text-[var(--muted-foreground)] text-center border-t border-[var(--muted)]">
-              Click button to open Spotify
+            {/* Footer */}
+            <div className="px-2 py-1 text-[10px] text-[var(--muted-foreground)] border-t border-[var(--muted)] flex justify-between items-center">
+              <span>Playing • Click X to close</span>
+              <button
+                onClick={handleOpenSpotify}
+                className="text-[#1DB954] hover:text-[var(--primary)] transition-colors"
+                title="Open in Spotify"
+              >
+                Open Spotify →
+              </button>
             </div>
           </div>
         </div>,
