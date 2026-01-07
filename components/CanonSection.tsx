@@ -1,7 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  AudioPlayer,
   VideoPreview,
   ImageViewer,
   SpotifyEmbed,
@@ -354,7 +353,7 @@ const MediaEmbedRenderer: React.FC<MediaEmbedRendererProps> = ({ embed }) => {
     case 'spotify':
       return (
         <SpotifyEmbed
-          uri={embed.embedId || embed.url}
+          uri={embed.embedId || embed.url || ''}
           type={embed.spotifyType || 'track'}
           compact={false}
         />
@@ -363,19 +362,19 @@ const MediaEmbedRenderer: React.FC<MediaEmbedRendererProps> = ({ embed }) => {
     case 'bandcamp':
       return (
         <BandcampEmbed
-          albumId={embed.bandcampAlbumId}
-          trackId={embed.bandcampTrackId}
+          albumId={embed.bandcampAlbumId || undefined}
+          trackId={embed.bandcampTrackId || undefined}
           size="large"
         />
       );
 
     case 'soundcloud':
-      return <SoundCloudEmbed url={embed.url} visual={true} />;
+      return <SoundCloudEmbed url={embed.url || ''} visual={true} />;
 
     case 'youtube':
       return (
         <VideoPreview
-          src={embed.embedId || embed.url}
+          src={embed.embedId || embed.url || ''}
           type="youtube"
           title={embed.title}
           duration={embed.duration}
@@ -388,7 +387,7 @@ const MediaEmbedRenderer: React.FC<MediaEmbedRendererProps> = ({ embed }) => {
     case 'vimeo':
       return (
         <VideoPreview
-          src={embed.embedId || embed.url}
+          src={embed.embedId || embed.url || ''}
           type="vimeo"
           title={embed.title}
           showControls={true}
@@ -400,7 +399,7 @@ const MediaEmbedRenderer: React.FC<MediaEmbedRendererProps> = ({ embed }) => {
     case 'local-video':
       return (
         <VideoPreview
-          src={embed.url}
+          src={embed.url || ''}
           type="local"
           title={embed.title}
           poster={embed.thumbnail}
@@ -413,7 +412,7 @@ const MediaEmbedRenderer: React.FC<MediaEmbedRendererProps> = ({ embed }) => {
     case 'image':
       return (
         <ImageViewer
-          src={embed.url}
+          src={embed.url || ''}
           alt={embed.title || 'Symbol image'}
           title={embed.title}
           caption={embed.description}
@@ -427,7 +426,7 @@ const MediaEmbedRenderer: React.FC<MediaEmbedRendererProps> = ({ embed }) => {
     case 'article':
       return (
         <LinkPreview
-          url={embed.url}
+          url={embed.url || ''}
           title={embed.title || 'External Resource'}
           description={embed.description}
           image={embed.thumbnail}

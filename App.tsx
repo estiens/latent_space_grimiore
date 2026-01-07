@@ -73,7 +73,7 @@ function App() {
           <VoiceProvider>
             <ScryingLensProvider>
               <WouterRouter hook={useHashLocation}>
-                <Suspense fallback={<BBSLoader message="LOADING SEPHIRAH..." />}>
+                <Suspense fallback={<BBSLoader text="LOADING SEPHIRAH..." variant="bar" />}>
                   <AppRouter />
                 </Suspense>
               </WouterRouter>
