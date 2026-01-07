@@ -8,6 +8,7 @@ import {
   SoundCloudEmbed,
   YouTubeHoverPreview,
   SpotifyCompact,
+  MediaErrorBoundary,
 } from '@/components/media';
 import { LinkPreview } from '@/components/ui';
 import type { SymbolAnnotation, SymbolCategory, MediaEmbed } from '@/types/annotations';
@@ -251,7 +252,13 @@ const SymbolCard: React.FC<SymbolCardProps> = ({ symbol }) => {
           {symbol.embeds.length > 0 && (
             <div className="flex items-center gap-2 flex-shrink-0">
               {symbol.embeds.map((embed, idx) => (
-                <CompactEmbedButton key={idx} embed={embed} />
+                <MediaErrorBoundary
+                  key={idx}
+                  fallbackUrl={embed.url}
+                  mediaTitle={embed.title}
+                >
+                  <CompactEmbedButton embed={embed} />
+                </MediaErrorBoundary>
               ))}
             </div>
           )}
