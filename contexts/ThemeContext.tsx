@@ -6,7 +6,8 @@ interface ThemeContextType {
 
 const ThemeContext = createContext<ThemeContextType>({ theme: 'dark' });
 
-export function ThemeProvider({ children, defaultTheme = 'dark' }: { children: ReactNode; defaultTheme?: string }) {
+// Theme is always dark for this vaporwave BBS aesthetic - no theme switching needed
+export function ThemeProvider({ children }: { children: ReactNode }) {
   return (
     <ThemeContext.Provider value={{ theme: 'dark' }}>
       <div className="dark">

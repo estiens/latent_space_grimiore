@@ -20,7 +20,7 @@ export default defineConfig({
     },
   },
   server: {
-    port: 3000,
+    port: 4001, // Match port in package.json dev script
     host: true,
     hmr: {
       overlay: false,

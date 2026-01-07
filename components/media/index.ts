@@ -7,3 +7,5 @@ export {
   BandcampEmbed,
   SoundCloudEmbed
 } from './EmbedContainer';
+export { YouTubeHoverPreview } from './YouTubeHoverPreview';
+export { SpotifyCompact } from './SpotifyCompact';

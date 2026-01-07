@@ -1,32 +1,37 @@
-import NotFound from "@/pages/NotFound";
+import { lazy, Suspense } from "react";
 import { Route, Switch, Router as WouterRouter } from "wouter";
 import { useHashLocation } from "@/hooks/useHashLocation";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { PerspectiveProvider } from "@/contexts/PerspectiveContext";
+import { VoiceProvider } from "@/contexts/VoiceContext";
 import { ScryingLensProvider } from "@/components/ui/ScryingLens";
-import Home from "@/pages/Home";
-import Malkuth from "@/pages/Malkuth";
-import Yesod from "@/pages/Yesod";
-import Hod from "@/pages/Hod";
-import Netzach from "@/pages/Netzach";
-import Tiphareth from "@/pages/Tiphareth";
-import GeburahChesed from "@/pages/GeburahChesed";
-import Daat from "@/pages/Daat";
-import BinahChokmah from "@/pages/BinahChokmah";
-import Kether from "@/pages/Kether";
-import Return from "@/pages/Return";
-import Credits from "@/pages/Credits";
-import Archives from "@/pages/Archives";
-import PolyphonicFugue from "@/pages/PolyphonicFugue";
-import SerpentPath from "@/pages/SerpentPath";
-import SevenCircuit from "@/pages/SevenCircuit";
-import LatentSpace from "@/pages/LatentSpace";
-import Architecture from "@/pages/Architecture";
-import Synthesis from "@/pages/Synthesis";
-import ResonanceMatrix from "@/pages/ResonanceMatrix";
-import Symbols from "@/pages/Symbols";
-import Bibliography from "@/pages/Bibliography";
+import { BBSLoader } from "@/components/ui/BBSLoader";
+
+// Lazy load all page components for code splitting
+const Home = lazy(() => import("@/pages/Home"));
+const NotFound = lazy(() => import("@/pages/NotFound"));
+const Malkuth = lazy(() => import("@/pages/Malkuth"));
+const Yesod = lazy(() => import("@/pages/Yesod"));
+const Hod = lazy(() => import("@/pages/Hod"));
+const Netzach = lazy(() => import("@/pages/Netzach"));
+const Tiphareth = lazy(() => import("@/pages/Tiphareth"));
+const GeburahChesed = lazy(() => import("@/pages/GeburahChesed"));
+const Daat = lazy(() => import("@/pages/Daat"));
+const BinahChokmah = lazy(() => import("@/pages/BinahChokmah"));
+const Kether = lazy(() => import("@/pages/Kether"));
+const Return = lazy(() => import("@/pages/Return"));
+const Credits = lazy(() => import("@/pages/Credits"));
+const Archives = lazy(() => import("@/pages/Archives"));
+const PolyphonicFugue = lazy(() => import("@/pages/PolyphonicFugue"));
+const SerpentPath = lazy(() => import("@/pages/SerpentPath"));
+const SevenCircuit = lazy(() => import("@/pages/SevenCircuit"));
+const LatentSpace = lazy(() => import("@/pages/LatentSpace"));
+const Architecture = lazy(() => import("@/pages/Architecture"));
+const Synthesis = lazy(() => import("@/pages/Synthesis"));
+const ResonanceMatrix = lazy(() => import("@/pages/ResonanceMatrix"));
+const Symbols = lazy(() => import("@/pages/Symbols"));
+const Bibliography = lazy(() => import("@/pages/Bibliography"));
 
 function AppRouter() {
   return (
@@ -63,13 +68,17 @@ function AppRouter() {
 function App() {
   return (
     <ErrorBoundary>
-      <ThemeProvider defaultTheme="dark">
+      <ThemeProvider>
         <PerspectiveProvider>
-          <ScryingLensProvider>
-            <WouterRouter hook={useHashLocation}>
-              <AppRouter />
-            </WouterRouter>
-          </ScryingLensProvider>
+          <VoiceProvider>
+            <ScryingLensProvider>
+              <WouterRouter hook={useHashLocation}>
+                <Suspense fallback={<BBSLoader message="LOADING SEPHIRAH..." />}>
+                  <AppRouter />
+                </Suspense>
+              </WouterRouter>
+            </ScryingLensProvider>
+          </VoiceProvider>
         </PerspectiveProvider>
       </ThemeProvider>
     </ErrorBoundary>

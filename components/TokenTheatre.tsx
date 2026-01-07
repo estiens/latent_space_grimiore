@@ -11,6 +11,22 @@ import {
   Message,
 } from '@/lib/openrouter';
 
+// Probability color thresholds and values
+const PROBABILITY_COLORS = {
+  high: '#00ff00',       // Bright green for > 0.8
+  mediumHigh: '#88ff00', // Yellow-green for > 0.5
+  medium: '#ffff00',     // Yellow for > 0.3
+  low: '#ff8800',        // Orange for > 0.1
+  veryLow: '#ff0000',    // Red for <= 0.1
+} as const;
+
+const PROBABILITY_THRESHOLDS = {
+  high: 0.8,
+  mediumHigh: 0.5,
+  medium: 0.3,
+  low: 0.1,
+} as const;
+
 interface TokenDisplayProps {
   token: TheatreToken;
   showAlternatives: boolean;
@@ -24,11 +40,11 @@ function TokenDisplay({ token, showAlternatives, onSelectAlternative }: TokenDis
 
   // Color based on probability (high = green, low = red)
   const getColor = (prob: number) => {
-    if (prob > 0.8) return '#00ff00';
-    if (prob > 0.5) return '#88ff00';
-    if (prob > 0.3) return '#ffff00';
-    if (prob > 0.1) return '#ff8800';
-    return '#ff0000';
+    if (prob > PROBABILITY_THRESHOLDS.high) return PROBABILITY_COLORS.high;
+    if (prob > PROBABILITY_THRESHOLDS.mediumHigh) return PROBABILITY_COLORS.mediumHigh;
+    if (prob > PROBABILITY_THRESHOLDS.medium) return PROBABILITY_COLORS.medium;
+    if (prob > PROBABILITY_THRESHOLDS.low) return PROBABILITY_COLORS.low;
+    return PROBABILITY_COLORS.veryLow;
   };
 
   return (
@@ -220,6 +236,10 @@ export function TokenTheatre({
 
     if (!prompt.trim()) return;
 
+    // Initialize AbortController BEFORE async operations
+    abortControllerRef.current = new AbortController();
+    const signal = abortControllerRef.current.signal;
+
     setIsGenerating(true);
     setTokens([]);
     setError(null);
@@ -240,6 +260,11 @@ export function TokenTheatre({
       });
 
       for await (const item of stream) {
+        // Check if operation was aborted
+        if (signal.aborted) {
+          break;
+        }
+
         if (typeof item === 'string') {
           // Plain string token (no logprobs)
           setTokens(prev => [...prev, {
@@ -260,9 +285,14 @@ export function TokenTheatre({
         }
       }
     } catch (err) {
+      // Don't show error if operation was aborted by user
+      if (err instanceof Error && err.name === 'AbortError') {
+        return;
+      }
       setError(err instanceof Error ? err.message : 'Generation failed');
     } finally {
       setIsGenerating(false);
+      abortControllerRef.current = null;
     }
   }, [prompt, systemPrompt, model, temperature]);
 

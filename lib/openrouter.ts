@@ -180,8 +180,9 @@ export class OpenRouterClient {
             }
           }
         } catch (e) {
-          // Skip malformed JSON
-          console.warn('Failed to parse SSE chunk:', trimmed);
+          // Log parsing errors properly
+          console.error('Failed to parse SSE chunk:', trimmed, e);
+          // Continue processing other chunks - don't break the stream
         }
       }
     }
@@ -229,13 +230,14 @@ export class OpenRouterClient {
 
 // Singleton instance - initialized when API key is available
 let clientInstance: OpenRouterClient | null = null;
+let sessionApiKey: string | null = null; // Session-only storage (memory)
 
 export function getOpenRouterClient(): OpenRouterClient | null {
   if (clientInstance) return clientInstance;
 
-  // Try to get API key from environment or localStorage
-  const apiKey = import.meta.env.VITE_OPENROUTER_API_KEY ||
-                 (typeof localStorage !== 'undefined' && localStorage.getItem('openrouter_api_key'));
+  // Only use environment variable for persistent keys
+  // User-provided keys are session-only (not persisted)
+  const apiKey = import.meta.env.VITE_OPENROUTER_API_KEY || sessionApiKey;
 
   if (apiKey) {
     clientInstance = new OpenRouterClient({ apiKey });
@@ -246,17 +248,14 @@ export function getOpenRouterClient(): OpenRouterClient | null {
 }
 
 export function setOpenRouterApiKey(apiKey: string): OpenRouterClient {
-  // Store in localStorage for persistence
-  if (typeof localStorage !== 'undefined') {
-    localStorage.setItem('openrouter_api_key', apiKey);
-  }
+  // Store in memory only for session - NO localStorage for security
+  sessionApiKey = apiKey;
   clientInstance = new OpenRouterClient({ apiKey });
   return clientInstance;
 }
 
 export function clearOpenRouterApiKey(): void {
-  if (typeof localStorage !== 'undefined') {
-    localStorage.removeItem('openrouter_api_key');
-  }
+  // Clear session-only storage
+  sessionApiKey = null;
   clientInstance = null;
 }

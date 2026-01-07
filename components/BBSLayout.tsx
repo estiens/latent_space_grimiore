@@ -13,18 +13,31 @@ export function BBSLayout({ children, title = "LATENT SPACE GRIMOIRE", className
   const [time, setTime] = useState(new Date());
   const [packetLoss, setPacketLoss] = useState("0.00%");
 
-  // Update clock
+  // Update clock - using requestAnimationFrame for better performance
   useEffect(() => {
-    const timer = setInterval(() => setTime(new Date()), 1000);
-    return () => clearInterval(timer);
+    let frameId: number;
+    let lastUpdate = Date.now();
+
+    const updateTime = () => {
+      const now = Date.now();
+      // Throttle to ~1 second updates
+      if (now - lastUpdate >= 1000) {
+        setTime(new Date());
+        lastUpdate = now;
+      }
+      frameId = requestAnimationFrame(updateTime);
+    };
+
+    frameId = requestAnimationFrame(updateTime);
+    return () => cancelAnimationFrame(frameId);
   }, []);
 
-  // Simulate random packet loss
+  // Simulate random packet loss - reduced frequency for performance
   useEffect(() => {
     const interval = setInterval(() => {
       const loss = Math.random() < 0.1 ? (Math.random() * 2).toFixed(2) : "0.00";
       setPacketLoss(`${loss}%`);
-    }, 3000);
+    }, 10000); // Update every 10 seconds instead of 3
     return () => clearInterval(interval);
   }, []);
 

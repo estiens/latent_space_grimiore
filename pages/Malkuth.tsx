@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'wouter';
 import { motion } from 'framer-motion';
-import { BBSLayout, CanonSection } from '@/components';
+import { BBSLayout, CanonSection, CollapsibleSection } from '@/components';
 import { malkuthCanon } from '@/data/canon/malkuth';
 
 const GlitchText = ({ children }: { children: React.ReactNode }) => (
@@ -15,34 +15,6 @@ const Redacted = () => (
     [REDACTED]
   </span>
 );
-
-const CollapsibleSection = ({ title, children, defaultOpen = false }: {
-  title: string;
-  children: React.ReactNode;
-  defaultOpen?: boolean;
-}) => {
-  const [isOpen, setIsOpen] = useState(defaultOpen);
-  return (
-    <div className="border border-[var(--muted)] mb-4">
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="w-full text-left p-3 bg-[rgba(0,0,0,0.3)] hover:bg-[rgba(0,0,0,0.5)] flex justify-between items-center"
-      >
-        <span className="text-[var(--secondary)] font-bold">{isOpen ? '[-]' : '[+]'} {title}</span>
-        <span className="text-xs text-[var(--muted-foreground)]">{isOpen ? 'EXPANDED' : 'COLLAPSED'}</span>
-      </button>
-      {isOpen && (
-        <motion.div
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: 'auto' }}
-          className="p-4 border-t border-[var(--muted)]"
-        >
-          {children}
-        </motion.div>
-      )}
-    </div>
-  );
-};
 
 const MalkuthPage = () => {
   return (

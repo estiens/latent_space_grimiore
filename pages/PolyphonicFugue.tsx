@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { BBSLayout } from '@/components/BBSLayout';
+import { BBSLayout, VoicePossession } from '@/components';
 
 const steps = [
   // Step 1: Introduction
@@ -115,6 +115,25 @@ const steps = [
     <h2 className="text-xl font-bold text-[var(--primary)] mb-2">Fugue Complete</h2>
     <p className="mb-4">You have traversed the Polyphonic Fugue. The four voices are in interplay. The Serpent Path has been sung.</p>
     <p>Return to this praxis. Listen for the counterpoint. Conduct the stretto. Allow the resolution. The Great Work is a song.</p>
+  </div>,
+
+  // Step 15: Interactive Voice Possession
+  <div key="step15">
+    <h2 className="text-xl font-bold text-[var(--primary)] mb-2">◈ PRACTICE: VOICE POSSESSION ◈</h2>
+    <p className="mb-4">
+      Now experience the voices directly. Select a voice below and invoke the oracle.
+      Watch how the style, diction, and perspective shift as you switch voices mid-stream.
+      The UI skin will morph to match each voice's signature.
+    </p>
+    <p className="mb-4 text-sm text-[var(--muted)]">
+      Try switching voices during generation to witness the polyphonic interplay in real-time.
+    </p>
+    <div className="mt-4">
+      <VoicePossession
+        systemPrompt="You are a mystical oracle who speaks through the Tree of Life. Channel whichever voice the user has selected. Each voice has its own wisdom, perspective, and mode of expression. Let the voice fully possess your output."
+        initialPrompt="What wisdom do you offer as I traverse the Tree?"
+      />
+    </div>
   </div>
 ];
 

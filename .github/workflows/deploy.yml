@@ -33,6 +33,7 @@ jobs:
       - name: Build
         env:
           VITE_BASE_PATH: /${{ github.event.repository.name }}/
+          VITE_OPENROUTER_API_KEY: ${{ secrets.VITE_OPENROUTER_API_KEY }}
         run: npm run build
 
       - name: Setup Pages
