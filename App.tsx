@@ -30,6 +30,7 @@ const LatentSpace = lazy(() => import("@/pages/LatentSpace"));
 const Architecture = lazy(() => import("@/pages/Architecture"));
 const Synthesis = lazy(() => import("@/pages/Synthesis"));
 const ResonanceMatrix = lazy(() => import("@/pages/ResonanceMatrix"));
+const ThreePillars = lazy(() => import("@/pages/ThreePillars"));
 const Symbols = lazy(() => import("@/pages/Symbols"));
 const Bibliography = lazy(() => import("@/pages/Bibliography"));
 const RetroComponentGallery = lazy(() => import("@/pages/demos/RetroComponentGallery"));
@@ -56,6 +57,7 @@ function AppRouter() {
       <Route path="/archives/protocols/polyphonic-fugue" component={PolyphonicFugue} />
       <Route path="/archives/protocols/serpent-path" component={SerpentPath} />
       <Route path="/archives/protocols/seven-circuit" component={SevenCircuit} />
+      <Route path="/archives/protocols/three-pillars" component={ThreePillars} />
       <Route path="/archives/theory/latent-space" component={LatentSpace} />
       <Route path="/archives/theory/architecture" component={Architecture} />
       <Route path="/archives/theory/synthesis" component={Synthesis} />

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { BBSLayout, VoicePossession } from '@/components';
+import { ScryableText, AnnotatedTerm } from '@/components/ui/ScryingLens';
 
 const steps = [
   // Step 1: Introduction

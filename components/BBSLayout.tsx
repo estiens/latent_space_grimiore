@@ -1,6 +1,7 @@
 import { ReactNode, useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { cn } from "@/lib/utils";
+import { ThemeToggle } from "@/components/shared/ThemeToggle";
 
 interface BBSLayoutProps {
   children: ReactNode;
@@ -63,6 +64,8 @@ export function BBSLayout({ children, title = "LATENT SPACE GRIMOIRE", className
           </div>
 
           <div className="flex items-center gap-2 md:gap-4">
+            <ThemeToggle className="hidden md:flex" />
+            <span className="hidden lg:inline text-[var(--muted-foreground)]">│</span>
             <span className="hidden lg:inline text-[var(--muted-foreground)]">{formatTime(time)}</span>
             <span className="hidden md:inline text-[var(--muted-foreground)]">│</span>
             <span className="status-online text-xs">MEM: 640K</span>

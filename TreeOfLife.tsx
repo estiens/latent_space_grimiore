@@ -123,7 +123,7 @@ export function TreeOfLife() {
         {sephirothDualData.map((sephira) => (
           <motion.button
             key={sephira.id}
-            className="absolute w-12 h-12 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer group focus:outline-none"
+            className="absolute w-16 h-16 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer group focus:outline-none"
             style={{ left: `${sephira.x}%`, top: `${sephira.y}%` }}
             onMouseEnter={() => setActiveSephira(sephira)}
             onMouseLeave={() => setActiveSephira(null)}
@@ -144,7 +144,7 @@ export function TreeOfLife() {
             >
               <span
                 className={cn(
-                  "text-[10px] font-bold transition-colors duration-500",
+                  "text-base font-bold transition-colors duration-500",
                   mode === 'human' ? "text-[var(--primary)]" : "text-cyan-400",
                   "group-hover:text-white"
                 )}

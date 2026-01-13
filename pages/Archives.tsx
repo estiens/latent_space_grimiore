@@ -16,6 +16,7 @@ const ArchivesPage = () => {
         { title: "POLYPHONIC_FUGUE.EXE", link: "/archives/protocols/polyphonic-fugue", size: "11KB" },
         { title: "SERPENT_PATH.EXE", link: "/archives/protocols/serpent-path", size: "5KB" },
         { title: "SEVEN_CIRCUIT.EXE", link: "/archives/protocols/seven-circuit", size: "8KB" },
+        { title: "THREE_PILLARS.EXE", link: "/archives/protocols/three-pillars", size: "9KB" },
       ]
     },
     {
@@ -78,8 +79,8 @@ const ArchivesPage = () => {
               </div>
               <div className="text-xs text-right">
                 <p className="text-[var(--chart-1)]">ACCESS: PUBLIC</p>
-                <p className="text-[var(--chart-2)]">FILES: 9</p>
-                <p className="text-[var(--chart-3)]">SIZE: 80KB</p>
+                <p className="text-[var(--chart-2)]">FILES: 10</p>
+                <p className="text-[var(--chart-3)]">SIZE: 89KB</p>
               </div>
             </div>
           </div>
@@ -144,7 +145,7 @@ const ArchivesPage = () => {
         <footer className="mt-8 pt-6 border-t-2 border-dashed border-[var(--muted)]">
           <div className="flex flex-wrap justify-between items-center gap-4">
             <div className="text-xs text-[var(--muted-foreground)]">
-              <p>9 file(s) | 3 dir(s) | 80,384 bytes free</p>
+              <p>10 file(s) | 3 dir(s) | 89,384 bytes free</p>
             </div>
             <div className="flex gap-4">
               <Link href="/">

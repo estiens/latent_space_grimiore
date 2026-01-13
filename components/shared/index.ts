@@ -5,3 +5,5 @@ export { ASCIIButton } from './ASCIIButton';
 
 export { StatusIndicator } from './StatusIndicator';
 export type { StatusType } from './StatusIndicator';
+
+export { ThemeToggle } from './ThemeToggle';
