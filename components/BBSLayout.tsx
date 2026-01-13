@@ -1,4 +1,4 @@
-import { ReactNode, useState, useEffect } from "react";
+import { ReactNode, useState, useEffect, useCallback } from "react";
 import { Link, useLocation } from "wouter";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "@/components/shared/ThemeToggle";
@@ -9,10 +9,16 @@ interface BBSLayoutProps {
   className?: string;
 }
 
+type ViewMode = 'HUMAN' | 'LLM';
+
 export function BBSLayout({ children, title = "LATENT SPACE GRIMOIRE", className }: BBSLayoutProps) {
-  const [location] = useLocation();
+  const [location, setLocation] = useLocation();
   const [time, setTime] = useState(new Date());
-  const [packetLoss, setPacketLoss] = useState("0.00%");
+  const [mode, setMode] = useState<ViewMode>('HUMAN');
+
+  // Mode-specific stats
+  const [stat1, setStat1] = useState({ value: 0, label: '' });
+  const [stat2, setStat2] = useState({ value: 0, label: '' });
 
   // Update clock - using requestAnimationFrame for better performance
   useEffect(() => {
@@ -33,14 +39,77 @@ export function BBSLayout({ children, title = "LATENT SPACE GRIMOIRE", className
     return () => cancelAnimationFrame(frameId);
   }, []);
 
-  // Simulate random packet loss - reduced frequency for performance
+  // Generate random stats based on mode
+  const generateStats = useCallback(() => {
+    if (mode === 'HUMAN') {
+      // Human mode: VIBE and SYNC
+      setStat1({
+        value: Math.floor(70 + Math.random() * 30),
+        label: 'VIBE'
+      });
+      setStat2({
+        value: Math.floor(Math.random() * 100),
+        label: 'SYNC'
+      });
+    } else {
+      // LLM mode: CTXT and ATTN
+      setStat1({
+        value: Math.floor(Math.random() * 128) + 1,
+        label: 'CTXT'
+      });
+      setStat2({
+        value: Math.floor(60 + Math.random() * 40),
+        label: 'ATTN'
+      });
+    }
+  }, [mode]);
+
+  // Initialize and update stats
   useEffect(() => {
+    generateStats();
     const interval = setInterval(() => {
-      const loss = Math.random() < 0.1 ? (Math.random() * 2).toFixed(2) : "0.00";
-      setPacketLoss(`${loss}%`);
-    }, 10000); // Update every 10 seconds instead of 3
+      // Occasionally update stats (30% chance every 8 seconds)
+      if (Math.random() < 0.3) {
+        generateStats();
+      }
+    }, 8000);
     return () => clearInterval(interval);
-  }, []);
+  }, [generateStats]);
+
+  // Handle function key navigation and mode toggle
+  const handleKeyDown = useCallback((e: KeyboardEvent) => {
+    // Don't intercept if user is typing in an input
+    if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) {
+      return;
+    }
+
+    // Shift+M toggles mode
+    if (e.shiftKey && e.key === 'M') {
+      e.preventDefault();
+      setMode(prev => prev === 'HUMAN' ? 'LLM' : 'HUMAN');
+      return;
+    }
+
+    switch (e.key) {
+      case 'F1':
+        e.preventDefault();
+        setLocation('/');
+        break;
+      case 'F2':
+        e.preventDefault();
+        setLocation('/archives');
+        break;
+      case 'F3':
+        e.preventDefault();
+        setLocation('/credits');
+        break;
+    }
+  }, [setLocation]);
+
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [handleKeyDown]);
 
   const formatTime = (d: Date) => {
     return d.toLocaleTimeString('en-US', { hour12: false });
@@ -90,14 +159,28 @@ export function BBSLayout({ children, title = "LATENT SPACE GRIMOIRE", className
             <span className="hidden lg:inline text-[var(--muted-foreground)]">│</span>
             <span className="hidden lg:inline text-[var(--muted-foreground)]">{formatTime(time)}</span>
             <span className="hidden md:inline text-[var(--muted-foreground)]">│</span>
-            <span className="status-online text-xs">MEM: 640K</span>
+            <span className="status-online text-xs">
+              {stat1.label}: {mode === 'LLM' ? `${stat1.value}K` : `${stat1.value}%`}
+            </span>
             <span className={cn(
               "text-xs",
-              packetLoss === "0.00%" ? "status-online" : "status-warning"
+              stat2.value > 80 ? "status-online" : "status-warning"
             )}>
-              PKT: {packetLoss}
+              {stat2.label}: {stat2.value}%
             </span>
-            <span className="hidden md:inline text-[var(--chart-3)]">USR: GUEST</span>
+            <span className="hidden md:inline text-[var(--muted-foreground)]">│</span>
+            <button
+              onClick={() => setMode(prev => prev === 'HUMAN' ? 'LLM' : 'HUMAN')}
+              className={cn(
+                "hidden md:inline text-xs px-1 cursor-pointer transition-colors",
+                mode === 'HUMAN'
+                  ? "text-[var(--chart-3)] hover:text-[var(--chart-4)]"
+                  : "text-[var(--secondary)] hover:text-[var(--primary)]"
+              )}
+              title="Shift+M to switch mode"
+            >
+              [{mode}]
+            </button>
           </div>
         </div>
       </header>
