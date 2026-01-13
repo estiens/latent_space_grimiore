@@ -4,6 +4,7 @@ import { cn } from '@/lib/utils';
 
 interface CollapsibleSectionProps {
   title: string;
+  subtitle?: string;
   children: React.ReactNode;
   defaultOpen?: boolean;
   variant?: 'default' | 'compact' | 'bordered';
@@ -12,6 +13,7 @@ interface CollapsibleSectionProps {
 
 export const CollapsibleSection = ({
   title,
+  subtitle,
   children,
   defaultOpen = false,
   variant = 'default',
@@ -44,6 +46,11 @@ export const CollapsibleSection = ({
       >
         <span className="text-[var(--secondary)] font-bold">
           {isOpen ? '[-]' : '[+]'} {title}
+          {subtitle && (
+            <span className="text-[var(--muted-foreground)] font-normal text-sm ml-2 italic">
+              {subtitle}
+            </span>
+          )}
         </span>
         <span className="text-xs text-[var(--muted-foreground)]">
           {isOpen ? 'EXPANDED' : 'COLLAPSED'}

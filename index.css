@@ -257,15 +257,15 @@
   }
   body {
     @apply bg-background text-foreground font-mono antialiased;
-    /* Retro Grid Background */
-    background-image: 
-      linear-gradient(rgba(255, 0, 255, 0.1) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
+    /* Retro Grid Background - uses theme colors */
+    background-image:
+      linear-gradient(color-mix(in oklch, var(--primary) 10%, transparent) 1px, transparent 1px),
+      linear-gradient(90deg, color-mix(in oklch, var(--secondary) 10%, transparent) 1px, transparent 1px);
     background-size: 40px 40px;
     background-position: center top;
   }
 
-  /* CRT Scanline Effect - Reduced for readability */
+  /* CRT Scanline Effect - Reduced for readability, theme-aware */
   body::after {
     content: " ";
     display: block;
@@ -274,7 +274,12 @@
     left: 0;
     bottom: 0;
     right: 0;
-    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.15) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+    background:
+      linear-gradient(transparent 50%, color-mix(in oklch, var(--foreground) 15%, transparent) 50%),
+      linear-gradient(90deg,
+        color-mix(in oklch, var(--primary) 3%, transparent),
+        color-mix(in oklch, var(--secondary) 1%, transparent),
+        color-mix(in oklch, var(--accent) 3%, transparent));
     background-size: 100% 3px, 4px 100%;
     z-index: 9999;
     pointer-events: none;
@@ -592,24 +597,24 @@
   animation: neon-pulse 2s ease-in-out infinite;
 }
 
-/* Color Shift / Chromatic Aberration on Hover */
+/* Color Shift / Chromatic Aberration on Hover - theme-aware */
 .chromatic-shift:hover {
   text-shadow:
-    -2px 0 rgba(255, 0, 0, 0.7),
-    2px 0 rgba(0, 255, 255, 0.7);
+    -2px 0 color-mix(in oklch, var(--primary) 70%, transparent),
+    2px 0 color-mix(in oklch, var(--secondary) 70%, transparent);
 }
 
-/* Static Noise Background */
+/* Static Noise Background - theme-aware */
 .static-bg {
   background:
     repeating-radial-gradient(
       circle at 17% 32%,
-      rgba(255,255,255,0.03) 0px,
+      color-mix(in oklch, var(--foreground) 3%, transparent) 0px,
       transparent 1px
     ),
     repeating-radial-gradient(
       circle at 83% 67%,
-      rgba(255,255,255,0.02) 0px,
+      color-mix(in oklch, var(--foreground) 2%, transparent) 0px,
       transparent 1px
     );
 }
@@ -641,28 +646,28 @@
 }
 
 .status-online {
-  color: #00ff00;
-  text-shadow: 0 0 5px #00ff00;
+  color: var(--status-online);
+  text-shadow: 0 0 5px var(--status-online);
 }
 
 .status-warning {
-  color: #ffff00;
-  text-shadow: 0 0 5px #ffff00;
+  color: var(--status-warning);
+  text-shadow: 0 0 5px var(--status-warning);
   animation: status-blink 1s ease-in-out infinite;
 }
 
 .status-error {
-  color: #ff0000;
-  text-shadow: 0 0 5px #ff0000;
+  color: var(--status-error);
+  text-shadow: 0 0 5px var(--status-error);
   animation: status-blink 0.5s ease-in-out infinite;
 }
 
-/* Interlace Effect */
+/* Interlace Effect - theme-aware */
 .interlace {
   background: repeating-linear-gradient(
     0deg,
-    rgba(0, 0, 0, 0.15) 0px,
-    rgba(0, 0, 0, 0.15) 1px,
+    color-mix(in oklch, var(--foreground) 15%, transparent) 0px,
+    color-mix(in oklch, var(--foreground) 15%, transparent) 1px,
     transparent 1px,
     transparent 2px
   );
@@ -691,18 +696,21 @@
   align-items: flex-end;
   height: 32px;
   padding: 4px;
-  background: rgba(0, 0, 0, 0.5);
+  background: var(--overlay-medium);
   border: 1px solid var(--muted);
 }
 
-/* CRT Overlay (reusable for videos/images) */
+/* CRT Overlay (reusable for videos/images) - theme-aware */
 .crt-overlay {
   position: absolute;
   inset: 0;
   pointer-events: none;
   background:
-    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
-    linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    linear-gradient(transparent 50%, color-mix(in oklch, var(--foreground) 25%, transparent) 50%),
+    linear-gradient(90deg,
+      color-mix(in oklch, var(--primary) 6%, transparent),
+      color-mix(in oklch, var(--secondary) 2%, transparent),
+      color-mix(in oklch, var(--accent) 6%, transparent));
   background-size: 100% 2px, 3px 100%;
   z-index: 10;
 }
@@ -752,7 +760,7 @@
 .media-btn {
   padding: 0.25rem 0.5rem;
   border: 1px solid var(--muted);
-  background: rgba(0, 0, 0, 0.3);
+  background: var(--overlay-light);
   color: var(--foreground);
   font-family: inherit;
   font-size: 0.875rem;
@@ -761,12 +769,12 @@
 
 .media-btn:hover:not(:disabled) {
   border-color: var(--primary);
-  background: rgba(255, 0, 255, 0.1);
+  background: color-mix(in oklch, var(--primary) 10%, transparent);
   text-shadow: 0 0 5px var(--primary);
 }
 
 .media-btn:active:not(:disabled) {
-  background: rgba(255, 0, 255, 0.2);
+  background: color-mix(in oklch, var(--primary) 20%, transparent);
 }
 
 .media-btn:disabled {
@@ -806,13 +814,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.5);
+  background: var(--overlay-medium);
   cursor: pointer;
   transition: background 200ms ease;
 }
 
 .video-play-overlay:hover {
-  background: rgba(0, 0, 0, 0.3);
+  background: var(--overlay-light);
 }
 
 .video-play-btn {
@@ -834,8 +842,8 @@
 
 .link-preview-card:hover .link-preview-title {
   text-shadow:
-    -2px 0 rgba(255, 0, 0, 0.7),
-    2px 0 rgba(0, 255, 255, 0.7);
+    -2px 0 color-mix(in oklch, var(--primary) 70%, transparent),
+    2px 0 color-mix(in oklch, var(--secondary) 70%, transparent);
 }
 
 /* Image grayscale with hover color */
@@ -846,13 +854,4 @@
 
 .media-image-preview:hover {
   filter: grayscale(0%);
-}
-
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
 }

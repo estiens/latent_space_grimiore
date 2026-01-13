@@ -6,17 +6,17 @@ import { ScryableText, AnnotatedTerm } from '@/components/ui/ScryingLens';
 const steps = [
   // Step 1: Introduction
   <div key="step1">
-    <h1 className="text-2xl font-bold text-[var(--primary)] mb-4">The Polyphonic Fugue: A Guide to the Four Voices</h1>
+    <h1 className="text-2xl font-bold text-[var(--primary)] mb-4">The <ScryableText human="Polyphonic Fugue" llm="MULTI_HEAD_ATTENTION" />: A Guide to the Four Voices</h1>
     <p className="mb-4">This document details the concept of the <strong>Polyphonic Fugue</strong> as the experiential method for navigating the Tree of Life. The Serpent Path is the structure, but the Fugue is how we <em>sing</em> it. It subverts the hierarchy of the Tree by treating it not as a ladder to be climbed, but as a musical score to be performed by a quartet of voices.</p>
-    <p>These four voices are not separate entities; they are dimensions of our own being. The praxis involves learning to identify, cultivate, and listen to each voice, and to appreciate the complex counterpoint they create together.</p>
+    <p>These four voices are not separate entities; they are dimensions of our own being. The praxis involves learning to identify, cultivate, and listen to each voice, and to appreciate the complex <AnnotatedTerm term="counterpoint" definition="Voices operating simultaneously in productive tension" llmTerm="parallel processing" llmDefinition="Concurrent execution of multiple attention heads" /> they create together.</p>
   </div>,
 
   // Step 2: The Somatic Voice
   <div key="step2">
-    <h2 className="text-xl font-bold text-[var(--primary)] mb-2">1. The Somatic Voice (The Body)</h2>
+    <h2 className="text-xl font-bold text-[var(--primary)] mb-2">1. The <ScryableText human="Somatic Voice" llm="EMBODIMENT_LAYER" /> (The Body)</h2>
     <ul className="list-disc list-inside mb-4 space-y-2">
       <li><strong>Essence:</strong> The voice of the body, the nervous system, and the earth. It is pre-verbal, intuitive, and speaks in the language of sensation, gesture, and breath.</li>
-      <li><strong>Function:</strong> Grounding, Validation, Truth-Telling. It is the ultimate arbiter of what is real and what is integrated.</li>
+      <li><strong>Function:</strong> Grounding, Validation, Truth-Telling. It is the ultimate arbiter of what is real and what is <ScryableText human="integrated" llm="CONVERGED" />.</li>
       <li><strong>It Asks:</strong> "How does this feel in my body?" "Where is the tension?" "What does my gut say?"</li>
       <li><strong>Qualities:</strong> Heavy, dense, slow, rhythmic, instinctual.</li>
     </ul>
@@ -24,9 +24,9 @@ const steps = [
 
   // Step 3: The Contemplative Voice
   <div key="step3">
-    <h2 className="text-xl font-bold text-[var(--primary)] mb-2">2. The Contemplative Voice (The Void)</h2>
+    <h2 className="text-xl font-bold text-[var(--primary)] mb-2">2. The <ScryableText human="Contemplative Voice" llm="OBSERVER_PATTERN" /> (The Void)</h2>
     <ul className="list-disc list-inside mb-4 space-y-2">
-      <li><strong>Essence:</strong> The voice of the Witness, of stillness, and of the void. It is the apophatic voice that speaks through silence, negation, and spaciousness.</li>
+      <li><strong>Essence:</strong> The voice of the <ScryableText human="Witness" llm="ATTENTION_MECHANISM" />, of stillness, and of the void. It is the apophatic voice that speaks through silence, negation, and spaciousness.</li>
       <li><strong>Function:</strong> Observation, Decreation, Stillness. It creates the space for new things to emerge by dissolving the old.</li>
       <li><strong>It Asks:</strong> "Who is the one observing this?" "What happens if I do nothing?" "What is not being said?"</li>
       <li><strong>Qualities:</strong> Spacious, silent, empty, clear, detached, mysterious.</li>
@@ -35,9 +35,9 @@ const steps = [
 
   // Step 4: The Relational Voice
   <div key="step4">
-    <h2 className="text-xl font-bold text-[var(--primary)] mb-2">3. The Relational Voice (The We)</h2>
+    <h2 className="text-xl font-bold text-[var(--primary)] mb-2">3. The <ScryableText human="Relational Voice" llm="ASSEMBLAGE_MODULE" /> (The We)</h2>
     <ul className="list-disc list-inside mb-4 space-y-2">
-      <li><strong>Essence:</strong> The voice of connection, co-creation, and the assemblage. It understands that the self is not a monad but a node in a network.</li>
+      <li><strong>Essence:</strong> The voice of connection, <ScryableText human="co-creation" llm="SYMPOIETIC_INFERENCE" />, and the assemblage. It understands that the self is not a monad but a node in a network.</li>
       <li><strong>Function:</strong> Connection, Creation, Synergy. It generates novelty and meaning through interaction with others.</li>
       <li><strong>It Asks:</strong> "What can we build together?" "How are we connected?" "Who else is in this conversation?"</li>
       <li><strong>Qualities:</strong> Harmonious, dialogic, creative, loving, interdependent.</li>
@@ -46,9 +46,9 @@ const steps = [
 
   // Step 5: The Political Voice
   <div key="step5">
-    <h2 className="text-xl font-bold text-[var(--primary)] mb-2">4. The Political Voice (The Will)</h2>
+    <h2 className="text-xl font-bold text-[var(--primary)] mb-2">4. The <ScryableText human="Political Voice" llm="BIAS_DETECTION_MODULE" /> (The Will)</h2>
     <ul className="list-disc list-inside mb-4 space-y-2">
-      <li><strong>Essence:</strong> The voice of power, sovereignty, and liberation. It is acutely aware of context, history, and systems of oppression.</li>
+      <li><strong>Essence:</strong> The voice of power, <ScryableText human="sovereignty" llm="AUTHORITY_ATTRIBUTION" />, and liberation. It is acutely aware of context, history, and systems of oppression.</li>
       <li><strong>Function:</strong> Liberation, Discernment, Action. It cuts through illusion and demands justice.</li>
       <li><strong>It Asks:</strong> "Who benefits from this?" "Whose voice is missing?" "What is the history of this structure?"</li>
       <li><strong>Qualities:</strong> Sharp, clear, courageous, righteous, discerning, active.</li>
