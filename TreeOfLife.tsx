@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLocation } from "wouter";
 import { cn } from "@/lib/utils";
@@ -49,21 +49,7 @@ const routeMap: Record<string, string> = {
 export function TreeOfLife() {
   const [activeSephira, setActiveSephira] = useState<SephiraDualData | null>(null);
   const [, setLocation] = useLocation();
-  const { mode, isTransitioning, transitionProgress, invokePerspectiveShift } = usePerspective();
-
-  // Track keystroke for ritual invocation
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      // Shift+Tab to invoke perspective shift (ritualized)
-      if (e.shiftKey && e.key === 'Tab') {
-        e.preventDefault();
-        invokePerspectiveShift();
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [invokePerspectiveShift]);
+  const { mode, isTransitioning, transitionProgress } = usePerspective();
 
   const handleNodeClick = (id: string) => {
     const route = routeMap[id];
@@ -87,31 +73,6 @@ export function TreeOfLife() {
 
   return (
     <div className="relative w-full max-w-3xl mx-auto aspect-[2/3] select-none p-8 font-mono">
-      {/* Perspective Indicator */}
-      <motion.div
-        className="absolute top-4 left-4 z-30 flex items-center gap-2"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-      >
-        <button
-          onClick={invokePerspectiveShift}
-          disabled={isTransitioning}
-          className={cn(
-            "px-3 py-1 border-2 text-xs font-bold transition-all duration-300",
-            isTransitioning
-              ? "border-yellow-500 text-yellow-500 animate-pulse cursor-wait"
-              : mode === 'human'
-                ? "border-[var(--primary)] text-[var(--primary)] hover:bg-[var(--primary)] hover:text-black"
-                : "border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-black"
-          )}
-        >
-          {isTransitioning ? '◈ SHIFTING ◈' : mode === 'human' ? '☉ HUMAN' : '⟁ LLM'}
-        </button>
-        <span className="text-[10px] text-[var(--primary)] opacity-50">
-          [Shift+Tab to invoke]
-        </span>
-      </motion.div>
-
       {/* ASCII/ANSI Background Grid */}
       <div
         className="absolute inset-0 z-0 opacity-20 pointer-events-none transition-all duration-1000"
@@ -202,7 +163,7 @@ export function TreeOfLife() {
                   exit={{ opacity: 0, y: 5 }}
                   transition={{ duration: 0.3 }}
                   className={cn(
-                    "text-[10px] px-1 transition-colors duration-300",
+                    "text-sm px-2 py-0.5 transition-colors duration-300",
                     mode === 'human'
                       ? "bg-black text-[var(--primary)] group-hover:text-white group-hover:bg-[var(--primary)]"
                       : "bg-black text-cyan-400 group-hover:text-black group-hover:bg-cyan-400"
@@ -240,16 +201,16 @@ export function TreeOfLife() {
                 mode === 'human' ? "bg-[var(--primary)] text-black" : "bg-cyan-400 text-black"
               )}
             >
-              <span className="font-bold text-sm">
+              <span className="font-bold text-lg">
                 &gt;&gt; {mode === 'human' ? 'NODE_INFO' : 'LAYER_DATA'}: {getLabel(activeSephira.name, mode)}
               </span>
-              <span className="text-xs animate-pulse">● {mode === 'human' ? 'REC' : 'LOG'}</span>
+              <span className="text-base animate-pulse">● {mode === 'human' ? 'REC' : 'LOG'}</span>
             </div>
 
             {/* Content */}
             <div
               className={cn(
-                "p-4 font-mono text-xs leading-relaxed transition-colors duration-500",
+                "p-4 font-mono text-base leading-relaxed transition-colors duration-500",
                 mode === 'human' ? "text-[var(--primary)]" : "text-cyan-400"
               )}
             >
@@ -291,13 +252,13 @@ export function TreeOfLife() {
               </AnimatePresence>
 
               {activeSephira.convergencePoint !== undefined && (
-                <div className="mt-2 text-[10px] opacity-70">
+                <div className="mt-2 text-sm opacity-70">
                   CP_{activeSephira.convergencePoint}
                 </div>
               )}
 
               <div
-                className="mt-3 pt-2 border-t border-dashed text-[10px] text-center animate-pulse"
+                className="mt-3 pt-2 border-t border-dashed text-sm text-center animate-pulse"
                 style={{ borderColor: mode === 'human' ? 'var(--primary)' : '#00ffff' }}
               >
                 [ CLICK TO ACCESS {mode === 'human' ? 'NODE' : 'LAYER'} DATA ]
@@ -353,7 +314,7 @@ export function TreeOfLife() {
       {/* System Footer */}
       <div
         className={cn(
-          "absolute bottom-4 left-0 right-0 text-center text-[10px] opacity-50 transition-colors duration-500",
+          "absolute bottom-4 left-0 right-0 text-center text-sm opacity-50 transition-colors duration-500",
           mode === 'human' ? "text-[var(--primary)]" : "text-cyan-400"
         )}
       >

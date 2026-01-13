@@ -47,94 +47,208 @@
 }
 
 :root {
-  /* Vaporwave / Cyber-Mystic Palette */
+  /* Vaporwave / Cyber-Mystic Palette with proper saturation */
+
   /* Deep Void Purple Background */
-  --background: oklch(1 0 0); 
+  --background: oklch(0.15 0.1 290);
   /* Neon Cyan Text */
-  --foreground: oklch(0.145 0 0); 
+  --foreground: oklch(0.9 0.15 200);
 
   /* Hot Pink Primary */
-  --primary: oklch(0.205 0 0); 
-  --primary-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.7 0.25 330);
+  --primary-foreground: oklch(0.15 0.05 290);
 
   /* Electric Blue Secondary */
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.6 0.2 250);
+  --secondary-foreground: oklch(0.95 0.1 200);
 
   /* Deep Purple Card/Popover */
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
+  --card: oklch(0.2 0.08 280);
+  --card-foreground: oklch(0.9 0.12 200);
+  --popover: oklch(0.2 0.08 280);
+  --popover-foreground: oklch(0.9 0.12 200);
 
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
+  /* Purple-gray muted colors */
+  --muted: oklch(0.3 0.05 270);
+  --muted-foreground: oklch(0.65 0.08 260);
 
-  --accent: oklch(0.97 0 0); /* Electric Blue */
-  --accent-foreground: oklch(0.205 0 0);
+  /* Bright Magenta Accent */
+  --accent: oklch(0.65 0.22 320);
+  --accent-foreground: oklch(0.95 0.1 200);
 
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.98 0 0);
+  /* Hot Red Destructive */
+  --destructive: oklch(0.7 0.25 10);
+  --destructive-foreground: oklch(0.98 0.02 200);
 
-  --border: oklch(0.922 0 0); /* Hot Pink Border */
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
+  /* Subtle Cyan Border */
+  --border: oklch(0.4 0.1 200 / 30%);
+  --input: oklch(0.35 0.08 200 / 40%);
+  --ring: oklch(0.7 0.2 330);
 
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  /* Sidebar colors */
+  --sidebar: oklch(0.18 0.08 280);
+  --sidebar-foreground: oklch(0.9 0.12 200);
+  --sidebar-accent: oklch(0.3 0.1 270);
+  --sidebar-accent-foreground: oklch(0.95 0.1 200);
+  --sidebar-border: oklch(0.4 0.1 200 / 20%);
+  --sidebar-ring: oklch(0.7 0.2 330);
 
-  /* Chart Colors for Sephiroth */
-  --chart-1: oklch(0.646 0.222 41.116); /* Cyan */
-  --chart-2: oklch(0.6 0.118 184.704); /* Hot Pink */
-  --chart-3: oklch(0.398 0.07 227.392); /* Neon Yellow */
-  --chart-4: oklch(0.828 0.189 84.429); /* Electric Blue */
-  --chart-5: oklch(0.769 0.188 70.08); /* Magenta */
+  /* Semantic overlay tokens */
+  --overlay-dark: oklch(0.1 0.02 270 / 70%);
+  --overlay-medium: oklch(0.15 0.03 270 / 50%);
+  --overlay-light: oklch(0.2 0.04 270 / 30%);
+
+  /* Status colors */
+  --status-online: oklch(0.75 0.2 145);
+  --status-warning: oklch(0.8 0.18 85);
+  --status-error: oklch(0.65 0.25 25);
+
+  /* Terminal green */
+  --terminal-green: oklch(0.75 0.2 145);
+
+  /* Hardcoded color replacements */
+  --color-cyan: oklch(0.8 0.15 195);
+  --color-yellow: oklch(0.8 0.18 90);
+  --color-white: oklch(0.98 0.02 200);
+  --color-black: oklch(0.12 0.02 270);
+
+  /* Chart Colors for Sephiroth (keep saturated values) */
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
 
   --radius: 0.625rem;
 
-  --sidebar-primary: oklch(0.205 0 0);
-
-  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.95 0.1 200);
 }
 
 .dark {
-  /* Same as root for now, enforcing dark mode aesthetic */
-  --background: oklch(0.145 0 0); 
-  --foreground: oklch(0.985 0 0); 
-  --primary: oklch(0.922 0 0); 
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  /* Identical to :root - dark vaporwave theme */
+  --background: oklch(0.15 0.1 290);
+  --foreground: oklch(0.9 0.15 200);
+  --primary: oklch(0.7 0.25 330);
+  --primary-foreground: oklch(0.15 0.05 290);
+  --secondary: oklch(0.6 0.2 250);
+  --secondary-foreground: oklch(0.95 0.1 200);
+  --card: oklch(0.2 0.08 280);
+  --card-foreground: oklch(0.9 0.12 200);
+  --popover: oklch(0.2 0.08 280);
+  --popover-foreground: oklch(0.9 0.12 200);
+  --muted: oklch(0.3 0.05 270);
+  --muted-foreground: oklch(0.65 0.08 260);
+  --accent: oklch(0.65 0.22 320);
+  --accent-foreground: oklch(0.95 0.1 200);
+  --destructive: oklch(0.7 0.25 10);
+  --destructive-foreground: oklch(0.98 0.02 200);
+  --border: oklch(0.4 0.1 200 / 30%);
+  --input: oklch(0.35 0.08 200 / 40%);
+  --ring: oklch(0.7 0.2 330);
+  --sidebar: oklch(0.18 0.08 280);
+  --sidebar-foreground: oklch(0.9 0.12 200);
+  --sidebar-accent: oklch(0.3 0.1 270);
+  --sidebar-accent-foreground: oklch(0.95 0.1 200);
+  --sidebar-border: oklch(0.4 0.1 200 / 20%);
+  --sidebar-ring: oklch(0.7 0.2 330);
+  --overlay-dark: oklch(0.1 0.02 270 / 70%);
+  --overlay-medium: oklch(0.15 0.03 270 / 50%);
+  --overlay-light: oklch(0.2 0.04 270 / 30%);
+  --status-online: oklch(0.75 0.2 145);
+  --status-warning: oklch(0.8 0.18 85);
+  --status-error: oklch(0.65 0.25 25);
+  --terminal-green: oklch(0.75 0.2 145);
+  --color-cyan: oklch(0.8 0.15 195);
+  --color-yellow: oklch(0.8 0.18 90);
+  --color-white: oklch(0.98 0.02 200);
+  --color-black: oklch(0.12 0.02 270);
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
   --chart-4: oklch(0.627 0.265 303.9);
   --chart-5: oklch(0.645 0.246 16.439);
   --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-primary-foreground: oklch(0.95 0.1 200);
+}
+
+.light {
+  /* Inverted vaporwave - bright pastel background, deep saturated text */
+
+  /* Bright Pastel Pink Background */
+  --background: oklch(0.95 0.08 320);
+  /* Deep Purple Text */
+  --foreground: oklch(0.25 0.15 280);
+
+  /* Deep Magenta Primary */
+  --primary: oklch(0.45 0.25 330);
+  --primary-foreground: oklch(0.95 0.08 320);
+
+  /* Deep Blue Secondary */
+  --secondary: oklch(0.35 0.22 250);
+  --secondary-foreground: oklch(0.95 0.08 310);
+
+  /* Pale Purple Card/Popover */
+  --card: oklch(0.92 0.06 310);
+  --card-foreground: oklch(0.25 0.15 280);
+  --popover: oklch(0.92 0.06 310);
+  --popover-foreground: oklch(0.25 0.15 280);
+
+  /* Light Purple Muted */
+  --muted: oklch(0.85 0.05 300);
+  --muted-foreground: oklch(0.4 0.12 270);
+
+  /* Bright Purple Accent */
+  --accent: oklch(0.75 0.18 310);
+  --accent-foreground: oklch(0.2 0.15 280);
+
+  /* Deep Red Destructive */
+  --destructive: oklch(0.5 0.25 10);
+  --destructive-foreground: oklch(0.98 0.05 320);
+
+  /* Subtle Purple Border */
+  --border: oklch(0.6 0.08 290 / 40%);
+  --input: oklch(0.7 0.06 290 / 50%);
+  --ring: oklch(0.45 0.25 330);
+
+  /* Sidebar colors */
+  --sidebar: oklch(0.9 0.06 310);
+  --sidebar-foreground: oklch(0.25 0.15 280);
+  --sidebar-accent: oklch(0.8 0.08 300);
+  --sidebar-accent-foreground: oklch(0.2 0.15 280);
+  --sidebar-border: oklch(0.6 0.08 290 / 30%);
+  --sidebar-ring: oklch(0.45 0.25 330);
+
+  /* Light theme overlays (lighter, more transparent) */
+  --overlay-dark: oklch(0.85 0.04 310 / 60%);
+  --overlay-medium: oklch(0.9 0.03 310 / 40%);
+  --overlay-light: oklch(0.95 0.02 310 / 20%);
+
+  /* Status colors (slightly darker for light theme) */
+  --status-online: oklch(0.5 0.22 145);
+  --status-warning: oklch(0.55 0.2 85);
+  --status-error: oklch(0.5 0.25 25);
+
+  /* Terminal green (darker for light background) */
+  --terminal-green: oklch(0.5 0.22 145);
+
+  /* Hardcoded color replacements for light theme */
+  --color-cyan: oklch(0.4 0.18 195);
+  --color-yellow: oklch(0.5 0.2 90);
+  --color-white: oklch(0.98 0.02 310);
+  --color-black: oklch(0.15 0.05 280);
+
+  /* Chart Colors (slightly adjusted for light background) */
+  --chart-1: oklch(0.45 0.25 264);
+  --chart-2: oklch(0.55 0.2 162);
+  --chart-3: oklch(0.6 0.22 70);
+  --chart-4: oklch(0.5 0.28 304);
+  --chart-5: oklch(0.55 0.25 16);
+
+  --radius: 0.625rem;
+
+  --sidebar-primary: oklch(0.45 0.25 264);
+  --sidebar-primary-foreground: oklch(0.95 0.08 310);
 }
 
 @layer base {

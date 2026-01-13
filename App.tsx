@@ -32,6 +32,8 @@ const Synthesis = lazy(() => import("@/pages/Synthesis"));
 const ResonanceMatrix = lazy(() => import("@/pages/ResonanceMatrix"));
 const Symbols = lazy(() => import("@/pages/Symbols"));
 const Bibliography = lazy(() => import("@/pages/Bibliography"));
+const RetroComponentGallery = lazy(() => import("@/pages/demos/RetroComponentGallery"));
+const KetherRetro = lazy(() => import("@/pages/demos/KetherRetro"));
 
 function AppRouter() {
   return (
@@ -48,6 +50,8 @@ function AppRouter() {
       <Route path="/kether" component={Kether} />
       <Route path="/return" component={Return} />
       <Route path="/credits" component={Credits} />
+      <Route path="/demo/retro-components" component={RetroComponentGallery} />
+      <Route path="/kether-retro" component={KetherRetro} />
       <Route path="/archives" component={Archives} />
       <Route path="/archives/protocols/polyphonic-fugue" component={PolyphonicFugue} />
       <Route path="/archives/protocols/serpent-path" component={SerpentPath} />

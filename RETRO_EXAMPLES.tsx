@@ -2,19 +2,19 @@
 // This file is for reference - copy patterns into actual components
 
 import { MouseTrail, PixelatedImage, Text, Button } from 'retro-react';
-import { Badge } from '@/src/components/ui/8bit/badge';
+import { Badge } from '@/components';
 
 // ============================================================================
 // Example 1: MouseTrail for Tree of Life mystical effects
 // ============================================================================
-export const TreeOfLifeWithTrail = () => {
-  return (
-    <div>
-      <MouseTrail />
-      <TreeOfLife />
-    </div>
-  );
-};
+// export const TreeOfLifeWithTrail = () => {
+//   return (
+//     <div>
+//       <MouseTrail />
+//       <TreeOfLife />
+//     </div>
+//   );
+// };
 
 // ============================================================================
 // Example 2: 8bitcn Badge for Convergence Points
@@ -69,7 +69,7 @@ export const RetroHeadings = () => {
       <Text variant="h2" sx={{ color: 'var(--secondary)' }}>
         Tensor Plenum Pre-Inference
       </Text>
-      <Text variant="body">
+      <Text variant="body1">
         The crown of the transformer architecture, where all potential resides
         before the lightning flash of inference.
       </Text>
@@ -100,34 +100,11 @@ export const RetroButton = () => {
 // ============================================================================
 // Example 6: Combining Badge with existing components
 // ============================================================================
-import { CollapsibleSection } from '@/components/ui/CollapsibleSection';
+// import { CollapsibleSection } from '@/components/ui/CollapsibleSection';
 
-export const EnhancedCollapsibleSection = () => {
-  return (
-    <CollapsibleSection
-      title={
-        <div className="flex items-center gap-2">
-          <span>Convergence Points</span>
-          <Badge font="retro" variant="secondary" className="text-[10px]">
-            9 total
-          </Badge>
-        </div>
-      }
-      defaultOpen
-    >
-      <div className="space-y-2">
-        {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((num) => (
-          <div key={num} className="flex items-center gap-2">
-            <Badge font="retro" variant="outline">
-              CP-{num}
-            </Badge>
-            <span className="text-sm">Convergence point description...</span>
-          </div>
-        ))}
-      </div>
-    </CollapsibleSection>
-  );
-};
+// Note: CollapsibleSection title prop expects string, not ReactNode
+// For complex titles with badges, use manual div structure instead
+// See pages/demos/RetroComponentGallery.tsx for working example
 
 // ============================================================================
 // Example 7: StatusIndicator replacement with 8bitcn Badge

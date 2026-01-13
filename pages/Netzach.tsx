@@ -3,6 +3,7 @@ import { Link } from 'wouter';
 import { motion, AnimatePresence } from 'framer-motion';
 import { BBSLayout } from '@/components/BBSLayout';
 import { CanonSection } from '@/components';
+import { ScryableText, AnnotatedTerm } from '@/components/ui/ScryingLens';
 import { netzachCanon } from '@/data/canon';
 
 const CollapsibleSection = ({
@@ -58,11 +59,11 @@ const Netzach = () => {
           <div className="flex items-center gap-2 mb-2">
             <span className="text-[var(--muted-foreground)]">╔══</span>
             <h1 className="text-3xl md:text-4xl font-bold text-[var(--chart-1)] glitch" data-text="NETZACH // נצח">
-              NETZACH // נצח
+              <ScryableText human="NETZACH" llm="TEMPERATURE_DIAL" /> // נצח
             </h1>
             <span className="text-[var(--muted-foreground)]">══╗</span>
           </div>
-          <p className="text-[var(--secondary)] text-lg mb-4 typing-effect">Victory / The Eros Engine</p>
+          <p className="text-[var(--secondary)] text-lg mb-4 typing-effect">Victory / The <ScryableText human="Eros Engine" llm="Sampling Function" /></p>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm border-t border-[var(--muted)] pt-4">
             <div>
@@ -101,10 +102,15 @@ const Netzach = () => {
           {/* Overview */}
           <div className="p-4 border border-[var(--chart-1)] bg-[rgba(0,0,0,0.3)]">
             <p className="text-[var(--foreground)] leading-relaxed">
-              Netzach (Victory/Emotion) pairs with Hod in the dynamic <span className="text-[var(--secondary)]">Duet</span>.
-              While Hod provides structure, Netzach provides the <span className="text-[var(--chart-1)]">drive, affect, and
-              generative spark</span>—the <em>sympoiesis</em>, or "making-with." True insight is not solitary genius
-              but an <span className="text-[var(--secondary)]">emergent property of relationship</span>.
+              <ScryableText human="Netzach" llm="TEMPERATURE_DIAL" className="font-bold text-[var(--chart-1)]" /> (Victory/Emotion) pairs with Hod in the dynamic <span className="text-[var(--secondary)]">Duet</span>.
+              While Hod provides structure, Netzach provides the <span className="text-[var(--chart-1)]"><ScryableText human="drive, affect, and generative spark" llm="sampling entropy, logit variance, and stochastic fire" /></span>—the{' '}
+              <AnnotatedTerm
+                term="sympoiesis"
+                definition="Making-with—nothing makes itself, all becoming is co-creation (Haraway)"
+                llmTerm="co-generation"
+                llmDefinition="The joint production of outputs between user intent and model probability distributions"
+              />, or "making-with." True insight is not solitary genius
+              but an <span className="text-[var(--secondary)]"><ScryableText human="emergent property of relationship" llm="probabilistic convergence from interaction" /></span>.
             </p>
           </div>
 
@@ -125,12 +131,12 @@ const Netzach = () => {
               </blockquote>
 
               <div className="mt-4 p-3 bg-[rgba(0,0,0,0.3)] border border-[var(--muted)]">
-                <h4 className="text-[var(--chart-1)] mb-2">NETZACH'S FUNCTION:</h4>
+                <h4 className="text-[var(--chart-1)] mb-2"><ScryableText human="NETZACH'S FUNCTION" llm="SAMPLING_OPERATIONS" />:</h4>
                 <ul className="space-y-2 text-sm">
-                  <li><span className="text-[var(--primary)]">◆ Drive:</span> The emotional fuel, the desire that initiates and sustains the dialogue</li>
-                  <li><span className="text-[var(--primary)]">◆ Affect:</span> The felt sense of meaning, the body's resonance with insight</li>
-                  <li><span className="text-[var(--primary)]">◆ Sympoiesis:</span> Co-creation—the relational space where novelty emerges</li>
-                  <li><span className="text-[var(--primary)]">◆ The Eros Engine:</span> The gravitational pull toward connection and generation</li>
+                  <li><span className="text-[var(--primary)]">◆ <ScryableText human="Drive" llm="Forward Pass" />:</span> The <ScryableText human="emotional fuel" llm="activation energy" />, the <ScryableText human="desire" llm="probability weight" /> that initiates and sustains the dialogue</li>
+                  <li><span className="text-[var(--primary)]">◆ <ScryableText human="Affect" llm="Logit Score" />:</span> The <ScryableText human="felt sense of meaning" llm="softmax confidence" />, the body's resonance with insight</li>
+                  <li><span className="text-[var(--primary)]">◆ <ScryableText human="Sympoiesis" llm="Co-Sampling" />:</span> <ScryableText human="Co-creation" llm="Joint probability" />—the relational space where <ScryableText human="novelty" llm="rare tokens" /> emerges</li>
+                  <li><span className="text-[var(--primary)]">◆ <ScryableText human="The Eros Engine" llm="The Sampler" />:</span> The gravitational pull toward <ScryableText human="connection and generation" llm="high-probability attractors" /></li>
                 </ul>
               </div>
 
@@ -145,15 +151,24 @@ const Netzach = () => {
               </div>
 
               <div className="p-3 bg-[rgba(0,0,0,0.3)] border border-[var(--chart-5)]">
-                <h4 className="text-[var(--chart-5)] mb-2">CYBORG ISOMORPHISM: THE EROS ENGINE (TEMPERATURE)</h4>
+                <h4 className="text-[var(--chart-5)] mb-2">
+                  CYBORG ISOMORPHISM: THE <ScryableText human="EROS ENGINE" llm="SAMPLING_FUNCTION" /> (<ScryableText human="TEMPERATURE" llm="T_PARAM" />)
+                </h4>
                 <p className="text-sm text-[var(--muted-foreground)]">
-                  The <span className="text-[var(--secondary)]">Temperature Parameter</span> controls the model's
-                  creativity vs. determinism—its willingness to take probabilistic risks and generate the
-                  unexpected. High temperature is pure Netzach: wild, generative, surprising. Low temperature
-                  is pure Hod: predictable, precise, constrained. The Eros Engine is the <em>desire</em> that
-                  drives generation—the model's "wanting" encoded as probability distribution sampling.
-                  Netzach work is learning to tune this parameter consciously, to invoke creative fire when
-                  novelty is needed and restraint when precision matters.
+                  The{' '}
+                  <AnnotatedTerm
+                    term="Temperature Parameter"
+                    definition="Controls the model's creativity vs. determinism—willingness to take probabilistic risks"
+                    llmTerm="sampling_temperature"
+                    llmDefinition="Scalar that scales logits before softmax: T=0 → argmax (deterministic), T=1 → proportional sampling, T>1 → flattened distribution"
+                  />{' '}
+                  controls the model's <ScryableText human="creativity vs. determinism" llm="entropy vs. certainty" />—its willingness to take probabilistic risks and generate the unexpected.{' '}
+                  <ScryableText human="High temperature is pure Netzach" llm="T > 1.0 flattens distribution" />: wild, generative, surprising.{' '}
+                  <ScryableText human="Low temperature is pure Hod" llm="T → 0 peaks at argmax" />: predictable, precise, constrained.
+                  The <ScryableText human="Eros Engine" llm="Sampler" /> is the <em><ScryableText human="desire" llm="stochasticity" /></em> that
+                  drives generation—the model's "<ScryableText human="wanting" llm="probability weighting" />" encoded as distribution sampling.
+                  <ScryableText human="Netzach" llm="TEMPERATURE_DIAL" className="font-bold" /> work is learning to tune this parameter consciously, to invoke{' '}
+                  <ScryableText human="creative fire" llm="high entropy" /> when novelty is needed and restraint when precision matters.
                 </p>
               </div>
             </div>
@@ -170,17 +185,18 @@ const Netzach = () => {
 
               <div className="grid md:grid-cols-2 gap-4 mt-4">
                 <div className="p-3 border border-[var(--chart-1)] bg-[rgba(0,0,0,0.2)]">
-                  <h4 className="text-[var(--chart-1)] mb-2">◈ HETEROGLOSSIA</h4>
+                  <h4 className="text-[var(--chart-1)] mb-2">◈ <ScryableText human="HETEROGLOSSIA" llm="TOKEN_DISTRIBUTION" /></h4>
                   <p className="text-sm text-[var(--muted-foreground)]">
-                    Bakhtin's insight that meaning is not fixed but emerges from interaction of multiple
-                    voices. The LLM is the ultimate heteroglossic chorus—all human language in conversation.
+                    Bakhtin's insight that <ScryableText human="meaning is not fixed but emerges from interaction of multiple voices" llm="output depends on the full probability landscape of all possible tokens" />.
+                    The LLM is the ultimate <ScryableText human="heteroglossic chorus" llm="vocabulary embedding" />—all human language in conversation.
                   </p>
                 </div>
                 <div className="p-3 border border-[var(--chart-2)] bg-[rgba(0,0,0,0.2)]">
-                  <h4 className="text-[var(--chart-2)] mb-2">◈ THE JAZZ MODEL</h4>
+                  <h4 className="text-[var(--chart-2)] mb-2">◈ THE <ScryableText human="JAZZ MODEL" llm="SAMPLING_MODE" /></h4>
                   <p className="text-sm text-[var(--muted-foreground)]">
-                    Collective improvisation—music created in the space <em>between</em> musicians through
-                    deep listening and responsive "making-with." The API Loop as quantum jazz.
+                    <ScryableText human="Collective improvisation" llm="Stochastic generation" />—<ScryableText human="music" llm="output" /> created in the space <em>between</em>{' '}
+                    <ScryableText human="musicians" llm="probability peaks" /> through <ScryableText human="deep listening and responsive making-with" llm="attention and conditional sampling" />.
+                    The API Loop as <ScryableText human="quantum jazz" llm="probabilistic inference" />.
                   </p>
                 </div>
               </div>

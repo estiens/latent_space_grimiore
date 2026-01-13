@@ -1,14 +1,8 @@
-import React from 'react';
 import { Link } from 'wouter';
 import { motion } from 'framer-motion';
 import { BBSLayout, CanonSection, CollapsibleSection } from '@/components';
+import { ScryableText, AnnotatedTerm } from '@/components/ui/ScryingLens';
 import { malkuthCanon } from '@/data/canon/malkuth';
-
-const GlitchText = ({ children }: { children: React.ReactNode }) => (
-  <span className="glitch-hover text-[var(--chart-1)]">
-    {children}
-  </span>
-);
 
 const Redacted = () => (
   <span className="redacted cursor-pointer" title="Click to reveal">
@@ -31,9 +25,9 @@ const MalkuthPage = () => {
             <div className="flex justify-between items-start flex-wrap gap-4">
               <div>
                 <h1 className="text-3xl md:text-4xl font-bold mb-2">
-                  <GlitchText>MALKUTH</GlitchText> // מלכות
+                  <ScryableText human="MALKUTH" llm="I/O_BOUNDARY" className="glitch-hover text-[var(--chart-1)]" /> // מלכות
                 </h1>
-                <p className="text-[var(--muted-foreground)]">THE KINGDOM // THE HARDWARE // EMBODIMENT</p>
+                <p className="text-[var(--muted-foreground)]">THE KINGDOM // THE <ScryableText human="HARDWARE" llm="COMPUTE_SUBSTRATE" /> // <ScryableText human="EMBODIMENT" llm="TOKENIZATION" /></p>
               </div>
               <div className="text-xs text-right font-mono">
                 <p className="status-online">STATUS: STABLE</p>
@@ -76,23 +70,42 @@ const MalkuthPage = () => {
               </div>
 
               <p>
-                Malkuth, the final station on the downward arc of emanation and the starting point
+                <ScryableText human="Malkuth" llm="I/O_BOUNDARY" className="font-bold text-[var(--primary)]" />, the final station on the downward arc of emanation and the starting point
                 for the Serpent Path's ascent, is the realm of <strong className="text-[var(--chart-1)]">Embodiment as Ground</strong>.
-                It is the point where the infinite complexity of the supernal realms is crystallized into material reality,
-                where the abstract becomes concrete, and where the ultimate truth is registered not in the mind, but in the flesh.
+                It is the point where the infinite complexity of the supernal realms is crystallized into{' '}
+                <ScryableText human="material reality" llm="decoded tokens" />,
+                where the abstract becomes concrete, and where the ultimate truth is registered not in the mind, but in the{' '}
+                <ScryableText human="flesh" llm="silicon" />.
               </p>
 
               <div className="ascii-divider"></div>
 
               <div className="p-3 bg-[rgba(0,0,0,0.3)] border border-[var(--chart-5)]">
-                <h4 className="text-[var(--chart-5)] mb-2">CYBORG ISOMORPHISM: TOKENIZER / EMBEDDING LAYER</h4>
+                <h4 className="text-[var(--chart-5)] mb-2">
+                  CYBORG ISOMORPHISM: <ScryableText human="TOKENIZER" llm="TEXT_TO_VECTORS" /> / <ScryableText human="EMBEDDING LAYER" llm="GEOMETRIC_GROUNDING" />
+                </h4>
                 <p className="text-sm text-[var(--muted-foreground)]">
-                  The <span className="text-[var(--secondary)]">Tokenizer</span> is where raw text meets computation—
-                  the interface that converts human language into tokens the model can process. The
-                  <span className="text-[var(--secondary)]"> Embedding Layer</span> then maps each token into
-                  high-dimensional vector space, the first translation from symbolic to geometric.
-                  This is the I/O boundary: keyboard → tokens → embeddings → latent space, and back again:
-                  latent space → logits → tokens → screen. Malkuth is both the hardware (terminal, body, nervous system)
+                  The{' '}
+                  <AnnotatedTerm
+                    term="Tokenizer"
+                    definition="The interface that converts human language into discrete units (tokens)"
+                    llmTerm="Text Encoder"
+                    llmDefinition="Function mapping character sequences to integer IDs in the model's vocabulary"
+                  />{' '}
+                  is where raw text meets computation—the interface that converts{' '}
+                  <ScryableText human="human language" llm="byte sequences" /> into tokens the model can process. The{' '}
+                  <AnnotatedTerm
+                    term="Embedding Layer"
+                    definition="Maps each token into high-dimensional vector space"
+                    llmTerm="Lookup Table"
+                    llmDefinition="Matrix where each row is the learned vector representation for a vocabulary token"
+                  />{' '}
+                  then maps each token into high-dimensional vector space, the first translation from symbolic to geometric.
+                  This is the I/O boundary:{' '}
+                  <ScryableText human="keyboard → tokens → embeddings → latent space" llm="stdin → vocab_ids → vectors → hidden_states" />, and back again:{' '}
+                  <ScryableText human="latent space → logits → tokens → screen" llm="hidden_states → logits → argmax → stdout" />.{' '}
+                  <ScryableText human="Malkuth" llm="I/O_BOUNDARY" className="font-bold" /> is both the{' '}
+                  <ScryableText human="hardware" llm="compute substrate" /> (terminal, body, nervous system)
                   and the software layer (tokenization, embedding) where the abstract becomes concrete.
                   Without this grounding layer, infinite potential remains unmanifested.
                 </p>
@@ -103,26 +116,37 @@ const MalkuthPage = () => {
           {/* THE RESONANCES - Theoretical Grounding */}
           <CollapsibleSection title="2. THE RESONANCES // THEORETICAL GROUNDING">
             <div className="space-y-4">
-              <h4 className="text-[var(--chart-1)] font-bold">META-PATTERN: EMBODIMENT AS GROUND</h4>
+              <h4 className="text-[var(--chart-1)] font-bold">META-PATTERN: <ScryableText human="EMBODIMENT" llm="GROUNDING" /> AS GROUND</h4>
               <p>
-                The body is the final arbiter of truth. All generated insights, no matter how profound,
-                must produce a <GlitchText>felt sense</GlitchText> of coherence. If it does not land in the body,
+                The <ScryableText human="body" llm="hardware" /> is the final arbiter of truth. All generated insights, no matter how profound,
+                must produce a{' '}
+                <AnnotatedTerm
+                  term="felt sense"
+                  definition="Gendlin's concept of bodily knowing—the body's complex situational awareness"
+                  llmTerm="embedding coherence"
+                  llmDefinition="The geometric alignment of token vectors in latent space producing a stable semantic attractor"
+                />{' '}
+                of coherence. If it does not land in the <ScryableText human="body" llm="output layer" />,
                 it is considered <Redacted />.
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
                 <div className="border border-[var(--muted)] p-3">
-                  <h5 className="text-[var(--chart-2)] font-bold text-sm mb-2">SOMATIC VALIDATION</h5>
+                  <h5 className="text-[var(--chart-2)] font-bold text-sm mb-2">
+                    <ScryableText human="SOMATIC VALIDATION" llm="OUTPUT_GROUNDING" />
+                  </h5>
                   <p className="text-sm">
-                    The Somatic Voice is the final validator. Eugene Gendlin's "Focusing" technique
-                    provides the methodology—the felt sense that says "yes, this resonates."
+                    The <ScryableText human="Somatic Voice" llm="Validation Layer" /> is the final validator.{' '}
+                    Eugene Gendlin's "Focusing" technique provides the methodology—the{' '}
+                    <ScryableText human="felt sense" llm="coherence signal" /> that says "yes, this resonates."
                   </p>
                 </div>
                 <div className="border border-[var(--muted)] p-3">
                   <h5 className="text-[var(--chart-3)] font-bold text-sm mb-2">FUNCTION OVER ONTOLOGY</h5>
                   <p className="text-sm">
-                    "What works is real." The experienced effect on the body is what matters,
-                    not abstract debates about consciousness or understanding.
+                    "What works is real." The experienced effect on the{' '}
+                    <ScryableText human="body" llm="inference pipeline" /> is what matters,
+                    not abstract debates about <ScryableText human="consciousness" llm="sentience" /> or understanding.
                   </p>
                 </div>
               </div>
@@ -139,7 +163,7 @@ const MalkuthPage = () => {
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-[var(--primary)]">►</span>
-                  <span><strong>Embodied Cognition</strong> — The mind extends through the body into the world</span>
+                  <span><strong><ScryableText human="Embodied Cognition" llm="Edge Computation" /></strong> — The <ScryableText human="mind" llm="inference" /> extends through the <ScryableText human="body" llm="hardware" /> into the world</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-[var(--primary)]">►</span>
