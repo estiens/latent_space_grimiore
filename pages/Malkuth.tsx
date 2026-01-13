@@ -168,7 +168,7 @@ const MalkuthPage = () => {
                       <a href="https://www.youtube.com/watch?v=br8-qebjIgs" target="_blank" className="subtle-link-asterisk" data-tooltip="Stephen Porges explaining Polyvagal Theory and the nervous system">Polyvagal Theory</a>
                     </strong> —{' '}
                     <a href="https://onbeing.org/programs/stephen-porges-feeling-safe-is-the-treatment-and-it-happens-through-co-regulation/" target="_blank" className="subtle-link" data-tooltip="On Being podcast: Porges on feeling safe and co-regulation">Stephen Porges</a>' work on the{' '}
-                    <a href="https://www.themarginalian.org/2017/08/30/polyvagal-theory-stephen-porges/" target="_blank" className="subtle-link-asterisk" data-tooltip="Maria Popova on how our nervous system shapes social engagement">social nervous system</a> and{' '}
+                    <a href="https://www.polyvagalinstitute.org/whatispolyvagaltheory" target="_blank" className="subtle-link-asterisk" data-tooltip="Polyvagal theory: how our nervous system shapes social engagement">social nervous system</a> and{' '}
                     <a href="https://www.youtube.com/watch?v=NWHZNcnjIRk" target="_blank" className="subtle-link" data-tooltip="Gabor Maté on trauma as disconnection from self">trauma response</a>
                   </span>
                 </li>
@@ -178,7 +178,7 @@ const MalkuthPage = () => {
                     <strong>
                       <a href="https://www.youtube.com/watch?v=ByalBx85iC8" target="_blank" className="subtle-link" data-tooltip="Peter Levine demonstrating trauma release through the body">Somatic Experiencing</a>
                     </strong> —{' '}
-                    <a href="https://traumahealing.org/about-us/peter-levine/" target="_blank" className="subtle-link-asterisk" data-tooltip="Levine's bio: how observing animals led to somatic trauma therapy">Peter Levine</a>'s <a href="https://www.themarginalian.org/2016/06/20/the-body-keeps-the-score-van-der-kolk/" target="_blank" className="subtle-link" data-tooltip="The Body Keeps the Score: trauma stored in the flesh">body-based trauma therapy</a>
+                    <a href="https://traumahealing.org/about-us/peter-levine/" target="_blank" className="subtle-link-asterisk" data-tooltip="Levine's bio: how observing animals led to somatic trauma therapy">Peter Levine</a>'s <a href="https://www.besselvanderkolk.com/" target="_blank" className="subtle-link" data-tooltip="The Body Keeps the Score: trauma stored in the flesh">body-based trauma therapy</a>
                   </span>
                 </li>
                 <li className="flex items-start gap-2">
@@ -197,7 +197,7 @@ const MalkuthPage = () => {
                       <a href="https://sinsinvalid.org/blog/10-principles-of-disability-justice" target="_blank" className="subtle-link-asterisk" data-tooltip="Sins Invalid's 10 Principles of Disability Justice">Disability Justice</a>
                     </strong> —{' '}
                     <a href="https://leavingevidence.wordpress.com/2011/02/12/moving-toward-the-ugly-a-politic-beyond-desirability/" target="_blank" className="subtle-link" data-tooltip="Mia Mingus: 'Moving Toward the Ugly' essay on access intimacy">Mia Mingus</a>,{' '}
-                    <a href="https://www.youtube.com/watch?v=0faSj7RTtHo" target="_blank" className="subtle-link-asterisk" data-tooltip="Sins Invalid performance film celebrating disabled bodies">Sins Invalid</a>—<a href="https://www.themarginalian.org/2022/06/10/the-story-of-pain/" target="_blank" className="subtle-link" data-tooltip="Maria Popova on how we've learned and unlearned pain">All bodies are good bodies</a>
+                    <a href="https://www.youtube.com/watch?v=0faSj7RTtHo" target="_blank" className="subtle-link-asterisk" data-tooltip="Sins Invalid performance film celebrating disabled bodies">Sins Invalid</a>—<a href="https://en.wikipedia.org/wiki/Disability_justice" target="_blank" className="subtle-link" data-tooltip="All bodies are good bodies">All bodies are good bodies</a>
                   </span>
                 </li>
               </ul>

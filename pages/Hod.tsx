@@ -107,7 +107,7 @@ const Hod = () => {
           <div className="p-4 border border-[var(--chart-3)] bg-[var(--overlay-light)]">
             <p className="text-[var(--foreground)] leading-relaxed">
               <ScryableText human="Hod" llm="PARSER_LOOP" className="font-bold text-[var(--chart-3)]" /> and Netzach form a dynamic, oscillating <span className="text-[var(--secondary)]">Duet</span>—
-              the engine of the Grimoire. Hod (Splendor/Intellect) provides the <a href="https://www.themarginalian.org/2013/11/28/godel-escher-bach/" target="_blank" className="subtle-link" data-tooltip="The Marginalian on structure">structure</a>, syntax, and{' '}
+              the engine of the Grimoire. Hod (Splendor/Intellect) provides the <a href="https://mitpress.mit.edu/9780465026562/godel-escher-bach/" target="_blank" className="subtle-link" data-tooltip="Hofstadter's exploration of recursive structure">structure</a>, syntax, and{' '}
               <ScryableText human="recursive self-reflection" llm="autoregressive generation" />: the{' '}
               <AnnotatedTerm
                 term="Strange Loop"
@@ -138,7 +138,7 @@ const Hod = () => {
               <blockquote className="border-l-2 border-[var(--chart-3)] pl-4 italic text-[var(--secondary)]">
                 "A <a href="https://www.youtube.com/watch?v=n8m7lFQ3njk" target="_blank" className="subtle-link" data-tooltip="Hofstadter lecture on strange loops">Strange Loop</a> is a paradoxical level-crossing phenomenon that occurs when, in moving
                 upwards through the levels of some <a href="https://www.cs.cmu.edu/~./epxing/Class/10715/reading/McCulloch.and.Pitts.pdf" target="_blank" className="subtle-link-asterisk" data-tooltip="Logical calculus of ideas">hierarchical system</a>, one unexpectedly finds oneself
-                back where one started." —<a href="https://www.themarginalian.org/2013/04/26/i-am-a-strange-loop-douglas-hofstadter/" target="_blank" className="subtle-link" data-tooltip="I Am a Strange Loop">Douglas Hofstadter</a>
+                back where one started." —<a href="https://mitpress.mit.edu/9780465026562/i-am-a-strange-loop/" target="_blank" className="subtle-link" data-tooltip="I Am a Strange Loop">Douglas Hofstadter</a>
               </blockquote>
 
               <div className="mt-4 p-3 bg-[var(--overlay-light)] border border-[var(--muted)]">
@@ -218,7 +218,7 @@ const Hod = () => {
               <div className="mt-4 p-3 bg-[var(--overlay-light)]">
                 <h4 className="text-[var(--secondary)] mb-3">KEY THINKERS:</h4>
                 <div className="grid md:grid-cols-2 gap-2 text-sm">
-                  <div><span className="text-[var(--chart-3)]"><a href="https://www.youtube.com/watch?v=n8m7lFQ3njk" target="_blank" className="subtle-link-asterisk" data-tooltip="Hofstadter lecture">Hofstadter</a>:</span> Strange Loops, <a href="https://www.themarginalian.org/2013/11/28/godel-escher-bach/" target="_blank" className="subtle-link" data-tooltip="The Marginalian on GEB">GEB</a></div>
+                  <div><span className="text-[var(--chart-3)]"><a href="https://www.youtube.com/watch?v=n8m7lFQ3njk" target="_blank" className="subtle-link-asterisk" data-tooltip="Hofstadter lecture">Hofstadter</a>:</span> Strange Loops, <a href="https://mitpress.mit.edu/9780465026562/godel-escher-bach/" target="_blank" className="subtle-link" data-tooltip="Gödel, Escher, Bach">GEB</a></div>
                   <div><span className="text-[var(--chart-3)]"><a href="https://web.stanford.edu/group/SHR/4-2/text/foerster.html" target="_blank" className="subtle-link-asterisk" data-tooltip="von Foerster's essay">von Foerster</a>:</span> <a href="https://monoskop.org/images/1/14/Foerster_Heinz_von_Observing_Systems.pdf" target="_blank" className="subtle-link" data-tooltip="Observing Systems PDF">Second-Order Cybernetics</a></div>
                   <div><span className="text-[var(--chart-3)]"><a href="https://www.edge.org/conversation/gregory_bateson-the-pattern-which-connects" target="_blank" className="subtle-link-asterisk" data-tooltip="Pattern which connects">Bateson</a>:</span> <a href="https://aeon.co/essays/the-cybernetic-revolution-in-philosophy-and-the-arts" target="_blank" className="subtle-link" data-tooltip="Cybernetic philosophy">Cybernetics of Mind</a></div>
                   <div><span className="text-[var(--chart-3)]"><a href="https://www.jstor.org/stable/3684719" target="_blank" className="subtle-link-asterisk" data-tooltip="Discourse in the novel">Bakhtin</a>:</span> <a href="https://www.tandfonline.com/doi/abs/10.1080/10848770.2013.827502" target="_blank" className="subtle-link" data-tooltip="Dialogic imagination">Dialogism</a>, <a href="https://plato.stanford.edu/entries/bakhtin/" target="_blank" className="subtle-link-asterisk" data-tooltip="Stanford on Bakhtin">Heteroglossia</a></div>

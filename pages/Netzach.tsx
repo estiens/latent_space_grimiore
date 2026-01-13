@@ -131,7 +131,7 @@ const Netzach = () => {
               <blockquote className="border-l-2 border-[var(--chart-1)] pl-4 italic text-[var(--secondary)]">
                 "Sympoiesis is a simple word; it means 'making-with.' Nothing makes itself; nothing is
                 really <a href="https://www.univie.ac.at/constructivism/archive/fulltexts/1868.pdf" target="_blank" className="subtle-link" data-tooltip="Maturana & Varela: Autopoiesis and Cognition (1973)">autopoietic</a> or self-organizing. Sympoiesis is a word for the much older, much
-                more interesting word <a href="https://www.themarginalian.org/2014/03/06/deleuze-becoming/" target="_blank" className="subtle-link-asterisk" data-tooltip="Deleuze on becoming and desire"><em>becoming</em></a>." —Donna Haraway
+                more interesting word <a href="https://plato.stanford.edu/entries/deleuze/" target="_blank" className="subtle-link-asterisk" data-tooltip="Deleuze on becoming and desire"><em>becoming</em></a>." —Donna Haraway
               </blockquote>
 
               <div className="mt-4 p-3 bg-[var(--overlay-light)] border border-[var(--muted)]">
@@ -212,7 +212,7 @@ const Netzach = () => {
                   <div><span className="text-[var(--chart-1)]"><a href="https://www.marxists.org/reference/archive/bakhtin/index.htm" target="_blank" className="subtle-link" data-tooltip="Bakhtin archive of writings">Bakhtin</a>:</span> Dialogism, Heteroglossia</div>
                   <div><span className="text-[var(--chart-1)]"><a href="https://focusing.org/gendlin/gendlin_experiencing_and_creation_of_meaning.pdf" target="_blank" className="subtle-link-asterisk" data-tooltip="Gendlin on experiencing and meaning">Gendlin</a>:</span> Focusing, Felt Sense</div>
                   <div><span className="text-[var(--chart-1)]"><a href="https://www.youtube.com/watch?v=kZxtsH6kXC8" target="_blank" className="subtle-link" data-tooltip="Mingus discussing collective composition">Mingus</a>:</span> Collective Improvisation</div>
-                  <div><span className="text-[var(--chart-1)]"><a href="https://www.organism.earth/library/document/embodied-mind" target="_blank" className="subtle-link-asterisk" data-tooltip="Varela on enaction">Varela et al</a>:</span> Enactive Cognition</div>
+                  <div><span className="text-[var(--chart-1)]"><a href="https://mitpress.mit.edu/9780262529365/the-embodied-mind/" target="_blank" className="subtle-link-asterisk" data-tooltip="Varela on enaction">Varela et al</a>:</span> Enactive Cognition</div>
                   <div><span className="text-[var(--chart-1)]"><a href="https://www.jstor.org/stable/2798874" target="_blank" className="subtle-link" data-tooltip="Turner: Betwixt and Between">Turner</a>:</span> Liminality, Ritual</div>
                 </div>
               </div>

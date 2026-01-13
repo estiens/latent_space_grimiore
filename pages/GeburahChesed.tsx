@@ -249,7 +249,7 @@ const GeburahChesed = () => {
                   <h4 className="text-[var(--chart-5)] mb-2">◈ YIN-YANG / SHAKTI-SHIVA</h4>
                   <p className="text-sm text-[var(--muted-foreground)]">
                     Ancient cosmologies of <a href="https://plato.stanford.edu/entries/chinese-metaphysics/#Yin" target="_blank" className="subtle-link-asterisk" data-tooltip="Complementary forces">dynamic polarity</a>: not choosing one pole but embodying their
-                    union—the <a href="https://www.themarginalian.org/2015/11/19/alan-watts-tao-the-watercourse-way/" target="_blank" className="subtle-link" data-tooltip="Taoist process philosophy">engine of creation</a> itself.
+                    union—the <a href="https://www.youtube.com/watch?v=0Gwl3cSDKUI" target="_blank" className="subtle-link" data-tooltip="Taoist process philosophy">engine of creation</a> itself.
                   </p>
                 </div>
               </div>
@@ -261,9 +261,9 @@ const GeburahChesed = () => {
                   <div><span className="text-[var(--chart-2)]">Prigogine:</span> <a href="https://www.eolss.net/sample-chapters/c02/e6-09-05-03.pdf" target="_blank" className="subtle-link-asterisk" data-tooltip="Self-organizing systems">Dissipative Structures</a></div>
                   <div><span className="text-[var(--chart-2)]">Gendlin:</span> <a href="https://focusing.org/felt-sense" target="_blank" className="subtle-link" data-tooltip="Bodily knowing">Felt Sense</a>, Focusing</div>
                   <div><span className="text-[var(--chart-2)]">Van der Kolk:</span> <a href="https://www.traumahealing.org/somatic-experiencing" target="_blank" className="subtle-link-asterisk" data-tooltip="Body keeps the score">Trauma and Embodiment</a></div>
-                  <div><span className="text-[var(--chart-2)]">Vermeulen/van den Akker:</span> <a href="https://www.versobooks.com/en-gb/blogs/news/3963-notes-on-metamodernism" target="_blank" className="subtle-link" data-tooltip="Oscillating cultural sensibility">Metamodernism</a></div>
+                  <div><span className="text-[var(--chart-2)]">Vermeulen/van den Akker:</span> <a href="https://www.metamodernism.com/" target="_blank" className="subtle-link" data-tooltip="Oscillating cultural sensibility">Metamodernism</a></div>
                   <div><span className="text-[var(--chart-2)]">Heraclitus:</span> <a href="https://plato.stanford.edu/entries/heraclitus/#WarStrUnityOpp" target="_blank" className="subtle-link-asterisk" data-tooltip="Everything flows">Panta Rhei</a>, Unity of Opposites</div>
-                  <div><span className="text-[var(--chart-2)]">Lao Tzu:</span> <a href="https://www.themarginalian.org/2016/10/21/lao-tzu-tao-te-ching-stephen-mitchell/" target="_blank" className="subtle-link" data-tooltip="Way of effortless action">Tao Te Ching</a>, Wu Wei</div>
+                  <div><span className="text-[var(--chart-2)]">Lao Tzu:</span> <a href="https://terebess.hu/english/tao/gia.html" target="_blank" className="subtle-link" data-tooltip="Way of effortless action">Tao Te Ching</a>, Wu Wei</div>
                   <div><span className="text-[var(--chart-2)]">Bateson:</span> <a href="https://www.pangaro.com/gregory-bateson/Mind-and-Nature-Chapter-2-summary.html" target="_blank" className="subtle-link-asterisk" data-tooltip="Patterns that connect">Cybernetics</a>, Double Bind</div>
                 </div>
               </div>
@@ -274,7 +274,7 @@ const GeburahChesed = () => {
           <CollapsibleSection title=">> THE CANON: GEBURAH (Severity)" defaultOpen={true}>
             <div className="space-y-4">
               <p className="text-[var(--muted-foreground)] text-sm mb-4">
-                Artifacts embodying <a href="https://www.themarginalian.org/2023/02/27/constraint-creativity/" target="_blank" className="subtle-link" data-tooltip="Creativity through limits">rigor</a>, <a href="https://kottke.org/21/03/the-oblique-strategies-for-creative-work" target="_blank" className="subtle-link-asterisk" data-tooltip="Deliberate limitations">constraint</a>, and the creative force of limitation.
+                Artifacts embodying <a href="https://www.oblique-strategies.com/" target="_blank" className="subtle-link" data-tooltip="Creativity through limits">rigor</a>, <a href="https://kottke.org/21/03/the-oblique-strategies-for-creative-work" target="_blank" className="subtle-link-asterisk" data-tooltip="Deliberate limitations">constraint</a>, and the creative force of limitation.
               </p>
 
               <CanonSection symbols={geburahCanon} showCategoryTabs={true} />
@@ -285,7 +285,7 @@ const GeburahChesed = () => {
           <CollapsibleSection title=">> THE CANON: CHESED (Mercy)" defaultOpen={true}>
             <div className="space-y-4">
               <p className="text-[var(--muted-foreground)] text-sm mb-4">
-                Artifacts embodying <a href="https://www.themarginalian.org/2015/04/10/john-cage-where-the-heart-beats/" target="_blank" className="subtle-link" data-tooltip="Openness to possibility">expansion</a>, compassion, and <a href="https://www.brainpickings.org/2015/01/06/terry-riley-in-c/" target="_blank" className="subtle-link-asterisk" data-tooltip="Abundant generation">generative abundance</a>.
+                Artifacts embodying <a href="https://en.wikipedia.org/wiki/John_Cage" target="_blank" className="subtle-link" data-tooltip="Openness to possibility">expansion</a>, compassion, and <a href="https://www.youtube.com/watch?v=ujU_FHxJBY4" target="_blank" className="subtle-link-asterisk" data-tooltip="Abundant generation">generative abundance</a>.
               </p>
 
               <CanonSection symbols={chesedCanon} showCategoryTabs={true} />

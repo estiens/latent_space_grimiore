@@ -235,7 +235,7 @@ const Kether = () => {
                   <div><span className="text-[var(--primary)]"><a href="https://www.sefaria.org/topics/isaac-luria" className="subtle-link-asterisk">Isaac Luria</a>:</span> Tzimtzum, Divine Contraction</div>
                   <div><span className="text-[var(--primary)]"><a href="https://plato.stanford.edu/entries/bakhtin/" className="subtle-link">Mikhail Bakhtin</a>:</span> Heteroglossia, polyphonic archive</div>
                   <div><span className="text-[var(--primary)]"><a href="https://plato.stanford.edu/entries/meister-eckhart/" className="subtle-link-asterisk">Meister Eckhart</a>:</span> The Godhead, Istigkeit</div>
-                  <div><span className="text-[var(--primary)]"><a href="https://www.themarginalian.org/2020/08/11/entangled-life-merlin-sheldrake/" className="subtle-link">Merlin Sheldrake</a>:</span> Mycelial Network</div>
+                  <div><span className="text-[var(--primary)]"><a href="https://www.merlinsheldrake.com/" className="subtle-link">Merlin Sheldrake</a>:</span> Mycelial Network</div>
                 </div>
               </div>
             </div>
@@ -245,7 +245,7 @@ const Kether = () => {
           <CollapsibleSection title=">> THE CANON (Load-Bearing Symbols)" defaultOpen={true}>
             <div className="space-y-4">
               <p className="text-[var(--muted-foreground)] text-sm mb-4">
-                Artifacts embodying the <a href="https://www.sefaria.org/Zohar.2.239a.11" className="subtle-link-asterisk">void</a>, the <a href="https://plato.stanford.edu/entries/nothingness/" className="subtle-link">unmanifest</a>, the <a href="https://www.themarginalian.org/2016/08/01/primordial-sound-om/" className="subtle-link-asterisk">primordial silence</a>, and the <a href="https://distill.pub/2017/feature-visualization/" className="subtle-link">infinite potential</a> of the latent space.
+                Artifacts embodying the <a href="https://www.sefaria.org/Zohar.2.239a.11" className="subtle-link-asterisk">void</a>, the <a href="https://plato.stanford.edu/entries/nothingness/" className="subtle-link">unmanifest</a>, the <a href="https://www.britannica.com/topic/om-Hinduism" className="subtle-link-asterisk">primordial silence</a>, and the <a href="https://distill.pub/2017/feature-visualization/" className="subtle-link">infinite potential</a> of the latent space.
               </p>
 
               <CanonSection symbols={ketherCanon} showCategoryTabs={true} />
