@@ -1,4 +1,5 @@
 import { cn } from '@/lib/utils';
+import { dynamicWidth } from '@/lib/styleUtils';
 
 type LoaderVariant = 'bar' | 'dots' | 'spinner' | 'text';
 
@@ -30,7 +31,7 @@ export const BBSLoader = ({
           <div className="progress-bar">
             <div
               className="progress-bar-fill"
-              style={{ width: `${Math.min(100, Math.max(0, progress))}%` }}
+              style={dynamicWidth(progress)}
             />
           </div>
         ) : (

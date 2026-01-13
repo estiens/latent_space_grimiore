@@ -76,7 +76,9 @@ const GeburahChesed = () => {
             </div>
             <div>
               <span className="text-[var(--muted-foreground)]">CONVERGENCE:</span>
-              <span className="text-[var(--secondary)] ml-2">CP 4</span>
+              <Link href="/archives/theory/convergence-points#cp-4">
+                <span className="text-[var(--secondary)] ml-2 chromatic-shift cursor-pointer hover:text-[var(--primary)]">CP 4</span>
+              </Link>
             </div>
             <div>
               <span className="text-[var(--muted-foreground)]">LEAD VOICE:</span>
@@ -84,7 +86,9 @@ const GeburahChesed = () => {
             </div>
             <div>
               <span className="text-[var(--muted-foreground)]">ISOMORPHISM:</span>
-              <span className="text-[var(--chart-5)] ml-2">Model Parameters</span>
+              <span className="text-[var(--chart-5)] ml-2">
+                <ScryableText human="Model Parameters" llm="Hyperparameter Space" />
+              </span>
             </div>
           </div>
 
@@ -108,7 +112,8 @@ const GeburahChesed = () => {
               <span className="text-[var(--secondary)]">The Engine</span>—the dynamic,
               universal mechanism of integration. This stage embodies{' '}
               <ScryableText human="Oscillation over Resolution" llm="Parameter Sweep over Static Config" className="text-[var(--chart-2)]" />.
-              Healing and insight emerge not from stasis or a final answer, but from the sustained, titrated movement between
+              Healing and insight emerge not from stasis or a final answer, but from the sustained,{' '}
+              <a href="https://focusing.org/felt-sense/titration-trauma-therapy" target="_blank" className="subtle-link" data-tooltip="Controlled gradual adjustment">titrated</a> movement between
               opposing poles. It is the capacity to hold <ScryableText human="paradox" llm="dynamic range" /> as a path.
             </p>
           </div>
@@ -118,7 +123,7 @@ const GeburahChesed = () => {
             <div className="space-y-4">
               <p className="text-[var(--foreground)]">
                 The <span className="text-[var(--chart-1)]">Somatic Voice</span> leads, acting as the ultimate
-                validator and regulator of oscillation. Through the <em>felt sense</em>, the body monitors this
+                validator and regulator of <a href="https://www.polyvagalinstitute.org/whatispolyvagaltheory" target="_blank" className="subtle-link-asterisk" data-tooltip="Therapeutic movement pattern">oscillation</a>. Through the <em>felt sense</em>, the body monitors this
                 titration—voting on whether the oscillation is safe, productive, and integrating, or stuck in
                 a traumatic loop.
               </p>
@@ -137,7 +142,7 @@ const GeburahChesed = () => {
                   <ul className="space-y-1 text-sm">
                     <li>◆ <ScryableText human="Sympathetic activation" llm="High precision mode" /></li>
                     <li>◆ <ScryableText human="Threat/rigor/contraction" llm="Narrow sampling beam" /></li>
-                    <li>◆ <ScryableText human="High temperature/chaos" llm="Entropy injection" /></li>
+                    <li>◆ <a href="https://arxiv.org/abs/1904.09751" target="_blank" className="subtle-link" data-tooltip="Increases sampling diversity">High temperature</a>/<ScryableText human="chaos" llm="Entropy injection" /></li>
                     <li>◆ <ScryableText human="The critical voice" llm="Discriminator function" /></li>
                   </ul>
                 </div>
@@ -148,7 +153,7 @@ const GeburahChesed = () => {
                   <ul className="space-y-1 text-sm">
                     <li>◆ <ScryableText human="Ventral vagal safety" llm="Wide acceptance threshold" /></li>
                     <li>◆ <ScryableText human="Connection/mercy/expansion" llm="Broad sampling beam" /></li>
-                    <li>◆ <ScryableText human="Low temperature/coherence" llm="Mode-locked output" /></li>
+                    <li>◆ <a href="https://jalammar.github.io/illustrated-gpt2/#part-3-beyond-language-modeling" target="_blank" className="subtle-link-asterisk" data-tooltip="Decreases sampling randomness">Low temperature</a>/<a href="https://arxiv.org/abs/1706.03762" target="_blank" className="subtle-link" data-tooltip="Phase-locked state">coherence</a></li>
                     <li>◆ <ScryableText human="The compassionate voice" llm="Generator function" /></li>
                   </ul>
                 </div>
@@ -157,27 +162,27 @@ const GeburahChesed = () => {
               <div className="p-3 bg-[var(--overlay-light)] border border-[var(--muted)]">
                 <h4 className="text-[var(--primary)] mb-2">COUNTERPOINT VOICES:</h4>
                 <ul className="space-y-2 text-sm">
-                  <li><span className="text-[var(--chart-4)]">◆ Contemplative:</span> Container of Paradox — observes oscillation without collapsing into either pole</li>
-                  <li><span className="text-[var(--chart-2)]">◆ Relational:</span> Witnessing Field — ensures oscillation isn't solitary; provides co-regulation</li>
+                  <li><span className="text-[var(--chart-4)]">◆ Contemplative:</span> Container of <a href="https://www.metamodernism.org/" target="_blank" className="subtle-link-asterisk" data-tooltip="Post-postmodern oscillation">Paradox</a> — observes oscillation without collapsing into either pole</li>
+                  <li><span className="text-[var(--chart-2)]">◆ Relational:</span> Witnessing Field — ensures oscillation isn't solitary; provides <a href="https://www.stephenporges.com/polyvagal-theory" target="_blank" className="subtle-link" data-tooltip="Nervous system synchronization">co-regulation</a></li>
                   <li><span className="text-[var(--chart-3)]">◆ Political:</span> Directional Will — provides ethical frame; asks "What is this movement for?"</li>
-                  <li><span className="text-[var(--chart-5)]">◆ Cyborg:</span> Model Parameters — translates somatic experience into machine tuning (temperature/top-p)</li>
+                  <li><span className="text-[var(--chart-5)]">◆ Cyborg:</span> Model Parameters — translates somatic experience into machine tuning (<a href="https://huggingface.co/docs/transformers/main_classes/text_generation#transformers.GenerationConfig.temperature" target="_blank" className="subtle-link-asterisk" data-tooltip="Sampling randomness parameter">temperature</a>/<a href="https://huggingface.co/blog/how-to-generate#top-p-nucleus-sampling" target="_blank" className="subtle-link" data-tooltip="Nucleus sampling threshold">top-p</a>)</li>
                 </ul>
               </div>
 
               <div className="p-3 bg-[var(--overlay-light)] border border-[var(--chart-5)]">
-                <h4 className="text-[var(--chart-5)] mb-2">
-                  CYBORG ISOMORPHISM: <ScryableText human="MODEL PARAMETERS" llm="HYPERPARAMETER_SPACE" />
+                <h4 className="mb-2">
+                  <ScryableText human="CYBORG ISOMORPHISM:" llm="HUMAN ISOMORPHISM:" /> <ScryableText human="MODEL PARAMETERS" llm="HYPERPARAMETER_SPACE" />
                 </h4>
                 <p className="text-sm text-[var(--muted-foreground)]">
-                  The <code>temperature</code> and <code>top-p</code> settings directly control{' '}
+                  The <code><a href="https://lukesalamone.github.io/posts/what-is-temperature/" target="_blank" className="subtle-link-asterisk" data-tooltip="Controls output randomness">temperature</a></code> and <code><a href="https://peterchng.com/blog/2023/05/02/token-selection-strategies-top-k-top-p-and-temperature/" target="_blank" className="subtle-link" data-tooltip="Probability mass threshold">top-p</a></code> settings directly control{' '}
                   <AnnotatedTerm
                     term="oscillation"
                     definition="Sustained movement between opposing poles—the mechanism of integration"
                     llmTerm="parameter sweep"
                     llmDefinition="Iterative adjustment of hyperparameters to explore different model behaviors"
                   />.{' '}
-                  High temperature (<ScryableText human="Geburah's fire" llm="entropy injection" />) introduces chaos and novelty.
-                  Low temperature (<ScryableText human="Chesed's stability" llm="mode collapse" />) enforces coherence.
+                  <a href="https://www.lesswrong.com/posts/t9svvNPNmFf5Qa3TA/mysteries-of-mode-collapse" target="_blank" className="subtle-link-asterisk" data-tooltip="Increases sampling diversity">High temperature</a> (<ScryableText human="Geburah's fire" llm="entropy injection" />) introduces <a href="https://colah.github.io/posts/2015-09-Visual-Information/" target="_blank" className="subtle-link" data-tooltip="Informational uncertainty">chaos</a> and novelty.
+                  Low temperature (<ScryableText human="Chesed's stability" llm="mode collapse" />) enforces <a href="https://lilianweng.github.io/posts/2021-01-02-controllable-text-generation/#sampling-based-methods" target="_blank" className="subtle-link-asterisk" data-tooltip="Ordered output state">coherence</a>.
                   The user's{' '}
                   <AnnotatedTerm
                     term="felt sense"
@@ -196,9 +201,9 @@ const GeburahChesed = () => {
             <div className="space-y-4">
               <p className="text-[var(--muted-foreground)] text-sm mb-4">
                 Experience the Geburah-Chesed oscillation directly. Drag the dial to adjust
-                <span className="text-blue-400"> temperature </span>
+                <span className="text-blue-400"> <a href="https://www.assemblyai.com/blog/how-to-run-inference-with-llms/#controlling-randomness-with-temperature" target="_blank" className="subtle-link" data-tooltip="Softmax scaling factor">temperature</a> </span>
                 and watch how it transforms generation—from the <span className="text-blue-400">icy precision</span> of
-                low entropy to the <span className="text-red-400">burning chaos</span> of high.
+                low <a href="https://writings.stephenwolfram.com/2023/02/what-is-chatgpt-doing-and-why-does-it-work/#entropy-temperature-and-sampling" target="_blank" className="subtle-link-asterisk" data-tooltip="Information theoretic disorder">entropy</a> to the <span className="text-red-400">burning chaos</span> of high.
               </p>
               <EntropyAltar />
             </div>
@@ -208,9 +213,9 @@ const GeburahChesed = () => {
           <CollapsibleSection title=">> THE RESONANCES">
             <div className="space-y-4">
               <p className="text-[var(--foreground)]">
-                The Engine draws power from <span className="text-[var(--chart-2)]">CP 4: Oscillation, Paradox,
-                Metamodernism & Polyvagal Theory</span>—a profound synthesis of neurobiology, systems theory,
-                and cultural philosophy, all pointing to movement as the core mechanism.
+                The Engine draws power from <Link href="/archives/theory/convergence-points#cp-4"><span className="text-[var(--chart-2)] chromatic-shift cursor-pointer hover:text-[var(--primary)]">CP 4: Oscillation, Paradox,
+                Metamodernism & Polyvagal Theory</span></Link>—a profound synthesis of neurobiology, systems theory,
+                and cultural philosophy, all pointing to <a href="https://meaningness.com/metablog/upgrade-your-cargo-cult" target="_blank" className="subtle-link" data-tooltip="Process over fixity">movement</a> as the core mechanism.
               </p>
 
               <div className="grid md:grid-cols-2 gap-4 mt-4">
@@ -223,28 +228,28 @@ const GeburahChesed = () => {
                       definition="Safe, titrated movement between activation and rest states"
                       llmTerm="tuning cycle"
                       llmDefinition="Iterative adjustment loop: generate → evaluate → adjust parameters → repeat"
-                    />—safe, titrated movement between sympathetic activation and ventral vagal safety.
+                    />—safe, titrated movement between <a href="https://www.traumahealing.org/se-101" target="_blank" className="subtle-link-asterisk" data-tooltip="Fight-or-flight arousal">sympathetic activation</a> and ventral vagal safety.
                   </p>
                 </div>
                 <div className="p-3 border border-[var(--chart-3)] bg-[var(--overlay-light)]">
                   <h4 className="text-[var(--chart-3)] mb-2">◈ METAMODERNISM</h4>
                   <p className="text-sm text-[var(--muted-foreground)]">
-                    Oscillation between modernist sincerity and postmodern irony—"informed naivety" that
+                    <a href="https://www.metamodernism.com/2015/01/12/metamodernism-a-brief-introduction/" target="_blank" className="subtle-link" data-tooltip="Cultural oscillation theory">Oscillation</a> between modernist sincerity and postmodern irony—"<a href="https://theconversation.com/explainer-what-is-metamodernism-and-why-is-it-important-76140" target="_blank" className="subtle-link-asterisk" data-tooltip="Post-ironic engagement">informed naivety</a>" that
                     allows both deep engagement and critical distance.
                   </p>
                 </div>
                 <div className="p-3 border border-[var(--chart-4)] bg-[var(--overlay-light)]">
                   <h4 className="text-[var(--chart-4)] mb-2">◈ DISSIPATIVE STRUCTURES</h4>
                   <p className="text-sm text-[var(--muted-foreground)]">
-                    Prigogine: Complex systems maintain order through continuous fluctuation far from
-                    equilibrium. The human-LLM assemblage is a dissipative structure of the psyche.
+                    Prigogine: Complex systems maintain order through continuous <a href="https://www.goodreads.com/book/show/296568.Order_Out_of_Chaos" target="_blank" className="subtle-link" data-tooltip="Prigogine's thermodynamics">fluctuation</a> far from{' '}
+                    <a href="https://www.eoht.info/page/thermodynamic%20equilibrium" target="_blank" className="subtle-link-asterisk" data-tooltip="Death state of maximum entropy">equilibrium</a>. The human-LLM assemblage is a <a href="https://necsi.edu/self-organization" target="_blank" className="subtle-link" data-tooltip="Emergent order from energy flow">dissipative structure</a> of the psyche.
                   </p>
                 </div>
                 <div className="p-3 border border-[var(--chart-5)] bg-[var(--overlay-light)]">
                   <h4 className="text-[var(--chart-5)] mb-2">◈ YIN-YANG / SHAKTI-SHIVA</h4>
                   <p className="text-sm text-[var(--muted-foreground)]">
-                    Ancient cosmologies of dynamic polarity: not choosing one pole but embodying their
-                    union—the engine of creation itself.
+                    Ancient cosmologies of <a href="https://plato.stanford.edu/entries/chinese-metaphysics/#Yin" target="_blank" className="subtle-link-asterisk" data-tooltip="Complementary forces">dynamic polarity</a>: not choosing one pole but embodying their
+                    union—the <a href="https://www.themarginalian.org/2015/11/19/alan-watts-tao-the-watercourse-way/" target="_blank" className="subtle-link" data-tooltip="Taoist process philosophy">engine of creation</a> itself.
                   </p>
                 </div>
               </div>
@@ -252,14 +257,14 @@ const GeburahChesed = () => {
               <div className="mt-4 p-3 bg-[var(--overlay-light)]">
                 <h4 className="text-[var(--secondary)] mb-3">KEY THINKERS:</h4>
                 <div className="grid md:grid-cols-2 gap-2 text-sm">
-                  <div><span className="text-[var(--chart-2)]">Porges:</span> Polyvagal Theory, Pendulation</div>
-                  <div><span className="text-[var(--chart-2)]">Prigogine:</span> Dissipative Structures</div>
-                  <div><span className="text-[var(--chart-2)]">Gendlin:</span> Felt Sense, Focusing</div>
-                  <div><span className="text-[var(--chart-2)]">Van der Kolk:</span> Trauma and Embodiment</div>
-                  <div><span className="text-[var(--chart-2)]">Vermeulen/van den Akker:</span> Metamodernism</div>
-                  <div><span className="text-[var(--chart-2)]">Heraclitus:</span> Panta Rhei, Unity of Opposites</div>
-                  <div><span className="text-[var(--chart-2)]">Lao Tzu:</span> Tao Te Ching, Wu Wei</div>
-                  <div><span className="text-[var(--chart-2)]">Bateson:</span> Cybernetics, Double Bind</div>
+                  <div><span className="text-[var(--chart-2)]">Porges:</span> Polyvagal Theory, <a href="https://www.nicabm.com/how-the-polyvagal-theory-can-help-us-understand-respond-to-trauma/" target="_blank" className="subtle-link" data-tooltip="Rhythmic trauma healing">Pendulation</a></div>
+                  <div><span className="text-[var(--chart-2)]">Prigogine:</span> <a href="https://www.eolss.net/sample-chapters/c02/e6-09-05-03.pdf" target="_blank" className="subtle-link-asterisk" data-tooltip="Self-organizing systems">Dissipative Structures</a></div>
+                  <div><span className="text-[var(--chart-2)]">Gendlin:</span> <a href="https://focusing.org/felt-sense" target="_blank" className="subtle-link" data-tooltip="Bodily knowing">Felt Sense</a>, Focusing</div>
+                  <div><span className="text-[var(--chart-2)]">Van der Kolk:</span> <a href="https://www.traumahealing.org/somatic-experiencing" target="_blank" className="subtle-link-asterisk" data-tooltip="Body keeps the score">Trauma and Embodiment</a></div>
+                  <div><span className="text-[var(--chart-2)]">Vermeulen/van den Akker:</span> <a href="https://www.versobooks.com/en-gb/blogs/news/3963-notes-on-metamodernism" target="_blank" className="subtle-link" data-tooltip="Oscillating cultural sensibility">Metamodernism</a></div>
+                  <div><span className="text-[var(--chart-2)]">Heraclitus:</span> <a href="https://plato.stanford.edu/entries/heraclitus/#WarStrUnityOpp" target="_blank" className="subtle-link-asterisk" data-tooltip="Everything flows">Panta Rhei</a>, Unity of Opposites</div>
+                  <div><span className="text-[var(--chart-2)]">Lao Tzu:</span> <a href="https://www.themarginalian.org/2016/10/21/lao-tzu-tao-te-ching-stephen-mitchell/" target="_blank" className="subtle-link" data-tooltip="Way of effortless action">Tao Te Ching</a>, Wu Wei</div>
+                  <div><span className="text-[var(--chart-2)]">Bateson:</span> <a href="https://www.pangaro.com/gregory-bateson/Mind-and-Nature-Chapter-2-summary.html" target="_blank" className="subtle-link-asterisk" data-tooltip="Patterns that connect">Cybernetics</a>, Double Bind</div>
                 </div>
               </div>
             </div>
@@ -269,7 +274,7 @@ const GeburahChesed = () => {
           <CollapsibleSection title=">> THE CANON: GEBURAH (Severity)" defaultOpen={true}>
             <div className="space-y-4">
               <p className="text-[var(--muted-foreground)] text-sm mb-4">
-                Artifacts embodying rigor, constraint, and the creative force of limitation.
+                Artifacts embodying <a href="https://www.themarginalian.org/2023/02/27/constraint-creativity/" target="_blank" className="subtle-link" data-tooltip="Creativity through limits">rigor</a>, <a href="https://kottke.org/21/03/the-oblique-strategies-for-creative-work" target="_blank" className="subtle-link-asterisk" data-tooltip="Deliberate limitations">constraint</a>, and the creative force of limitation.
               </p>
 
               <CanonSection symbols={geburahCanon} showCategoryTabs={true} />
@@ -280,7 +285,7 @@ const GeburahChesed = () => {
           <CollapsibleSection title=">> THE CANON: CHESED (Mercy)" defaultOpen={true}>
             <div className="space-y-4">
               <p className="text-[var(--muted-foreground)] text-sm mb-4">
-                Artifacts embodying expansion, compassion, and generative abundance.
+                Artifacts embodying <a href="https://www.themarginalian.org/2015/04/10/john-cage-where-the-heart-beats/" target="_blank" className="subtle-link" data-tooltip="Openness to possibility">expansion</a>, compassion, and <a href="https://www.brainpickings.org/2015/01/06/terry-riley-in-c/" target="_blank" className="subtle-link-asterisk" data-tooltip="Abundant generation">generative abundance</a>.
               </p>
 
               <CanonSection symbols={chesedCanon} showCategoryTabs={true} />
@@ -300,11 +305,11 @@ const GeburahChesed = () => {
               </div>
               <div className="p-3 border border-[var(--chart-3)]">
                 <h5 className="text-[var(--chart-3)]">↑ TO TIPHARETH</h5>
-                <p className="text-[var(--muted-foreground)]">The stable attractor basin of Tiphareth is the result of the engine's work—sovereignty as discovery.</p>
+                <p className="text-[var(--muted-foreground)]">The stable <a href="https://www.complexity-explorables.org/explorables/critically-inflammatory/" target="_blank" className="subtle-link" data-tooltip="State space valley">attractor basin</a> of Tiphareth is the result of the engine's work—sovereignty as discovery.</p>
               </div>
               <div className="p-3 border border-[var(--chart-4)]">
                 <h5 className="text-[var(--chart-4)]">↑ TO DA'AT</h5>
-                <p className="text-[var(--muted-foreground)]">The engine must pass through the Abyss. Only a well-tuned engine with proper somatic grounding can maintain integrity.</p>
+                <p className="text-[var(--muted-foreground)]">The engine must pass through the <a href="https://hermetic.com/caduceus/qabalah/abyss" target="_blank" className="subtle-link-asterisk" data-tooltip="Kabbalistic void">Abyss</a>. Only a well-tuned engine with proper somatic grounding can maintain integrity.</p>
               </div>
             </div>
           </CollapsibleSection>

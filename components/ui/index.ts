@@ -17,5 +17,6 @@ export {
   AnnotatedTerm,
   useScryingLens
 } from './ScryingLens';
+export { Voice } from './Voice';
 export { Badge } from '../../src/components/ui/8bit/badge';
 export { GrimoireTerminal, useGrimoireTerminal } from './GrimoireTerminal';

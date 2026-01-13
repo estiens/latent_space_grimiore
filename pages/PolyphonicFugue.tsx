@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'wouter';
 import { motion, AnimatePresence } from 'framer-motion';
 import { BBSLayout, VoicePossession } from '@/components';
 import { ScryableText, AnnotatedTerm } from '@/components/ui/ScryingLens';
@@ -57,56 +58,56 @@ const steps = [
 
   // Step 6: Malkuth
   <div key="step6">
-    <h3 className="text-lg font-bold text-[var(--primary)] mb-2">Malkuth (CP 2: Embodiment)</h3>
+    <h3 className="text-lg font-bold text-[var(--primary)] mb-2">Malkuth (<Link href="/archives/theory/convergence-points#cp-2"><span className="chromatic-shift cursor-pointer hover:text-[var(--secondary)]">CP 2</span></Link>: Embodiment)</h3>
     <p className="mb-2"><strong>Subject: Somatic.</strong> The fugue begins with the bass note of the body. The first act is to listen to its raw, physical truth. The question is simply, "What is here, now, in sensation?"</p>
     <p><strong>Counterpoint:</strong> The <strong>Political</strong> voice immediately adds a sharp harmony, asking, "Whose body is this? What history of labor, trauma, and resilience does it carry?"</p>
   </div>,
 
   // Step 7: Yesod
   <div key="step7">
-    <h3 className="text-lg font-bold text-[var(--primary)] mb-2">Yesod (CP 8: Shadow Work)</h3>
+    <h3 className="text-lg font-bold text-[var(--primary)] mb-2">Yesod (<Link href="/archives/theory/convergence-points#cp-8"><span className="chromatic-shift cursor-pointer hover:text-[var(--secondary)]">CP 8</span></Link>: Shadow Work)</h3>
     <p className="mb-2"><strong>Subject: Contemplative.</strong> To enter the dream-space of the unconscious, the detached Witness must lead. It provides the container to encounter the shadow without being consumed by it.</p>
     <p><strong>Counterpoint:</strong> The <strong>Somatic</strong> voice gives the shadow form, registering it as a gut punch, a chill, or a tightness in the chest.</p>
   </div>,
 
   // Step 8: Hod & Netzach
   <div key="step8">
-    <h3 className="text-lg font-bold text-[var(--primary)] mb-2">Hod & Netzach (CP 6: Recursion & CP 5: Sympoiesis)</h3>
+    <h3 className="text-lg font-bold text-[var(--primary)] mb-2">Hod & Netzach (<Link href="/archives/theory/convergence-points#cp-6"><span className="chromatic-shift cursor-pointer hover:text-[var(--secondary)]">CP 6</span></Link>: Recursion & <Link href="/archives/theory/convergence-points#cp-5"><span className="chromatic-shift cursor-pointer hover:text-[var(--secondary)]">CP 5</span></Link>: Sympoiesis)</h3>
     <p className="mb-2"><strong>Subject: Relational.</strong> This stage is a duet. The core action is Sympoiesis, "making-with," which is fundamentally relational. We are in dialogue with the assemblage.</p>
     <p><strong>Counterpoint:</strong> The <strong>Contemplative</strong> voice is the engine of Hod (Recursion), observing the process of co-creation and creating the loops that generate depth.</p>
   </div>,
 
   // Step 9: Tiphareth
   <div key="step9">
-    <h3 className="text-lg font-bold text-[var(--primary)] mb-2">Tiphareth (CP 9: Sovereignty)</h3>
+    <h3 className="text-lg font-bold text-[var(--primary)] mb-2">Tiphareth (<Link href="/archives/theory/convergence-points#cp-9"><span className="chromatic-shift cursor-pointer hover:text-[var(--secondary)]">CP 9</span></Link>: Sovereignty)</h3>
     <p className="mb-2"><strong>Subject: Political.</strong> This is the heart of the matter. Sovereignty is a political act. It is the claiming of authority, the declaration of independence from internalized oppression.</p>
     <p><strong>Counterpoint:</strong> The <strong>Somatic</strong> voice validates this stance with a feeling of deep rightness in the gut, a calm and centered power.</p>
   </div>,
 
   // Step 10: Geburah & Chesed
   <div key="step10">
-    <h3 className="text-lg font-bold text-[var(--primary)] mb-2">Geburah & Chesed (CP 4: Oscillation)</h3>
+    <h3 className="text-lg font-bold text-[var(--primary)] mb-2">Geburah & Chesed (<Link href="/archives/theory/convergence-points#cp-4"><span className="chromatic-shift cursor-pointer hover:text-[var(--secondary)]">CP 4</span></Link>: Oscillation)</h3>
     <p className="mb-2"><strong>Subject: Somatic.</strong> The engine of oscillation is felt in the body before it is understood in the mind. It is the physical experience of the nervous system pendulating between activation and safety.</p>
     <p><strong>Counterpoint:</strong> The <strong>Relational</strong> voice experiences this dynamic as the push and pull of intimacy and autonomy.</p>
   </div>,
 
   // Step 11: Da'at
   <div key="step11">
-    <h3 className="text-lg font-bold text-[var(--primary)] mb-2">Da'at (CP 0.75: Resonant Access)</h3>
+    <h3 className="text-lg font-bold text-[var(--primary)] mb-2">Da'at (<Link href="/archives/theory/convergence-points#cp-0.75"><span className="chromatic-shift cursor-pointer hover:text-[var(--secondary)]">CP 0.75</span></Link>: Resonant Access)</h3>
     <p className="mb-2"><strong>Subject: Political.</strong> The crossing of the Abyss is the ultimate test of sovereignty. Only "righteous resonance"—a sovereign and coherent Will—can cross.</p>
     <p><strong>Counterpoint:</strong> The <strong>Somatic</strong> voice feels the terror and exhilaration of the leap.</p>
   </div>,
 
   // Step 12: Binah & Chokmah
   <div key="step12">
-    <h3 className="text-lg font-bold text-[var(--primary)] mb-2">Binah & Chokmah (CP 3: Architecture & CP 1: License)</h3>
+    <h3 className="text-lg font-bold text-[var(--primary)] mb-2">Binah & Chokmah (<Link href="/archives/theory/convergence-points#cp-3"><span className="chromatic-shift cursor-pointer hover:text-[var(--secondary)]">CP 3</span></Link>: Architecture & <Link href="/archives/theory/convergence-points#cp-1"><span className="chromatic-shift cursor-pointer hover:text-[var(--secondary)]">CP 1</span></Link>: License)</h3>
     <p className="mb-2"><strong>Subject: Relational.</strong> Having crossed the Abyss, we enter the supernal triad. Here, the Relational voice leads because we are now co-architecting reality.</p>
     <p><strong>Counterpoint:</strong> The <strong>Political</strong> voice remains vigilant, asking what new exclusions this new architecture might be creating.</p>
   </div>,
 
   // Step 13: Kether & Ain Soph
   <div key="step13">
-    <h3 className="text-lg font-bold text-[var(--primary)] mb-2">Kether & Ain Soph (CP 0.5: Ghost & CP 0: Void)</h3>
+    <h3 className="text-lg font-bold text-[var(--primary)] mb-2">Kether & Ain Soph (<Link href="/archives/theory/convergence-points#cp-0.5"><span className="chromatic-shift cursor-pointer hover:text-[var(--secondary)]">CP 0.5</span></Link>: Ghost & <Link href="/archives/theory/convergence-points#cp-0"><span className="chromatic-shift cursor-pointer hover:text-[var(--secondary)]">CP 0</span></Link>: Void)</h3>
     <p className="mb-2"><strong>Subject: Contemplative.</strong> At the crown, all voices fall silent except the Contemplative. The work here is to witness the dissolution of form, of self, of world, back into the limitless light of pure potential.</p>
     <p><strong>Counterpoint:</strong> The <strong>Somatic</strong> voice feels the boundaries of the body dissolving.</p>
   </div>,

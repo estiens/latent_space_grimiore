@@ -44,6 +44,11 @@
   --radius-2xl: calc(var(--radius) + 8px);
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
+
+  /* Extended typography scale for BBS micro-text */
+  --font-size-4xs: 0.5rem;    /* 8px - replaces text-[0.5rem] */
+  --font-size-3xs: 0.625rem;  /* 10px - replaces text-[0.625rem] */
+  --font-size-2xs: 0.75rem;   /* 12px - replaces text-[0.65rem] */
 }
 
 :root {
@@ -112,6 +117,25 @@
   --color-white: oklch(0.98 0.02 200);
   --color-black: oklch(0.12 0.02 270);
 
+  /* Semantic neon colors - retro aesthetic */
+  --neon-cyan: oklch(0.8 0.15 195);
+  --neon-magenta: oklch(0.7 0.25 330);
+  --neon-green: oklch(0.75 0.2 145);
+  --neon-red: oklch(0.68 0.25 25);
+  --neon-yellow: oklch(0.8 0.18 90);
+
+  /* Brand colors for external services */
+  --brand-spotify: oklch(0.55 0.25 145);     /* #1DB954 equivalent */
+  --brand-soundcloud: oklch(0.6 0.22 35);    /* #FF5500 equivalent */
+  --brand-bandcamp: oklch(0.5 0.15 195);     /* #1DA0C3 equivalent */
+
+  /* Voice system colors (The Five Voices) */
+  --voice-somatic: oklch(0.65 0.2 25);        /* Warm coral red #ff6b6b */
+  --voice-contemplative: oklch(0.62 0.15 210); /* Meditation blue #4ecdc4 */
+  --voice-relational: oklch(0.75 0.12 165);    /* Connection green #95e1d3 */
+  --voice-political: oklch(0.68 0.18 15);      /* Will red #f38181 */
+  --voice-cyborg: oklch(0.65 0.15 285);        /* Code purple #aa96da */
+
   /* Chart Colors for Sephiroth (keep saturated values) */
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
@@ -163,6 +187,26 @@
   --color-yellow: oklch(0.8 0.18 90);
   --color-white: oklch(0.98 0.02 200);
   --color-black: oklch(0.12 0.02 270);
+
+  /* Semantic neon colors - retro aesthetic */
+  --neon-cyan: oklch(0.8 0.15 195);
+  --neon-magenta: oklch(0.7 0.25 330);
+  --neon-green: oklch(0.75 0.2 145);
+  --neon-red: oklch(0.68 0.25 25);
+  --neon-yellow: oklch(0.8 0.18 90);
+
+  /* Brand colors for external services */
+  --brand-spotify: oklch(0.55 0.25 145);
+  --brand-soundcloud: oklch(0.6 0.22 35);
+  --brand-bandcamp: oklch(0.5 0.15 195);
+
+  /* Voice system colors (The Five Voices) */
+  --voice-somatic: oklch(0.65 0.2 25);
+  --voice-contemplative: oklch(0.62 0.15 210);
+  --voice-relational: oklch(0.75 0.12 165);
+  --voice-political: oklch(0.68 0.18 15);
+  --voice-cyborg: oklch(0.65 0.15 285);
+
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
@@ -238,6 +282,25 @@
   --color-white: oklch(0.98 0.01 90);
   --color-black: oklch(0.15 0.02 270);
 
+  /* Semantic neon colors - darker for light theme visibility */
+  --neon-cyan: oklch(0.38 0.16 195);
+  --neon-magenta: oklch(0.5 0.22 330);
+  --neon-green: oklch(0.45 0.2 145);
+  --neon-red: oklch(0.52 0.22 25);
+  --neon-yellow: oklch(0.48 0.18 90);
+
+  /* Brand colors - adjusted for light theme */
+  --brand-spotify: oklch(0.45 0.25 145);
+  --brand-soundcloud: oklch(0.5 0.22 35);
+  --brand-bandcamp: oklch(0.42 0.15 195);
+
+  /* Voice system colors - darker for light theme */
+  --voice-somatic: oklch(0.55 0.2 25);
+  --voice-contemplative: oklch(0.48 0.15 210);
+  --voice-relational: oklch(0.5 0.12 165);
+  --voice-political: oklch(0.52 0.18 15);
+  --voice-cyborg: oklch(0.48 0.15 285);
+
   /* Chart Colors (darker and more visible for light background) */
   --chart-1: oklch(0.42 0.22 264);
   --chart-2: oklch(0.5 0.18 162);
@@ -253,7 +316,25 @@
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border;
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+  }
+
+  /* Enhanced focus for keyboard navigation */
+  *:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 2px var(--background), 0 0 8px var(--ring);
+  }
+
+  /* Special focus for interactive elements */
+  button:focus-visible,
+  a:focus-visible,
+  [role="button"]:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 2px var(--background), 0 0 8px var(--ring);
   }
   .dark body {
     @apply bg-background text-foreground font-mono antialiased;
@@ -299,6 +380,11 @@
     z-index: 9999;
     pointer-events: none;
     opacity: 0.25;
+
+    /* Performance optimization - GPU acceleration */
+    will-change: opacity;
+    transform: translateZ(0);
+    backface-visibility: hidden;
   }
 
   /* Minimal scanline effect in light mode */
@@ -316,6 +402,11 @@
     z-index: 9999;
     pointer-events: none;
     opacity: 0.08;
+
+    /* Performance optimization - GPU acceleration */
+    will-change: opacity;
+    transform: translateZ(0);
+    backface-visibility: hidden;
   }
 
   /* Text Bloom / Glow - Reduced for readability, disabled in light theme */
@@ -906,4 +997,175 @@
 
 .media-image-preview:hover {
   filter: grayscale(0%);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   TYPOGRAPHY UTILITIES - BBS Micro-text Scale
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.text-4xs {
+  font-size: var(--font-size-4xs);
+  line-height: 1.2;
+}
+
+.text-3xs {
+  font-size: var(--font-size-3xs);
+  line-height: 1.3;
+}
+
+.text-2xs {
+  font-size: var(--font-size-2xs);
+  line-height: 1.4;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   NEON GLOW UTILITIES - Retro Aesthetic
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.text-neon-cyan {
+  color: var(--neon-cyan);
+  text-shadow: 0 0 8px var(--neon-cyan);
+}
+
+.text-neon-magenta {
+  color: var(--neon-magenta);
+  text-shadow: 0 0 8px var(--neon-magenta);
+}
+
+.text-neon-green {
+  color: var(--neon-green);
+  text-shadow: 0 0 8px var(--neon-green);
+}
+
+.text-neon-red {
+  color: var(--neon-red);
+  text-shadow: 0 0 8px var(--neon-red);
+}
+
+.text-neon-yellow {
+  color: var(--neon-yellow);
+  text-shadow: 0 0 8px var(--neon-yellow);
+}
+
+/* Brand color utilities */
+.text-spotify {
+  color: var(--brand-spotify);
+}
+
+.border-spotify {
+  border-color: var(--brand-spotify);
+}
+
+.hover\:border-spotify:hover {
+  border-color: var(--brand-spotify);
+}
+
+.text-soundcloud {
+  color: var(--brand-soundcloud);
+}
+
+.text-bandcamp {
+  color: var(--brand-bandcamp);
+}
+
+/* Overlay background utilities */
+.bg-overlay-dark {
+  background: var(--overlay-dark);
+}
+
+.bg-overlay-medium {
+  background: var(--overlay-medium);
+}
+
+.bg-overlay-light {
+  background: var(--overlay-light);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   HYPERLINK STYLES - Voidwink Aesthetic
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Base hyperlink style with underline and tooltip */
+.subtle-link,
+.subtle-link-asterisk {
+  position: relative;
+  color: var(--primary);
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  cursor: pointer;
+  transition: all 200ms ease;
+}
+
+/* Different underline style for asterisk variant */
+.subtle-link-asterisk {
+  text-decoration-style: dashed;
+  color: var(--secondary);
+}
+
+/* Hover effect */
+.subtle-link:hover,
+.subtle-link-asterisk:hover {
+  color: var(--accent);
+  text-shadow: 0 0 5px var(--accent);
+  text-decoration-thickness: 2px;
+}
+
+/* Tooltip on hover using data-tooltip attribute */
+.subtle-link[data-tooltip]::after,
+.subtle-link-asterisk[data-tooltip]::after {
+  content: attr(data-tooltip) !important;
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 8px);
+  transform: translateX(-50%);
+  padding: 8px 12px;
+  background: rgba(20, 10, 30, 0.98);
+  border: 1px solid var(--primary);
+  color: #ffffff;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  white-space: nowrap;
+  min-width: 120px;
+  max-width: 400px;
+  text-align: center;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 200ms ease, visibility 200ms ease;
+  z-index: 10000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 0, 255, 0.4);
+  font-family: var(--font-mono);
+  display: inline-block;
+}
+
+/* Show tooltip on hover */
+.subtle-link[data-tooltip]:hover::after,
+.subtle-link-asterisk[data-tooltip]:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Tooltip arrow */
+.subtle-link[data-tooltip]::before,
+.subtle-link-asterisk[data-tooltip]::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 2px);
+  transform: translateX(-50%);
+  border: 4px solid transparent;
+  border-top-color: var(--primary);
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 200ms ease, visibility 200ms ease;
+  z-index: 1001;
+}
+
+.subtle-link[data-tooltip]:hover::before,
+.subtle-link-asterisk[data-tooltip]:hover::before {
+  opacity: 1;
+  visibility: visible;
 }

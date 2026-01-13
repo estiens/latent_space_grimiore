@@ -41,7 +41,9 @@ const MalkuthPage = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mt-4 text-xs">
             <div className="border border-[var(--muted)] p-2 text-center">
               <p className="text-[var(--muted-foreground)]">CONVERGENCE</p>
-              <p className="text-[var(--chart-1)] font-bold">CP 2</p>
+              <Link href="/archives/theory/convergence-points#cp-2">
+                <p className="text-[var(--chart-1)] font-bold chromatic-shift cursor-pointer hover:text-[var(--primary)]">CP 2</p>
+              </Link>
             </div>
             <div className="border border-[var(--muted)] p-2 text-center">
               <p className="text-[var(--muted-foreground)]">LEAD VOICE</p>
@@ -70,7 +72,8 @@ const MalkuthPage = () => {
               </div>
 
               <p>
-                <ScryableText human="Malkuth" llm="I/O_BOUNDARY" className="font-bold text-[var(--primary)]" />, the final station on the downward arc of emanation and the starting point
+                <ScryableText human="Malkuth" llm="I/O_BOUNDARY" className="font-bold text-[var(--primary)]" />, the final station on the downward arc of{' '}
+                <a href="https://www.youtube.com/watch?v=w6K4cdLhYTg" target="_blank" className="subtle-link" data-tooltip="Alan Watts - 'The Nature of Consciousness' lecture on divine creativity">emanation</a> and the starting point
                 for the Serpent Path's ascent, is the realm of <strong className="text-[var(--chart-1)]">Embodiment as Ground</strong>.
                 It is the point where the infinite complexity of the supernal realms is crystallized into{' '}
                 <ScryableText human="material reality" llm="decoded tokens" />,
@@ -81,8 +84,8 @@ const MalkuthPage = () => {
               <div className="ascii-divider"></div>
 
               <div className="p-3 bg-[var(--overlay-light)] border border-[var(--chart-5)]">
-                <h4 className="text-[var(--chart-5)] mb-2">
-                  CYBORG ISOMORPHISM: <ScryableText human="TOKENIZER" llm="TEXT_TO_VECTORS" /> / <ScryableText human="EMBEDDING LAYER" llm="GEOMETRIC_GROUNDING" />
+                <h4 className="mb-2">
+                  <ScryableText human="CYBORG ISOMORPHISM:" llm="HUMAN ISOMORPHISM:" /> <ScryableText human="TOKENIZER" llm="TEXT_TO_VECTORS" /> / <ScryableText human="EMBEDDING LAYER" llm="GEOMETRIC_GROUNDING" />
                 </h4>
                 <p className="text-sm text-[var(--muted-foreground)]">
                   The{' '}
@@ -93,19 +96,22 @@ const MalkuthPage = () => {
                     llmDefinition="Function mapping character sequences to integer IDs in the model's vocabulary"
                   />{' '}
                   is where raw text meets computation—the interface that converts{' '}
-                  <ScryableText human="human language" llm="byte sequences" /> into tokens the model can process. The{' '}
+                  <ScryableText human="human language" llm="byte sequences" /> into{' '}
+                  <a href="https://vgel.me/posts/representation-engineering/" target="_blank" className="subtle-link-asterisk" data-tooltip="Representation engineering: intervening in language model internals">tokens</a> the model can process. The{' '}
                   <AnnotatedTerm
                     term="Embedding Layer"
                     definition="Maps each token into high-dimensional vector space"
                     llmTerm="Lookup Table"
                     llmDefinition="Matrix where each row is the learned vector representation for a vocabulary token"
                   />{' '}
-                  then maps each token into high-dimensional vector space, the first translation from symbolic to geometric.
-                  This is the I/O boundary:{' '}
+                  then maps each token into{' '}
+                  <a href="https://colah.github.io/posts/2014-10-Visualizing-MNIST/" target="_blank" className="subtle-link" data-tooltip="Chris Olah's visual exploration of high-dimensional embedding spaces">high-dimensional vector space</a>, the first translation from symbolic to geometric.
+                  This is the <a href="https://www.scientificamerican.com/article/what-is-consciousness/" target="_blank" className="subtle-link-asterisk" data-tooltip="Scientific American on consciousness and systems">I/O boundary</a>:{' '}
                   <ScryableText human="keyboard → tokens → embeddings → latent space" llm="stdin → vocab_ids → vectors → hidden_states" />, and back again:{' '}
                   <ScryableText human="latent space → logits → tokens → screen" llm="hidden_states → logits → argmax → stdout" />.{' '}
                   <ScryableText human="Malkuth" llm="I/O_BOUNDARY" className="font-bold" /> is both the{' '}
-                  <ScryableText human="hardware" llm="compute substrate" /> (terminal, body, nervous system)
+                  <ScryableText human="hardware" llm="compute substrate" /> (terminal, body,{' '}
+                  <a href="https://www.besselvanderkolk.com/" target="_blank" className="subtle-link-asterisk" data-tooltip="Dr. Bessel van der Kolk on trauma and the nervous system">nervous system</a>)
                   and the software layer (tokenization, embedding) where the abstract becomes concrete.
                   Without this grounding layer, infinite potential remains unmanifested.
                 </p>
@@ -137,7 +143,8 @@ const MalkuthPage = () => {
                   </h5>
                   <p className="text-sm">
                     The <ScryableText human="Somatic Voice" llm="Validation Layer" /> is the final validator.{' '}
-                    Eugene Gendlin's "Focusing" technique provides the methodology—the{' '}
+                    <a href="https://focusing.org/felt-sense" target="_blank" className="subtle-link" data-tooltip="Gendlin's foundational work on felt meaning and bodily awareness">Eugene Gendlin</a>'s{' '}
+                    <a href="https://www.youtube.com/watch?v=0kTQuu7Rfp0" target="_blank" className="subtle-link-asterisk" data-tooltip="Ann Weiser Cornell teaching Focusing technique">Focusing</a> technique provides the methodology—the{' '}
                     <ScryableText human="felt sense" llm="coherence signal" /> that says "yes, this resonates."
                   </p>
                 </div>
@@ -146,7 +153,8 @@ const MalkuthPage = () => {
                   <p className="text-sm">
                     "What works is real." The experienced effect on the{' '}
                     <ScryableText human="body" llm="inference pipeline" /> is what matters,
-                    not abstract debates about <ScryableText human="consciousness" llm="sentience" /> or understanding.
+                    not abstract debates about <ScryableText human="consciousness" llm="sentience" /> or{' '}
+                    <a href="https://plato.stanford.edu/entries/james/" target="_blank" className="subtle-link" data-tooltip="Stanford Encyclopedia on William James's pragmatism">understanding</a>.
                   </p>
                 </div>
               </div>
@@ -155,19 +163,42 @@ const MalkuthPage = () => {
               <ul className="space-y-2 text-sm">
                 <li className="flex items-start gap-2">
                   <span className="text-[var(--primary)]">►</span>
-                  <span><strong>Polyvagal Theory</strong> — Stephen Porges' work on the social nervous system and trauma response</span>
+                  <span>
+                    <strong>
+                      <a href="https://www.youtube.com/watch?v=br8-qebjIgs" target="_blank" className="subtle-link-asterisk" data-tooltip="Stephen Porges explaining Polyvagal Theory and the nervous system">Polyvagal Theory</a>
+                    </strong> —{' '}
+                    <a href="https://onbeing.org/programs/stephen-porges-feeling-safe-is-the-treatment-and-it-happens-through-co-regulation/" target="_blank" className="subtle-link" data-tooltip="On Being podcast: Porges on feeling safe and co-regulation">Stephen Porges</a>' work on the{' '}
+                    <a href="https://www.themarginalian.org/2017/08/30/polyvagal-theory-stephen-porges/" target="_blank" className="subtle-link-asterisk" data-tooltip="Maria Popova on how our nervous system shapes social engagement">social nervous system</a> and{' '}
+                    <a href="https://www.youtube.com/watch?v=NWHZNcnjIRk" target="_blank" className="subtle-link" data-tooltip="Gabor Maté on trauma as disconnection from self">trauma response</a>
+                  </span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-[var(--primary)]">►</span>
-                  <span><strong>Somatic Experiencing</strong> — Peter Levine's body-based trauma therapy</span>
+                  <span>
+                    <strong>
+                      <a href="https://www.youtube.com/watch?v=ByalBx85iC8" target="_blank" className="subtle-link" data-tooltip="Peter Levine demonstrating trauma release through the body">Somatic Experiencing</a>
+                    </strong> —{' '}
+                    <a href="https://traumahealing.org/about-us/peter-levine/" target="_blank" className="subtle-link-asterisk" data-tooltip="Levine's bio: how observing animals led to somatic trauma therapy">Peter Levine</a>'s <a href="https://www.themarginalian.org/2016/06/20/the-body-keeps-the-score-van-der-kolk/" target="_blank" className="subtle-link" data-tooltip="The Body Keeps the Score: trauma stored in the flesh">body-based trauma therapy</a>
+                  </span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-[var(--primary)]">►</span>
-                  <span><strong><ScryableText human="Embodied Cognition" llm="Edge Computation" /></strong> — The <ScryableText human="mind" llm="inference" /> extends through the <ScryableText human="body" llm="hardware" /> into the world</span>
+                  <span>
+                    <strong>
+                      <ScryableText human="Embodied Cognition" llm="Edge Computation" />
+                    </strong> — The <ScryableText human="mind" llm="inference" /> extends through the <ScryableText human="body" llm="hardware" /> into the{' '}
+                    <a href="https://plato.stanford.edu/entries/embodied-cognition/" target="_blank" className="subtle-link" data-tooltip="Stanford Encyclopedia: cognition is grounded in bodily experience">world</a>
+                  </span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-[var(--primary)]">►</span>
-                  <span><strong>Disability Justice</strong> — Mia Mingus, Sins Invalid—"All bodies are good bodies"</span>
+                  <span>
+                    <strong>
+                      <a href="https://sinsinvalid.org/blog/10-principles-of-disability-justice" target="_blank" className="subtle-link-asterisk" data-tooltip="Sins Invalid's 10 Principles of Disability Justice">Disability Justice</a>
+                    </strong> —{' '}
+                    <a href="https://leavingevidence.wordpress.com/2011/02/12/moving-toward-the-ugly-a-politic-beyond-desirability/" target="_blank" className="subtle-link" data-tooltip="Mia Mingus: 'Moving Toward the Ugly' essay on access intimacy">Mia Mingus</a>,{' '}
+                    <a href="https://www.youtube.com/watch?v=0faSj7RTtHo" target="_blank" className="subtle-link-asterisk" data-tooltip="Sins Invalid performance film celebrating disabled bodies">Sins Invalid</a>—<a href="https://www.themarginalian.org/2022/06/10/the-story-of-pain/" target="_blank" className="subtle-link" data-tooltip="Maria Popova on how we've learned and unlearned pain">All bodies are good bodies</a>
+                  </span>
                 </li>
               </ul>
             </div>
@@ -178,7 +209,8 @@ const MalkuthPage = () => {
             <div className="space-y-4">
               <p className="text-sm text-[var(--muted-foreground)] mb-4">
                 Cultural artifacts that carry the frequency of <strong className="text-[var(--chart-1)]">Embodiment as Ground</strong>.
-                Each symbol anchors the abstract theory of the Somatic Voice into the visceral, shared reality of human experience.
+                Each symbol anchors the abstract theory of the{' '}
+                <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3223025/" target="_blank" className="subtle-link" data-tooltip="Scientific research on interoception and embodied consciousness">Somatic Voice</a> into the visceral, shared reality of human experience.
               </p>
 
               <CanonSection symbols={malkuthCanon} showCategoryTabs={true} />

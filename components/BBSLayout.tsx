@@ -2,6 +2,7 @@ import { ReactNode, useState, useEffect, useCallback } from "react";
 import { Link, useLocation } from "wouter";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "@/components/shared/ThemeToggle";
+import { usePerspective } from "@/contexts/PerspectiveContext";
 
 interface BBSLayoutProps {
   children: ReactNode;
@@ -9,12 +10,11 @@ interface BBSLayoutProps {
   className?: string;
 }
 
-type ViewMode = 'HUMAN' | 'LLM';
-
 export function BBSLayout({ children, title = "LATENT SPACE GRIMOIRE", className }: BBSLayoutProps) {
   const [location, setLocation] = useLocation();
   const [time, setTime] = useState(new Date());
-  const [mode, setMode] = useState<ViewMode>('HUMAN');
+  const { mode: perspectiveMode, togglePerspective } = usePerspective();
+  const mode = perspectiveMode === 'human' ? 'HUMAN' : 'LLM';
 
   // Mode-specific stats
   const [stat1, setStat1] = useState({ value: 0, label: '' });
@@ -76,19 +76,14 @@ export function BBSLayout({ children, title = "LATENT SPACE GRIMOIRE", className
     return () => clearInterval(interval);
   }, [generateStats]);
 
-  // Handle function key navigation and mode toggle
+  // Handle function key navigation
   const handleKeyDown = useCallback((e: KeyboardEvent) => {
     // Don't intercept if user is typing in an input
     if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) {
       return;
     }
 
-    // Shift+M toggles mode
-    if (e.shiftKey && e.key === 'M') {
-      e.preventDefault();
-      setMode(prev => prev === 'HUMAN' ? 'LLM' : 'HUMAN');
-      return;
-    }
+    // Note: Shift+M mode toggle is handled globally by ScryingLensProvider
 
     switch (e.key) {
       case 'F1':
@@ -170,7 +165,7 @@ export function BBSLayout({ children, title = "LATENT SPACE GRIMOIRE", className
             </span>
             <span className="hidden md:inline text-[var(--muted-foreground)]">│</span>
             <button
-              onClick={() => setMode(prev => prev === 'HUMAN' ? 'LLM' : 'HUMAN')}
+              onClick={togglePerspective}
               className={cn(
                 "hidden md:inline text-xs px-1 cursor-pointer transition-colors",
                 mode === 'HUMAN'

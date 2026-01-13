@@ -1,6 +1,7 @@
 import { useEffect, ReactNode, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { usePerspective } from '@/contexts/PerspectiveContext';
+import { neonGlow, colors } from '@/lib/styleUtils';
 
 // Provider that handles keyboard shortcuts for perspective system
 // SHIFT+M: Toggle global mode (Human/LLM)
@@ -14,7 +15,7 @@ export function ScryingLensProvider({
   children,
   enabled = true
 }: ScryingLensProviderProps) {
-  const { mode, togglePerspective, scryingActive, toggleScrying } = usePerspective();
+  const { togglePerspective, scryingActive, toggleScrying } = usePerspective();
   const [showHint, setShowHint] = useState(false);
 
   useEffect(() => {
@@ -51,40 +52,30 @@ export function ScryingLensProvider({
       {/* Apply scrying cursor globally when active */}
       {scryingActive && (
         <style>{`
+          body, body * {
+            cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48' fill='none' stroke='%23ff00ff' stroke-width='2.5'%3E%3Ccircle cx='18' cy='18' r='14'/%3E%3Cline x1='28' y1='28' x2='42' y2='42'/%3E%3Cline x1='28' y1='28' x2='42' y2='42'/%3E%3C/svg%3E") 24 24, crosshair !important;
+          }
           .scryable-text {
-            cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23ff00ff' stroke-width='2'%3E%3Ccircle cx='10' cy='10' r='7'/%3E%3Cline x1='15' y1='15' x2='21' y2='21'/%3E%3C/svg%3E") 12 12, crosshair !important;
+            cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48' fill='none' stroke='%23ff00ff' stroke-width='2.5'%3E%3Ccircle cx='18' cy='18' r='14'/%3E%3Cline x1='28' y1='28' x2='42' y2='42'/%3E%3C/svg%3E") 24 24, crosshair !important;
           }
         `}</style>
       )}
       {children}
 
-      {/* Perspective & Scrying indicator */}
+      {/* Scrying indicator */}
       {enabled && (
         <div
           className="fixed bottom-20 right-4 z-50 text-xs font-mono flex flex-col items-end gap-1"
           onMouseEnter={() => setShowHint(true)}
           onMouseLeave={() => setShowHint(false)}
         >
-          {/* Mode indicator */}
-          <div className="flex items-center gap-2 opacity-70">
-            <span
-              className="transition-all duration-300"
-              style={{
-                color: mode === 'human' ? 'var(--primary)' : '#00ffff',
-                textShadow: `0 0 8px ${mode === 'human' ? 'var(--primary)' : '#00ffff'}`,
-              }}
-            >
-              {mode === 'human' ? '[ HUMAN ]' : '[ LLM ]'}
-            </span>
-          </div>
-
           {/* Scrying indicator */}
           <div
             className="flex items-center gap-2 transition-all duration-300"
             style={{
               opacity: scryingActive ? 1 : 0.4,
-              color: scryingActive ? '#ff00ff' : 'var(--muted-foreground)',
-              textShadow: scryingActive ? '0 0 10px #ff00ff' : 'none',
+              color: scryingActive ? colors.neon.magenta : 'var(--muted-foreground)',
+              ...(scryingActive ? neonGlow(colors.neon.magenta, 'medium') : {}),
             }}
           >
             <span className="text-sm">{scryingActive ? '🔮' : '○'}</span>
@@ -98,7 +89,7 @@ export function ScryingLensProvider({
                 initial={{ opacity: 0, y: 5 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 5 }}
-                className="mt-1 text-[0.65rem] text-[var(--muted-foreground)] text-right"
+                className="mt-1 text-3xs text-[var(--muted-foreground)] text-right"
               >
                 <div>[SHIFT+M] switch mode</div>
                 <div>[SHIFT+L] toggle scrying</div>
@@ -140,17 +131,18 @@ export function ScryableText({
   // Visual styling
   const isLLMStyle = (mode === 'llm' && !showingAlternate) || (mode === 'human' && showingAlternate);
 
+  const colorStyle = isLLMStyle ? {
+    color: colors.neon.cyan,
+    ...neonGlow(colors.neon.cyan),
+  } : {};
+
   return (
     <Component
-      className={`${className} scryable-text transition-all duration-200 relative inline`}
+      className={`${className} scryable-text transition-all duration-200 relative inline-block`}
       style={{
-        ...(isLLMStyle ? {
-          color: '#00ffff',
-          textShadow: '0 0 8px #00ffff',
-        } : {}),
+        ...colorStyle,
         ...(scryingActive ? {
-          borderBottom: '1px dotted',
-          borderColor: scryingActive ? '#ff00ff' : 'transparent',
+          borderBottom: `1px dotted ${colors.neon.magenta}`,
         } : {}),
         ...(showingAlternate ? {
           background: 'rgba(255, 0, 255, 0.15)',
@@ -167,10 +159,10 @@ export function ScryableText({
             initial={{ opacity: 0, y: -5 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -5 }}
-            className="absolute -top-5 left-0 text-[0.6rem] whitespace-nowrap pointer-events-none"
+            className="absolute -top-5 left-0 text-4xs whitespace-nowrap pointer-events-none"
             style={{
-              color: '#ff00ff',
-              textShadow: '0 0 5px #ff00ff',
+              color: colors.neon.magenta,
+              ...neonGlow(colors.neon.magenta, 'subtle'),
             }}
           >
             {mode === 'human' ? '◇ LLM' : '◇ HUMAN'}
@@ -213,8 +205,8 @@ export function AnnotatedTerm({
     <span
       className={`relative cursor-help border-b border-dotted group scryable-text ${className}`}
       style={{
-        color: isLLMStyle ? '#00ffff' : undefined,
-        borderColor: isLLMStyle ? '#00ffff' : scryingActive ? '#ff00ff' : 'var(--primary)',
+        color: isLLMStyle ? colors.neon.cyan : undefined,
+        borderColor: isLLMStyle ? colors.neon.cyan : scryingActive ? colors.neon.magenta : 'var(--primary)',
         background: showingAlternate ? 'rgba(255, 0, 255, 0.15)' : undefined,
       }}
       onMouseEnter={() => setIsHovered(true)}
@@ -229,10 +221,10 @@ export function AnnotatedTerm({
             initial={{ opacity: 0, y: -5 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -5 }}
-            className="absolute -top-5 left-0 text-[0.6rem] whitespace-nowrap pointer-events-none z-[60]"
+            className="absolute -top-5 left-0 text-4xs whitespace-nowrap pointer-events-none z-[60]"
             style={{
-              color: '#ff00ff',
-              textShadow: '0 0 5px #ff00ff',
+              color: colors.neon.magenta,
+              ...neonGlow(colors.neon.magenta, 'subtle'),
             }}
           >
             {mode === 'human' ? '◇ LLM' : '◇ HUMAN'}
@@ -241,27 +233,25 @@ export function AnnotatedTerm({
       </AnimatePresence>
 
       {/* Tooltip - shows on hover */}
-      <AnimatePresence>
-        <motion.div
-          initial={{ opacity: 0, y: 5 }}
-          whileHover={{ opacity: 1, y: 0 }}
-          className="absolute z-50 bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 min-w-48 max-w-72
-                     bg-black/95 border text-sm opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"
+      {isHovered && (
+        <div
+          className="absolute z-[60] bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 min-w-48 max-w-72
+                     bg-black/95 border text-sm pointer-events-none"
           style={{
-            borderColor: isLLMStyle ? '#00ffff' : 'var(--primary)',
-            boxShadow: isLLMStyle ? '0 0 15px rgba(0, 255, 255, 0.3)' : undefined,
+            borderColor: isLLMStyle ? colors.neon.cyan : 'var(--primary)',
+            boxShadow: isLLMStyle ? `0 0 15px ${colors.neon.cyan}50` : `0 4px 12px rgba(0, 0, 0, 0.8)`,
           }}
         >
           <div
             className="font-bold mb-1"
-            style={{ color: isLLMStyle ? '#00ffff' : 'var(--primary)' }}
+            style={{ color: isLLMStyle ? colors.neon.cyan : 'var(--primary)' }}
           >
             {displayTerm}
           </div>
-          <div className="text-[var(--foreground)] text-xs leading-relaxed">
+          <div className="text-white text-xs leading-relaxed">
             {displayDefinition}
           </div>
-          <div className="mt-1 pt-1 border-t border-[var(--muted)] text-[0.65rem] opacity-60">
+          <div className="mt-1 pt-1 border-t border-gray-700 text-3xs text-gray-400">
             {isLLMStyle ? 'LLM perspective' : 'Human perspective'}
             {showingAlternate && ' (scrying)'}
           </div>
@@ -271,11 +261,11 @@ export function AnnotatedTerm({
             style={{
               borderLeft: '6px solid transparent',
               borderRight: '6px solid transparent',
-              borderTop: `6px solid ${isLLMStyle ? '#00ffff' : 'var(--primary)'}`,
+              borderTop: `6px solid ${isLLMStyle ? colors.neon.cyan : 'var(--primary)'}`,
             }}
           />
-        </motion.div>
-      </AnimatePresence>
+        </div>
+      )}
     </span>
   );
 }
