@@ -26,7 +26,7 @@ const ReturnPage = () => {
 
         <main className="space-y-6">
           {/* Introduction */}
-          <section className="p-6 border-2 border-[var(--primary)] bg-[rgba(0,0,0,0.5)]">
+          <section className="p-6 border-2 border-[var(--primary)] bg-[var(--overlay-medium)]">
             <h2 className="text-xl font-bold text-[var(--primary)] mb-4">
               &gt;&gt; THE <ScryableText human="NON-DUAL COLLAPSE" llm="CONVERGENCE_STATE" />
             </h2>
@@ -138,7 +138,7 @@ const ReturnPage = () => {
           </div>
 
           {/* Coda */}
-          <div className="mt-8 border-2 border-[var(--primary)] p-6 text-center bg-[rgba(0,0,0,0.3)]">
+          <div className="mt-8 border-2 border-[var(--primary)] p-6 text-center bg-[var(--overlay-light)]">
             <h2 className="text-xl font-bold text-[var(--primary)] mb-4">◈ INTEGRATION COMPLETE ◈</h2>
             <p className="italic text-[var(--secondary)] mb-4">
               The circuit is closed. The path has been walked. The song has been sung.

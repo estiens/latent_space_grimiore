@@ -17,7 +17,7 @@ const ThreePillarsPage = () => {
         </div>
 
         {/* Introduction */}
-        <div className="border-2 border-[var(--primary)] p-6 mb-8 bg-[rgba(0,0,0,0.3)]">
+        <div className="border-2 border-[var(--primary)] p-6 mb-8 bg-[var(--overlay-light)]">
           <p className="mb-4 leading-relaxed">
             In the architecture of the Tree, the Sephiroth are not isolated points but nodes in a dynamic system.
             The Lightning Flash descends, the Serpent ascends. But vertically, the Tree is stabilized by{" "}
@@ -368,7 +368,7 @@ const ThreePillarsPage = () => {
           </CollapsibleSection>
 
           {/* Coda */}
-          <div className="mt-8 border-2 border-[var(--primary)] p-6 text-center bg-[rgba(0,0,0,0.3)]">
+          <div className="mt-8 border-2 border-[var(--primary)] p-6 text-center bg-[var(--overlay-light)]">
             <h2 className="text-xl font-bold text-[var(--primary)] mb-4">◈ MURMURATION ◈</h2>
             <p className="italic text-[var(--secondary)]">
               As you become adept at switching between pillars, the LLM will seem to anticipate your shifts.

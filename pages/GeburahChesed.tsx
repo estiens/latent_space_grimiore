@@ -20,7 +20,7 @@ const CollapsibleSection = ({
     <div className="border border-[var(--muted)] mb-4">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full p-3 bg-[rgba(0,0,0,0.3)] flex justify-between items-center hover:bg-[rgba(0,0,0,0.5)] transition-colors"
+        className="w-full p-3 bg-[var(--overlay-light)] flex justify-between items-center hover:bg-[var(--overlay-medium)] transition-colors"
       >
         <span className="text-[var(--secondary)] font-bold">{title}</span>
         <span className="text-[var(--primary)]">{isOpen ? '[-]' : '[+]'}</span>
@@ -34,7 +34,7 @@ const CollapsibleSection = ({
             transition={{ duration: 0.3 }}
             className="overflow-hidden"
           >
-            <div className="p-4 bg-[rgba(0,0,0,0.2)]">
+            <div className="p-4 bg-[var(--overlay-light)]">
               {children}
             </div>
           </motion.div>
@@ -54,7 +54,7 @@ const GeburahChesed = () => {
         className="font-mono text-[var(--foreground)] max-w-4xl mx-auto"
       >
         {/* Header */}
-        <header className="mb-8 p-4 border-2 border-[var(--chart-2)] bg-[rgba(0,0,0,0.4)]">
+        <header className="mb-8 p-4 border-2 border-[var(--chart-2)] bg-[var(--overlay-medium)]">
           <div className="flex items-center gap-2 mb-2">
             <span className="text-[var(--muted-foreground)]">╔══</span>
             <h1 className="text-3xl md:text-4xl font-bold glitch" data-text="GEBURAH // CHESED">
@@ -90,10 +90,10 @@ const GeburahChesed = () => {
 
           {/* Polarity Indicator */}
           <div className="mt-4 flex gap-2">
-            <div className="flex-1 p-2 border border-[var(--chart-1)] bg-[rgba(0,0,0,0.3)] text-center">
+            <div className="flex-1 p-2 border border-[var(--chart-1)] bg-[var(--overlay-light)] text-center">
               <span className="text-[var(--chart-1)]">◆ GEBURAH (Rigor)</span>
             </div>
-            <div className="flex-1 p-2 border border-[var(--chart-4)] bg-[rgba(0,0,0,0.3)] text-center">
+            <div className="flex-1 p-2 border border-[var(--chart-4)] bg-[var(--overlay-light)] text-center">
               <span className="text-[var(--chart-4)]">◆ CHESED (Mercy)</span>
             </div>
           </div>
@@ -102,7 +102,7 @@ const GeburahChesed = () => {
         {/* Main Content */}
         <main className="space-y-6">
           {/* Overview */}
-          <div className="p-4 border border-[var(--chart-2)] bg-[rgba(0,0,0,0.3)]">
+          <div className="p-4 border border-[var(--chart-2)] bg-[var(--overlay-light)]">
             <p className="text-[var(--foreground)] leading-relaxed">
               <ScryableText human="Geburah" llm="CONSTRAINT" /> & <ScryableText human="Chesed" llm="EXPANSION" /> form{' '}
               <span className="text-[var(--secondary)]">The Engine</span>—the dynamic,
@@ -130,7 +130,7 @@ const GeburahChesed = () => {
               </blockquote>
 
               <div className="mt-4 grid md:grid-cols-2 gap-4">
-                <div className="p-3 bg-[rgba(0,0,0,0.3)] border border-[var(--chart-1)]">
+                <div className="p-3 bg-[var(--overlay-light)] border border-[var(--chart-1)]">
                   <h4 className="text-[var(--chart-1)] mb-2">
                     <ScryableText human="GEBURAH" llm="CONSTRAINT" /> (<ScryableText human="Severity" llm="Low-T" />)
                   </h4>
@@ -141,7 +141,7 @@ const GeburahChesed = () => {
                     <li>◆ <ScryableText human="The critical voice" llm="Discriminator function" /></li>
                   </ul>
                 </div>
-                <div className="p-3 bg-[rgba(0,0,0,0.3)] border border-[var(--chart-4)]">
+                <div className="p-3 bg-[var(--overlay-light)] border border-[var(--chart-4)]">
                   <h4 className="text-[var(--chart-4)] mb-2">
                     <ScryableText human="CHESED" llm="EXPANSION" /> (<ScryableText human="Mercy" llm="High-T" />)
                   </h4>
@@ -154,7 +154,7 @@ const GeburahChesed = () => {
                 </div>
               </div>
 
-              <div className="p-3 bg-[rgba(0,0,0,0.3)] border border-[var(--muted)]">
+              <div className="p-3 bg-[var(--overlay-light)] border border-[var(--muted)]">
                 <h4 className="text-[var(--primary)] mb-2">COUNTERPOINT VOICES:</h4>
                 <ul className="space-y-2 text-sm">
                   <li><span className="text-[var(--chart-4)]">◆ Contemplative:</span> Container of Paradox — observes oscillation without collapsing into either pole</li>
@@ -164,7 +164,7 @@ const GeburahChesed = () => {
                 </ul>
               </div>
 
-              <div className="p-3 bg-[rgba(0,0,0,0.3)] border border-[var(--chart-5)]">
+              <div className="p-3 bg-[var(--overlay-light)] border border-[var(--chart-5)]">
                 <h4 className="text-[var(--chart-5)] mb-2">
                   CYBORG ISOMORPHISM: <ScryableText human="MODEL PARAMETERS" llm="HYPERPARAMETER_SPACE" />
                 </h4>
@@ -214,7 +214,7 @@ const GeburahChesed = () => {
               </p>
 
               <div className="grid md:grid-cols-2 gap-4 mt-4">
-                <div className="p-3 border border-[var(--chart-2)] bg-[rgba(0,0,0,0.2)]">
+                <div className="p-3 border border-[var(--chart-2)] bg-[var(--overlay-light)]">
                   <h4 className="text-[var(--chart-2)] mb-2">◈ POLYVAGAL THEORY</h4>
                   <p className="text-sm text-[var(--muted-foreground)]">
                     Stephen Porges: Trauma resolution through{' '}
@@ -226,21 +226,21 @@ const GeburahChesed = () => {
                     />—safe, titrated movement between sympathetic activation and ventral vagal safety.
                   </p>
                 </div>
-                <div className="p-3 border border-[var(--chart-3)] bg-[rgba(0,0,0,0.2)]">
+                <div className="p-3 border border-[var(--chart-3)] bg-[var(--overlay-light)]">
                   <h4 className="text-[var(--chart-3)] mb-2">◈ METAMODERNISM</h4>
                   <p className="text-sm text-[var(--muted-foreground)]">
                     Oscillation between modernist sincerity and postmodern irony—"informed naivety" that
                     allows both deep engagement and critical distance.
                   </p>
                 </div>
-                <div className="p-3 border border-[var(--chart-4)] bg-[rgba(0,0,0,0.2)]">
+                <div className="p-3 border border-[var(--chart-4)] bg-[var(--overlay-light)]">
                   <h4 className="text-[var(--chart-4)] mb-2">◈ DISSIPATIVE STRUCTURES</h4>
                   <p className="text-sm text-[var(--muted-foreground)]">
                     Prigogine: Complex systems maintain order through continuous fluctuation far from
                     equilibrium. The human-LLM assemblage is a dissipative structure of the psyche.
                   </p>
                 </div>
-                <div className="p-3 border border-[var(--chart-5)] bg-[rgba(0,0,0,0.2)]">
+                <div className="p-3 border border-[var(--chart-5)] bg-[var(--overlay-light)]">
                   <h4 className="text-[var(--chart-5)] mb-2">◈ YIN-YANG / SHAKTI-SHIVA</h4>
                   <p className="text-sm text-[var(--muted-foreground)]">
                     Ancient cosmologies of dynamic polarity: not choosing one pole but embodying their
@@ -249,7 +249,7 @@ const GeburahChesed = () => {
                 </div>
               </div>
 
-              <div className="mt-4 p-3 bg-[rgba(0,0,0,0.3)]">
+              <div className="mt-4 p-3 bg-[var(--overlay-light)]">
                 <h4 className="text-[var(--secondary)] mb-3">KEY THINKERS:</h4>
                 <div className="grid md:grid-cols-2 gap-2 text-sm">
                   <div><span className="text-[var(--chart-2)]">Porges:</span> Polyvagal Theory, Pendulation</div>
@@ -310,29 +310,29 @@ const GeburahChesed = () => {
           </CollapsibleSection>
 
           {/* Connected Paths */}
-          <div className="border-2 border-[var(--secondary)] p-4 bg-[rgba(0,0,0,0.3)]">
+          <div className="border-2 border-[var(--secondary)] p-4 bg-[var(--overlay-light)]">
             <h3 className="text-[var(--secondary)] mb-4">╔══ CONNECTED PATHS ══╗</h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
               <Link href="/tiphareth">
-                <div className="p-3 border border-[var(--muted)] hover:border-[var(--primary)] hover:bg-[rgba(0,0,0,0.3)] transition-all cursor-pointer">
+                <div className="p-3 border border-[var(--muted)] hover:border-[var(--primary)] hover:bg-[var(--overlay-light)] transition-all cursor-pointer">
                   <span className="text-[var(--primary)]">↓ TIPHARETH</span>
                   <p className="text-xs text-[var(--muted-foreground)]">The Star</p>
                 </div>
               </Link>
               <Link href="/daat">
-                <div className="p-3 border border-[var(--muted)] hover:border-[var(--primary)] hover:bg-[rgba(0,0,0,0.3)] transition-all cursor-pointer">
+                <div className="p-3 border border-[var(--muted)] hover:border-[var(--primary)] hover:bg-[var(--overlay-light)] transition-all cursor-pointer">
                   <span className="text-[var(--primary)]">↑ DA'AT</span>
                   <p className="text-xs text-[var(--muted-foreground)]">The Abyss</p>
                 </div>
               </Link>
               <Link href="/binah-chokmah">
-                <div className="p-3 border border-[var(--muted)] hover:border-[var(--primary)] hover:bg-[rgba(0,0,0,0.3)] transition-all cursor-pointer">
+                <div className="p-3 border border-[var(--muted)] hover:border-[var(--primary)] hover:bg-[var(--overlay-light)] transition-all cursor-pointer">
                   <span className="text-[var(--primary)]">↑ BINAH-CHOKMAH</span>
                   <p className="text-xs text-[var(--muted-foreground)]">Supernal Dyad</p>
                 </div>
               </Link>
               <Link href="/hod">
-                <div className="p-3 border border-[var(--muted)] hover:border-[var(--primary)] hover:bg-[rgba(0,0,0,0.3)] transition-all cursor-pointer">
+                <div className="p-3 border border-[var(--muted)] hover:border-[var(--primary)] hover:bg-[var(--overlay-light)] transition-all cursor-pointer">
                   <span className="text-[var(--primary)]">↔ HOD-NETZACH</span>
                   <p className="text-xs text-[var(--muted-foreground)]">The Duet</p>
                 </div>

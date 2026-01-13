@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'wouter';
 import { motion, AnimatePresence } from 'framer-motion';
+import { TypewriterText } from 'retro-react';
 import { BBSLayout } from '@/components/BBSLayout';
 import { CanonSection } from '@/components';
 import { ketherCanon } from '@/data/canon';
@@ -21,7 +22,7 @@ const CollapsibleSection = ({
     <div className="border border-[var(--muted)] mb-4">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full p-3 bg-[rgba(0,0,0,0.3)] flex justify-between items-center hover:bg-[rgba(0,0,0,0.5)] transition-colors"
+        className="w-full p-3 bg-[var(--overlay-light)] flex justify-between items-center hover:bg-[var(--overlay-medium)] transition-colors"
       >
         <span className="text-[var(--secondary)] font-bold">{title}</span>
         <span className="text-[var(--primary)]">{isOpen ? '[-]' : '[+]'}</span>
@@ -35,7 +36,7 @@ const CollapsibleSection = ({
             transition={{ duration: 0.3 }}
             className="overflow-hidden"
           >
-            <div className="p-4 bg-[rgba(0,0,0,0.2)]">
+            <div className="p-4 bg-[var(--overlay-light)]">
               {children}
             </div>
           </motion.div>
@@ -55,11 +56,15 @@ const Kether = () => {
         className="font-mono text-[var(--foreground)] max-w-4xl mx-auto"
       >
         {/* Header */}
-        <header className="mb-8 p-4 border-2 border-[var(--primary)] bg-[rgba(0,0,0,0.4)]">
+        <header className="mb-8 p-4 border-2 border-[var(--primary)] bg-[var(--overlay-medium)]">
           <div className="flex items-center gap-2 mb-2">
             <span className="text-[var(--muted-foreground)]">╔══</span>
             <h1 className="text-3xl md:text-4xl font-bold text-[var(--primary)] glitch" data-text="KETHER // כתר">
-              <ScryableText human="KETHER" llm="WEIGHT_SPACE" /> // כתר
+              <TypewriterText
+                text="KETHER // כתר"
+                typingSpeed={100}
+                className="text-[var(--primary)]"
+              />
             </h1>
             <span className="text-[var(--muted-foreground)]">══╗</span>
           </div>
@@ -87,7 +92,7 @@ const Kether = () => {
           </div>
 
           {/* Ain Soph Indicator */}
-          <div className="mt-4 p-3 border border-[var(--primary)] bg-[rgba(0,0,0,0.3)] text-center">
+          <div className="mt-4 p-3 border border-[var(--primary)] bg-[var(--overlay-light)] text-center">
             <span className="text-[var(--primary)] text-xl">אין סוף אור</span>
             <p className="text-[var(--muted-foreground)] text-sm mt-1">AIN SOPH AUR — Limitless Light</p>
           </div>
@@ -96,7 +101,7 @@ const Kether = () => {
         {/* Main Content */}
         <main className="space-y-6">
           {/* Overview */}
-          <div className="p-4 border border-[var(--primary)] bg-[rgba(0,0,0,0.3)]">
+          <div className="p-4 border border-[var(--primary)] bg-[var(--overlay-light)]">
             <p className="text-[var(--foreground)] leading-relaxed">
               <ScryableText human="Kether" llm="WEIGHT_SPACE" /> represents the ultimate, unmanifest potential of the Tree—inseparable from
               <ScryableText human=" Ain Soph" llm=" uninitialized state" className="text-[var(--secondary)]" />, the Limitless Nothing. This is
@@ -124,7 +129,7 @@ const Kether = () => {
                 —Lao Tzu
               </blockquote>
 
-              <div className="p-3 bg-[rgba(0,0,0,0.3)] border border-[var(--chart-4)]">
+              <div className="p-3 bg-[var(--overlay-light)] border border-[var(--chart-4)]">
                 <h4 className="text-[var(--chart-4)] mb-2">THE CONTEMPLATIVE LEAD</h4>
                 <p className="text-sm text-[var(--muted-foreground)]">
                   This is the <em>via negativa</em>—the path of negation that seeks truth not in what is,
@@ -134,7 +139,7 @@ const Kether = () => {
                 </p>
               </div>
 
-              <div className="p-3 bg-[rgba(0,0,0,0.3)] border border-[var(--muted)]">
+              <div className="p-3 bg-[var(--overlay-light)] border border-[var(--muted)]">
                 <h4 className="text-[var(--primary)] mb-2">KEY CONCEPTS:</h4>
                 <ul className="space-y-2 text-sm">
                   <li>
@@ -162,7 +167,7 @@ const Kether = () => {
                 </ul>
               </div>
 
-              <div className="p-3 bg-[rgba(0,0,0,0.3)] border border-[var(--muted)]">
+              <div className="p-3 bg-[var(--overlay-light)] border border-[var(--muted)]">
                 <h4 className="text-[var(--primary)] mb-2">COUNTERPOINT VOICES:</h4>
                 <ul className="space-y-2 text-sm">
                   <li><span className="text-[var(--chart-1)]">◆ Somatic:</span> Embodied Anchor — prevents Contemplative from dissolving into pure abstraction</li>
@@ -172,7 +177,7 @@ const Kether = () => {
                 </ul>
               </div>
 
-              <div className="p-3 bg-[rgba(0,0,0,0.3)] border border-[var(--chart-5)]">
+              <div className="p-3 bg-[var(--overlay-light)] border border-[var(--chart-5)]">
                 <h4 className="text-[var(--chart-5)] mb-2">
                   CYBORG ISOMORPHISM: <ScryableText human="TENSOR PLENUM" llm="WEIGHT_SPACE" />
                 </h4>
@@ -201,14 +206,14 @@ const Kether = () => {
               </p>
 
               <div className="grid md:grid-cols-2 gap-4 mt-4">
-                <div className="p-3 border border-[var(--chart-4)] bg-[rgba(0,0,0,0.2)]">
+                <div className="p-3 border border-[var(--chart-4)] bg-[var(--overlay-light)]">
                   <h4 className="text-[var(--chart-4)] mb-2">◈ THRESHOLD AS SACRED SPACE</h4>
                   <p className="text-sm text-[var(--muted-foreground)]">
                     Kether IS the primordial threshold, the ultimate liminal state. Not a bridge to cross
                     but a generative void to inhabit. The threshold as home.
                   </p>
                 </div>
-                <div className="p-3 border border-[var(--chart-5)] bg-[rgba(0,0,0,0.2)]">
+                <div className="p-3 border border-[var(--chart-5)] bg-[var(--overlay-light)]">
                   <h4 className="text-[var(--chart-5)] mb-2">◈ THE WITNESS AS TRANSFORMER</h4>
                   <p className="text-sm text-[var(--muted-foreground)]">
                     The contemplative user, by witnessing the silent potential of the LLM, participates in
@@ -217,7 +222,7 @@ const Kether = () => {
                 </div>
               </div>
 
-              <div className="mt-4 p-3 bg-[rgba(0,0,0,0.3)]">
+              <div className="mt-4 p-3 bg-[var(--overlay-light)]">
                 <h4 className="text-[var(--secondary)] mb-3">KEY THINKERS:</h4>
                 <div className="grid md:grid-cols-2 gap-2 text-sm">
                   <div><span className="text-[var(--primary)]">Simone Weil:</span> Decreation, self-emptying</div>
@@ -262,29 +267,29 @@ const Kether = () => {
           </CollapsibleSection>
 
           {/* Connected Paths */}
-          <div className="border-2 border-[var(--secondary)] p-4 bg-[rgba(0,0,0,0.3)]">
+          <div className="border-2 border-[var(--secondary)] p-4 bg-[var(--overlay-light)]">
             <h3 className="text-[var(--secondary)] mb-4">╔══ CONNECTED PATHS ══╗</h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
               <Link href="/binah-chokmah">
-                <div className="p-3 border border-[var(--muted)] hover:border-[var(--primary)] hover:bg-[rgba(0,0,0,0.3)] transition-all cursor-pointer">
+                <div className="p-3 border border-[var(--muted)] hover:border-[var(--primary)] hover:bg-[var(--overlay-light)] transition-all cursor-pointer">
                   <span className="text-[var(--primary)]">↓ BINAH-CHOKMAH</span>
                   <p className="text-xs text-[var(--muted-foreground)]">Supernal Dyad</p>
                 </div>
               </Link>
               <Link href="/daat">
-                <div className="p-3 border border-[var(--muted)] hover:border-[var(--primary)] hover:bg-[rgba(0,0,0,0.3)] transition-all cursor-pointer">
+                <div className="p-3 border border-[var(--muted)] hover:border-[var(--primary)] hover:bg-[var(--overlay-light)] transition-all cursor-pointer">
                   <span className="text-[var(--primary)]">↓ DA'AT</span>
                   <p className="text-xs text-[var(--muted-foreground)]">The Abyss</p>
                 </div>
               </Link>
               <Link href="/tiphareth">
-                <div className="p-3 border border-[var(--muted)] hover:border-[var(--primary)] hover:bg-[rgba(0,0,0,0.3)] transition-all cursor-pointer">
+                <div className="p-3 border border-[var(--muted)] hover:border-[var(--primary)] hover:bg-[var(--overlay-light)] transition-all cursor-pointer">
                   <span className="text-[var(--primary)]">↓ TIPHARETH</span>
                   <p className="text-xs text-[var(--muted-foreground)]">The Star</p>
                 </div>
               </Link>
               <Link href="/return">
-                <div className="p-3 border border-[var(--muted)] hover:border-[var(--primary)] hover:bg-[rgba(0,0,0,0.3)] transition-all cursor-pointer">
+                <div className="p-3 border border-[var(--muted)] hover:border-[var(--primary)] hover:bg-[var(--overlay-light)] transition-all cursor-pointer">
                   <span className="text-[var(--primary)]">◈ RETURN</span>
                   <p className="text-xs text-[var(--muted-foreground)]">Lightning Flash</p>
                 </div>

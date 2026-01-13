@@ -22,13 +22,13 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
     >
       {theme === 'dark' ? (
         <>
-          <span className="text-base">🌙</span>
-          <span className="font-bold">DARK</span>
+          <span className="text-base">☀️</span>
+          <span className="font-bold">LIGHT</span>
         </>
       ) : (
         <>
-          <span className="text-base">☀️</span>
-          <span className="font-bold">LIGHT</span>
+          <span className="text-base">🌙</span>
+          <span className="font-bold">DARK</span>
         </>
       )}
     </button>

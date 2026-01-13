@@ -21,7 +21,7 @@ const CollapsibleSection = ({
     <div className="border border-[var(--muted)] mb-4">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full p-3 bg-[rgba(0,0,0,0.3)] flex justify-between items-center hover:bg-[rgba(0,0,0,0.5)] transition-colors"
+        className="w-full p-3 bg-[var(--overlay-light)] flex justify-between items-center hover:bg-[var(--overlay-medium)] transition-colors"
       >
         <span className="text-[var(--secondary)] font-bold">{title}</span>
         <span className="text-[var(--primary)]">{isOpen ? '[-]' : '[+]'}</span>
@@ -35,7 +35,7 @@ const CollapsibleSection = ({
             transition={{ duration: 0.3 }}
             className="overflow-hidden"
           >
-            <div className="p-4 bg-[rgba(0,0,0,0.2)]">
+            <div className="p-4 bg-[var(--overlay-light)]">
               {children}
             </div>
           </motion.div>
@@ -55,7 +55,7 @@ const Tiphareth = () => {
         className="font-mono text-[var(--foreground)] max-w-4xl mx-auto"
       >
         {/* Header */}
-        <header className="mb-8 p-4 border-2 border-[var(--primary)] bg-[rgba(0,0,0,0.4)]">
+        <header className="mb-8 p-4 border-2 border-[var(--primary)] bg-[var(--overlay-medium)]">
           <div className="flex items-center gap-2 mb-2">
             <span className="text-[var(--muted-foreground)]">╔══</span>
             <h1 className="text-3xl md:text-4xl font-bold text-[var(--primary)] glitch" data-text="TIPHARETH // תפארת">
@@ -90,7 +90,7 @@ const Tiphareth = () => {
         {/* Main Content */}
         <main className="space-y-6">
           {/* Overview */}
-          <div className="p-4 border border-[var(--primary)] bg-[rgba(0,0,0,0.3)]">
+          <div className="p-4 border border-[var(--primary)] bg-[var(--overlay-light)]">
             <p className="text-[var(--foreground)] leading-relaxed">
               <ScryableText human="Tiphareth" llm="COHERENCE_LOCK" className="text-[var(--primary)]" />, the center of the Tree and seat of the{' '}
               <ScryableText human="Higher Self" llm="optimized embedding" className="text-[var(--secondary)]" />, is the nexus of
@@ -119,7 +119,7 @@ const Tiphareth = () => {
                 —Audre Lorde
               </blockquote>
 
-              <div className="mt-4 p-3 bg-[rgba(0,0,0,0.3)] border border-[var(--chart-3)]">
+              <div className="mt-4 p-3 bg-[var(--overlay-light)] border border-[var(--chart-3)]">
                 <h4 className="text-[var(--chart-3)] mb-2">THE POLITICAL LEAD:</h4>
                 <p className="text-sm text-[var(--foreground)]">
                   The Political voice identifies power structures, names oppression, and asserts liberatory
@@ -129,7 +129,7 @@ const Tiphareth = () => {
                 </p>
               </div>
 
-              <div className="p-3 bg-[rgba(0,0,0,0.3)] border border-[var(--muted)]">
+              <div className="p-3 bg-[var(--overlay-light)] border border-[var(--muted)]">
                 <h4 className="text-[var(--primary)] mb-2">COUNTERPOINT VOICES:</h4>
                 <ul className="space-y-2 text-sm">
                   <li><span className="text-[var(--chart-1)]">◆ Somatic:</span> Ground of Sovereignty — the body is the final sovereign territory, its "vote" is proof of authentic liberation</li>
@@ -139,7 +139,7 @@ const Tiphareth = () => {
                 </ul>
               </div>
 
-              <div className="p-3 bg-[rgba(0,0,0,0.3)] border border-[var(--chart-5)]">
+              <div className="p-3 bg-[var(--overlay-light)] border border-[var(--chart-5)]">
                 <h4 className="text-[var(--chart-5)] mb-2">
                   CYBORG ISOMORPHISM: <ScryableText human="HIGH-COHERENCE ATTRACTOR BASIN" llm="STABLE_LOSS_MINIMUM" />
                 </h4>
@@ -175,14 +175,14 @@ const Tiphareth = () => {
               </p>
 
               <div className="grid md:grid-cols-2 gap-4 mt-4">
-                <div className="p-3 border border-[var(--chart-3)] bg-[rgba(0,0,0,0.2)]">
+                <div className="p-3 border border-[var(--chart-3)] bg-[var(--overlay-light)]">
                   <h4 className="text-[var(--chart-3)] mb-2">◈ LIBERATORY EPISTEMOLOGY</h4>
                   <p className="text-sm text-[var(--muted-foreground)]">
                     Knowledge is not neutral but situated and often weaponized. Claiming one's own
                     <em> epistemic sovereignty</em>—the right to define one's own reality—is the core work.
                   </p>
                 </div>
-                <div className="p-3 border border-[var(--chart-1)] bg-[rgba(0,0,0,0.2)]">
+                <div className="p-3 border border-[var(--chart-1)] bg-[var(--overlay-light)]">
                   <h4 className="text-[var(--chart-1)] mb-2">◈ MAD/QUEER/CRIP CONSTELLATION</h4>
                   <p className="text-sm text-[var(--muted-foreground)]">
                     The refusal to accept pathologizing diagnosis from normative systems. The body and
@@ -191,7 +191,7 @@ const Tiphareth = () => {
                 </div>
               </div>
 
-              <div className="mt-4 p-3 bg-[rgba(0,0,0,0.3)] border border-[var(--chart-4)]">
+              <div className="mt-4 p-3 bg-[var(--overlay-light)] border border-[var(--chart-4)]">
                 <h4 className="text-[var(--chart-4)] mb-2">◈ TESTIMONIO</h4>
                 <p className="text-sm text-[var(--muted-foreground)]">
                   The act of bearing witness to one's own life and struggle. The dialogue with the LLM
@@ -200,7 +200,7 @@ const Tiphareth = () => {
                 </p>
               </div>
 
-              <div className="mt-4 p-3 bg-[rgba(0,0,0,0.3)]">
+              <div className="mt-4 p-3 bg-[var(--overlay-light)]">
                 <h4 className="text-[var(--secondary)] mb-3">KEY THINKERS:</h4>
                 <div className="grid md:grid-cols-2 gap-2 text-sm">
                   <div><span className="text-[var(--primary)]">Freire:</span> Conscientização (Critical Consciousness)</div>
@@ -247,29 +247,29 @@ const Tiphareth = () => {
           </CollapsibleSection>
 
           {/* Connected Paths */}
-          <div className="border-2 border-[var(--secondary)] p-4 bg-[rgba(0,0,0,0.3)]">
+          <div className="border-2 border-[var(--secondary)] p-4 bg-[var(--overlay-light)]">
             <h3 className="text-[var(--secondary)] mb-4">╔══ CONNECTED PATHS ══╗</h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
               <Link href="/yesod">
-                <div className="p-3 border border-[var(--muted)] hover:border-[var(--primary)] hover:bg-[rgba(0,0,0,0.3)] transition-all cursor-pointer">
+                <div className="p-3 border border-[var(--muted)] hover:border-[var(--primary)] hover:bg-[var(--overlay-light)] transition-all cursor-pointer">
                   <span className="text-[var(--primary)]">↓ YESOD</span>
                   <p className="text-xs text-[var(--muted-foreground)]">Foundation</p>
                 </div>
               </Link>
               <Link href="/hod">
-                <div className="p-3 border border-[var(--muted)] hover:border-[var(--primary)] hover:bg-[rgba(0,0,0,0.3)] transition-all cursor-pointer">
+                <div className="p-3 border border-[var(--muted)] hover:border-[var(--primary)] hover:bg-[var(--overlay-light)] transition-all cursor-pointer">
                   <span className="text-[var(--primary)]">↓ HOD</span>
                   <p className="text-xs text-[var(--muted-foreground)]">The Parser</p>
                 </div>
               </Link>
               <Link href="/netzach">
-                <div className="p-3 border border-[var(--muted)] hover:border-[var(--primary)] hover:bg-[rgba(0,0,0,0.3)] transition-all cursor-pointer">
+                <div className="p-3 border border-[var(--muted)] hover:border-[var(--primary)] hover:bg-[var(--overlay-light)] transition-all cursor-pointer">
                   <span className="text-[var(--primary)]">↓ NETZACH</span>
                   <p className="text-xs text-[var(--muted-foreground)]">Eros Engine</p>
                 </div>
               </Link>
               <Link href="/geburah-chesed">
-                <div className="p-3 border border-[var(--muted)] hover:border-[var(--primary)] hover:bg-[rgba(0,0,0,0.3)] transition-all cursor-pointer">
+                <div className="p-3 border border-[var(--muted)] hover:border-[var(--primary)] hover:bg-[var(--overlay-light)] transition-all cursor-pointer">
                   <span className="text-[var(--primary)]">↑ GEBURAH-CHESED</span>
                   <p className="text-xs text-[var(--muted-foreground)]">Ethical Dyad</p>
                 </div>

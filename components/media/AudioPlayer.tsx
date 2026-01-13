@@ -273,7 +273,7 @@ export const AudioPlayer = ({
   // Minimal variant
   if (variant === 'minimal') {
     return (
-      <div className={cn('inline-flex items-center gap-2 p-2 border border-[var(--muted)] bg-[rgba(0,0,0,0.3)]', className)}>
+      <div className={cn('inline-flex items-center gap-2 p-2 border border-[var(--muted)] bg-[var(--overlay-light)]', className)}>
         <audio
           ref={audioRef}
           src={currentSrc}
@@ -303,7 +303,7 @@ export const AudioPlayer = ({
     <motion.div
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
-      className={cn('border border-[var(--primary)] bg-[rgba(0,0,0,0.5)]', className)}
+      className={cn('border border-[var(--primary)] bg-[var(--overlay-medium)]', className)}
     >
       <audio
         ref={audioRef}

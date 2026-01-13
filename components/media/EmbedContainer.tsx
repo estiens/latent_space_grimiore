@@ -66,7 +66,7 @@ export const EmbedContainer = ({
     <motion.div
       ref={ref}
       className={cn(
-        'border border-[var(--muted)] bg-[rgba(0,0,0,0.5)]',
+        'border border-[var(--muted)] bg-[var(--overlay-medium)]',
         className
       )}
       initial={{ opacity: 0 }}

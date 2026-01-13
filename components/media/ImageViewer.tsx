@@ -54,7 +54,7 @@ export const ImageThumbnail = ({ src, alt, onClick, className }: ImageThumbnailP
       className="w-full h-full object-cover media-image-preview"
       loading="lazy"
     />
-    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-[rgba(0,0,0,0.5)]">
+    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-[var(--overlay-medium)]">
       <span className="text-[var(--primary)] text-2xl">[+]</span>
     </div>
     {/* CRT overlay on hover */}
@@ -216,7 +216,7 @@ export const ImageViewer = ({
           </div>
 
           {/* Footer with controls and info */}
-          <div className="border-t border-[var(--primary)] p-4 bg-[rgba(0,0,0,0.5)]">
+          <div className="border-t border-[var(--primary)] p-4 bg-[var(--overlay-medium)]">
             <div className="flex items-center justify-between">
               {/* Image info */}
               <div className="text-sm">

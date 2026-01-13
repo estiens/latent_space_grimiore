@@ -164,7 +164,7 @@ const ProtocolPage = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3 }}
-              className="p-6 border border-[var(--primary)] rounded-lg bg-[rgba(0,0,0,0.5)] text-[var(--foreground)] shadow-[0_0_15px_rgba(var(--primary),0.3)]"
+              className="p-6 border border-[var(--primary)] rounded-lg bg-[var(--overlay-medium)] text-[var(--foreground)] shadow-[0_0_15px_rgba(var(--primary),0.3)]"
             >
               {steps[step]}
             </motion.div>

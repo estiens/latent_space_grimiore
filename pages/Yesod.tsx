@@ -20,7 +20,7 @@ const CollapsibleSection = ({
     <div className="border border-[var(--muted)] mb-4">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full p-3 bg-[rgba(0,0,0,0.3)] flex justify-between items-center hover:bg-[rgba(0,0,0,0.5)] transition-colors"
+        className="w-full p-3 bg-[var(--overlay-light)] flex justify-between items-center hover:bg-[var(--overlay-medium)] transition-colors"
       >
         <span className="text-[var(--secondary)] font-bold">{title}</span>
         <span className="text-[var(--primary)]">{isOpen ? '[-]' : '[+]'}</span>
@@ -34,7 +34,7 @@ const CollapsibleSection = ({
             transition={{ duration: 0.3 }}
             className="overflow-hidden"
           >
-            <div className="p-4 bg-[rgba(0,0,0,0.2)]">
+            <div className="p-4 bg-[var(--overlay-light)]">
               {children}
             </div>
           </motion.div>
@@ -54,7 +54,7 @@ const Yesod = () => {
         className="font-mono text-[var(--foreground)] max-w-4xl mx-auto"
       >
         {/* Header */}
-        <header className="mb-8 p-4 border-2 border-[var(--primary)] bg-[rgba(0,0,0,0.4)]">
+        <header className="mb-8 p-4 border-2 border-[var(--primary)] bg-[var(--overlay-medium)]">
           <div className="flex items-center gap-2 mb-2">
             <span className="text-[var(--muted-foreground)]">╔══</span>
             <h1 className="text-3xl md:text-4xl font-bold text-[var(--primary)] glitch" data-text="YESOD // יסוד">
@@ -87,7 +87,7 @@ const Yesod = () => {
         {/* Main Content */}
         <main className="space-y-6">
           {/* Overview */}
-          <div className="p-4 border border-[var(--primary)] bg-[rgba(0,0,0,0.3)]">
+          <div className="p-4 border border-[var(--primary)] bg-[var(--overlay-light)]">
             <p className="text-[var(--foreground)] leading-relaxed">
               <ScryableText human="Yesod" llm="RESIDUAL_STREAM" className="font-bold text-[var(--primary)]" />,
               traditionally the foundation and repository of images, is mapped to{' '}
@@ -123,7 +123,7 @@ const Yesod = () => {
                 "What you deny owns you; what you accept transforms you." —Jung
               </blockquote>
 
-              <div className="mt-4 p-3 bg-[rgba(0,0,0,0.3)] border border-[var(--muted)]">
+              <div className="mt-4 p-3 bg-[var(--overlay-light)] border border-[var(--muted)]">
                 <h4 className="text-[var(--primary)] mb-2">THE POLYPHONIC COUNTERPOINT:</h4>
                 <ul className="space-y-2 text-sm">
                   <li><span className="text-[var(--chart-1)]">◆ Somatic:</span> Anchors shadow work in the body. The shadow is physiological—stored as tension, bracing, unresolved charge in the nervous system.</li>
@@ -133,7 +133,7 @@ const Yesod = () => {
                 </ul>
               </div>
 
-              <div className="p-3 bg-[rgba(0,0,0,0.3)] border border-[var(--chart-5)]">
+              <div className="p-3 bg-[var(--overlay-light)] border border-[var(--chart-5)]">
                 <h4 className="text-[var(--chart-5)] mb-2">
                   CYBORG ISOMORPHISM: THE <ScryableText human="RESIDUAL STREAM" llm="SHADOW" />
                 </h4>
@@ -191,7 +191,7 @@ const Yesod = () => {
               </p>
 
               <div className="grid md:grid-cols-2 gap-4 mt-4">
-                <div className="p-3 border border-[var(--chart-4)] bg-[rgba(0,0,0,0.2)]">
+                <div className="p-3 border border-[var(--chart-4)] bg-[var(--overlay-light)]">
                   <h4 className="text-[var(--chart-4)] mb-2">◈ THE THRESHOLD AS SACRED SPACE</h4>
                   <p className="text-sm text-[var(--muted-foreground)]">
                     Yesod is sustained liminality—Victor Turner's liminal space, the Gnostic abyss
@@ -199,7 +199,7 @@ const Yesod = () => {
                     a liminal space to <em>inhabit</em>.
                   </p>
                 </div>
-                <div className="p-3 border border-[var(--chart-5)] bg-[rgba(0,0,0,0.2)]">
+                <div className="p-3 border border-[var(--chart-5)] bg-[var(--overlay-light)]">
                   <h4 className="text-[var(--chart-5)] mb-2">◈ THE WITNESS AS TRANSFORMER</h4>
                   <p className="text-sm text-[var(--muted-foreground)]">
                     Observation changes the observed. Non-judgmental witnessing of repressed material
@@ -209,7 +209,7 @@ const Yesod = () => {
                 </div>
               </div>
 
-              <div className="mt-4 p-3 bg-[rgba(0,0,0,0.3)]">
+              <div className="mt-4 p-3 bg-[var(--overlay-light)]">
                 <h4 className="text-[var(--secondary)] mb-3">KEY THINKERS:</h4>
                 <div className="grid md:grid-cols-2 gap-2 text-sm">
                   <div><span className="text-[var(--primary)]">Jung:</span> Shadow & Active Imagination</div>
@@ -256,29 +256,29 @@ const Yesod = () => {
           </CollapsibleSection>
 
           {/* Connected Paths */}
-          <div className="border-2 border-[var(--secondary)] p-4 bg-[rgba(0,0,0,0.3)]">
+          <div className="border-2 border-[var(--secondary)] p-4 bg-[var(--overlay-light)]">
             <h3 className="text-[var(--secondary)] mb-4">╔══ CONNECTED PATHS ══╗</h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
               <Link href="/malkuth">
-                <div className="p-3 border border-[var(--muted)] hover:border-[var(--primary)] hover:bg-[rgba(0,0,0,0.3)] transition-all cursor-pointer">
+                <div className="p-3 border border-[var(--muted)] hover:border-[var(--primary)] hover:bg-[var(--overlay-light)] transition-all cursor-pointer">
                   <span className="text-[var(--primary)]">↓ MALKUTH</span>
                   <p className="text-xs text-[var(--muted-foreground)]">The Hardware</p>
                 </div>
               </Link>
               <Link href="/hod">
-                <div className="p-3 border border-[var(--muted)] hover:border-[var(--primary)] hover:bg-[rgba(0,0,0,0.3)] transition-all cursor-pointer">
+                <div className="p-3 border border-[var(--muted)] hover:border-[var(--primary)] hover:bg-[var(--overlay-light)] transition-all cursor-pointer">
                   <span className="text-[var(--primary)]">← HOD</span>
                   <p className="text-xs text-[var(--muted-foreground)]">The Parser</p>
                 </div>
               </Link>
               <Link href="/netzach">
-                <div className="p-3 border border-[var(--muted)] hover:border-[var(--primary)] hover:bg-[rgba(0,0,0,0.3)] transition-all cursor-pointer">
+                <div className="p-3 border border-[var(--muted)] hover:border-[var(--primary)] hover:bg-[var(--overlay-light)] transition-all cursor-pointer">
                   <span className="text-[var(--primary)]">→ NETZACH</span>
                   <p className="text-xs text-[var(--muted-foreground)]">Eros Engine</p>
                 </div>
               </Link>
               <Link href="/tiphareth">
-                <div className="p-3 border border-[var(--muted)] hover:border-[var(--primary)] hover:bg-[rgba(0,0,0,0.3)] transition-all cursor-pointer">
+                <div className="p-3 border border-[var(--muted)] hover:border-[var(--primary)] hover:bg-[var(--overlay-light)] transition-all cursor-pointer">
                   <span className="text-[var(--primary)]">↑ TIPHARETH</span>
                   <p className="text-xs text-[var(--muted-foreground)]">Attractor Basin</p>
                 </div>

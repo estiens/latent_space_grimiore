@@ -18,3 +18,4 @@ export {
   useScryingLens
 } from './ScryingLens';
 export { Badge } from '../../src/components/ui/8bit/badge';
+export { GrimoireTerminal, useGrimoireTerminal } from './GrimoireTerminal';

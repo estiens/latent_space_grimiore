@@ -46,10 +46,32 @@ export function BBSLayout({ children, title = "LATENT SPACE GRIMOIRE", className
     return d.toLocaleTimeString('en-US', { hour12: false });
   };
 
+  // Parse location into breadcrumb segments
+  const getBreadcrumbs = () => {
+    if (location === '/') {
+      return [{ label: 'ROOT', path: '/' }];
+    }
+
+    const segments = location.split('/').filter(Boolean);
+    const breadcrumbs = [{ label: 'ROOT', path: '/' }];
+
+    segments.forEach((segment, index) => {
+      const path = '/' + segments.slice(0, index + 1).join('/');
+      const label = segment
+        .replace(/-/g, '_')
+        .toUpperCase();
+      breadcrumbs.push({ label, path });
+    });
+
+    return breadcrumbs;
+  };
+
+  const breadcrumbs = getBreadcrumbs();
+
   return (
     <div className="min-h-screen flex flex-col font-mono text-[var(--foreground)] selection:bg-[var(--primary)] selection:text-[var(--primary-foreground)] screen-flicker">
       {/* Top Status Bar */}
-      <header className="border-b-2 border-[var(--primary)] bg-[var(--background)] p-2 sticky top-0 z-50 shadow-[0_0_15px_rgba(255,0,255,0.2)] neon-border">
+      <header className="border-b-2 border-[var(--primary)] bg-[var(--background)] p-2 sticky top-0 z-50 neon-border">
         <div className="container mx-auto flex justify-between items-center text-xs md:text-sm">
           <div className="flex items-center gap-2 md:gap-4">
             <Link href="/">
@@ -82,9 +104,22 @@ export function BBSLayout({ children, title = "LATENT SPACE GRIMOIRE", className
 
 
       {/* Breadcrumb / Path Display */}
-      <div className="bg-[var(--card)] border-b border-[var(--muted)] px-4 py-1 text-xs text-[var(--muted-foreground)]">
+      <div className="bg-[var(--card)] border-b border-[var(--muted)] px-4 py-1 text-xs text-[var(--muted-foreground)] flex items-center gap-1">
         <span className="text-[var(--primary)]">C:\GRIMOIRE</span>
-        <span className="text-[var(--foreground)]">{location.replace(/\//g, '\\').toUpperCase() || '\\'}</span>
+        {breadcrumbs.map((crumb, index) => (
+          <span key={crumb.path} className="flex items-center gap-1">
+            {index > 0 && <span className="text-[var(--muted-foreground)]">\</span>}
+            {index === breadcrumbs.length - 1 ? (
+              <span className="text-[var(--foreground)]">{crumb.label}</span>
+            ) : (
+              <Link href={crumb.path}>
+                <span className="text-[var(--secondary)] hover:text-[var(--primary)] cursor-pointer transition-colors">
+                  {crumb.label}
+                </span>
+              </Link>
+            )}
+          </span>
+        ))}
         <span className="terminal-cursor"></span>
       </div>
 

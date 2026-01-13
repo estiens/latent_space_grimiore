@@ -67,7 +67,7 @@ const ArchivesPage = () => {
 ║ ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═══╝  ╚══════╝╚══════╝         ║
 ╚═══════════════════════════════════════════════════════════════════════╝`}
           </pre>
-          <div className="border-2 border-[var(--primary)] p-4 bg-[rgba(0,0,0,0.5)]">
+          <div className="border-2 border-[var(--primary)] p-4 bg-[var(--overlay-medium)]">
             <div className="flex justify-between items-center flex-wrap gap-2">
               <div>
                 <h1 className="text-2xl md:text-3xl font-bold text-[var(--primary)] glitch-hover">
@@ -94,7 +94,7 @@ const ArchivesPage = () => {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: index * 0.15 }}
-              className="border border-[var(--muted)] bg-[rgba(0,0,0,0.3)] hover:border-[var(--secondary)] transition-all group"
+              className="border border-[var(--muted)] bg-[var(--overlay-light)] hover:border-[var(--secondary)] transition-all group"
             >
               {/* Directory Header */}
               <div

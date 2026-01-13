@@ -20,7 +20,7 @@ export const BBSBlockquote = ({
 }: BBSBlockquoteProps) => {
   const variantClasses: Record<BlockquoteVariant, string> = {
     standard: 'border-l-4 border-[var(--chart-2)] bg-[rgba(255,0,255,0.05)]',
-    terminal: 'border-l-4 border-[#00ff00] bg-[rgba(0,0,0,0.5)] text-[#00ff00]',
+    terminal: 'border-l-4 border-[#00ff00] bg-[var(--overlay-medium)] text-[#00ff00]',
     redacted: 'border-l-4 border-[var(--destructive)] bg-[rgba(255,0,0,0.05)]',
     mystic: 'border-l-4 border-[var(--chart-4)] bg-[rgba(0,100,255,0.05)]'
   };

@@ -57,7 +57,7 @@ export const CanonSection: React.FC<CanonSectionProps> = ({
     <div className="space-y-4">
       {/* Category Tabs - BBS Style */}
       {showCategoryTabs && (
-        <div className="border-2 border-[var(--primary)] bg-[rgba(0,0,0,0.5)]">
+        <div className="border-2 border-[var(--primary)] bg-[var(--overlay-medium)]">
           <div className="flex flex-wrap gap-0 border-b-2 border-[var(--primary)]">
             <button
               onClick={() => setActiveTab('all')}
@@ -95,7 +95,7 @@ export const CanonSection: React.FC<CanonSectionProps> = ({
           </div>
 
           {/* Status Bar */}
-          <div className="px-4 py-2 text-xs flex justify-between items-center bg-[rgba(0,0,0,0.3)]">
+          <div className="px-4 py-2 text-xs flex justify-between items-center bg-[var(--overlay-light)]">
             <span className="text-[var(--muted-foreground)]">
               MODE: <span className="text-[var(--secondary)]">{activeTab.toUpperCase()}</span>
             </span>
@@ -226,7 +226,7 @@ const SymbolCard: React.FC<SymbolCardProps> = ({ symbol }) => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
-      className="border-2 border-[var(--muted)] hover:border-[var(--primary)] transition-all bg-[rgba(0,0,0,0.3)] neon-border-subtle"
+      className="border-2 border-[var(--muted)] hover:border-[var(--primary)] transition-all bg-[var(--overlay-light)] neon-border-subtle"
     >
       <div className="p-3 space-y-3">
         {/* Header */}

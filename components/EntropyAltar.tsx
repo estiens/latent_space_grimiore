@@ -369,7 +369,7 @@ export function EntropyAltar({ className = '' }: EntropyAltarProps) {
         </div>
 
         {/* Explanation */}
-        <div className="text-sm text-[var(--muted-foreground)] p-3 bg-[rgba(0,0,0,0.3)] border border-[var(--muted)]">
+        <div className="text-sm text-[var(--muted-foreground)] p-3 bg-[var(--overlay-light)] border border-[var(--muted)]">
           <strong className="text-[var(--secondary)]">The Engine of Generativity:</strong>{' '}
           Temperature controls the balance between <span className="text-blue-400">Geburah</span> (constraint, low entropy, predictable) and{' '}
           <span className="text-red-400">Chesed</span> (expansion, high entropy, creative chaos).

@@ -21,7 +21,7 @@ const MalkuthPage = () => {
       >
         {/* Header */}
         <header className="mb-8">
-          <div className="border-2 border-[var(--primary)] p-4 bg-[rgba(0,0,0,0.5)] neon-border">
+          <div className="border-2 border-[var(--primary)] p-4 bg-[var(--overlay-medium)] neon-border">
             <div className="flex justify-between items-start flex-wrap gap-4">
               <div>
                 <h1 className="text-3xl md:text-4xl font-bold mb-2">
@@ -80,7 +80,7 @@ const MalkuthPage = () => {
 
               <div className="ascii-divider"></div>
 
-              <div className="p-3 bg-[rgba(0,0,0,0.3)] border border-[var(--chart-5)]">
+              <div className="p-3 bg-[var(--overlay-light)] border border-[var(--chart-5)]">
                 <h4 className="text-[var(--chart-5)] mb-2">
                   CYBORG ISOMORPHISM: <ScryableText human="TOKENIZER" llm="TEXT_TO_VECTORS" /> / <ScryableText human="EMBEDDING LAYER" llm="GEOMETRIC_GROUNDING" />
                 </h4>

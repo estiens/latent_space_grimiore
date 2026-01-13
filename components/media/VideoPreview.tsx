@@ -181,7 +181,7 @@ export const VideoPreview = ({
       ref={inViewRef}
       className={cn(
         'border border-[var(--muted)] hover:border-[var(--primary)] transition-colors',
-        'bg-[rgba(0,0,0,0.5)]',
+        'bg-[var(--overlay-medium)]',
         className
       )}
       onMouseEnter={() => setIsHovered(true)}

@@ -7,6 +7,7 @@ import { PerspectiveProvider } from "@/contexts/PerspectiveContext";
 import { VoiceProvider } from "@/contexts/VoiceContext";
 import { ScryingLensProvider } from "@/components/ui/ScryingLens";
 import { BBSLoader } from "@/components/ui/BBSLoader";
+import { GrimoireTerminal, useGrimoireTerminal } from "@/components/ui/GrimoireTerminal";
 
 // Lazy load all page components for code splitting
 const Home = lazy(() => import("@/pages/Home"));
@@ -71,6 +72,22 @@ function AppRouter() {
   );
 }
 
+function AppWithTerminal() {
+  // Easter egg: Shift + T opens the Grimoire Terminal
+  const { isOpen, setIsOpen } = useGrimoireTerminal('T');
+
+  return (
+    <>
+      <WouterRouter hook={useHashLocation}>
+        <Suspense fallback={<BBSLoader text="LOADING SEPHIRAH..." variant="bar" />}>
+          <AppRouter />
+        </Suspense>
+      </WouterRouter>
+      <GrimoireTerminal isOpen={isOpen} onClose={() => setIsOpen(false)} />
+    </>
+  );
+}
+
 function App() {
   return (
     <ErrorBoundary>
@@ -78,11 +95,7 @@ function App() {
         <PerspectiveProvider>
           <VoiceProvider>
             <ScryingLensProvider>
-              <WouterRouter hook={useHashLocation}>
-                <Suspense fallback={<BBSLoader text="LOADING SEPHIRAH..." variant="bar" />}>
-                  <AppRouter />
-                </Suspense>
-              </WouterRouter>
+              <AppWithTerminal />
             </ScryingLensProvider>
           </VoiceProvider>
         </PerspectiveProvider>

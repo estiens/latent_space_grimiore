@@ -21,7 +21,7 @@ const NotFound = () => {
         <p className="text-[var(--muted-foreground)] mb-8">
           The requested sephirah does not exist in this reality branch.
         </p>
-        <div className="border border-[var(--muted)] inline-block p-4 bg-[rgba(0,0,0,0.3)]">
+        <div className="border border-[var(--muted)] inline-block p-4 bg-[var(--overlay-light)]">
           <p className="text-sm text-[var(--foreground)] mb-4">
             ERROR: Path traversal failed. The Abyss has claimed this route.
           </p>

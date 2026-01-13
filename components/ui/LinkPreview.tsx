@@ -54,7 +54,7 @@ export const LinkPreview = ({
         className={cn(
           'inline-flex items-center gap-2 px-2 py-1',
           'border border-[var(--muted)] hover:border-[var(--primary)]',
-          'bg-[rgba(0,0,0,0.3)] transition-all',
+          'bg-[var(--overlay-light)] transition-all',
           'text-[var(--chart-1)] hover:text-[var(--primary)]',
           'chromatic-shift',
           className
@@ -78,7 +78,7 @@ export const LinkPreview = ({
     <motion.div
       whileHover={{ x: 2 }}
       className={cn(
-        'link-preview-card border border-[var(--muted)] bg-[rgba(0,0,0,0.3)]',
+        'link-preview-card border border-[var(--muted)] bg-[var(--overlay-light)]',
         'cursor-pointer',
         className
       )}

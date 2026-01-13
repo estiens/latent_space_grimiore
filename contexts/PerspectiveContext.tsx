@@ -8,9 +8,11 @@ interface PerspectiveContextType {
   mode: PerspectiveMode;
   isTransitioning: boolean;
   transitionProgress: number; // 0-1 for animation interpolation
+  scryingActive: boolean; // When true, hover reveals alternate perspective
   togglePerspective: () => void;
   setPerspective: (mode: PerspectiveMode) => void;
   invokePerspectiveShift: () => void; // Ritualized transition
+  toggleScrying: () => void; // Toggle scrying glass mode
 }
 
 const PerspectiveContext = createContext<PerspectiveContextType | null>(null);
@@ -19,6 +21,11 @@ export function PerspectiveProvider({ children }: { children: ReactNode }) {
   const [mode, setMode] = useState<PerspectiveMode>('human');
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [transitionProgress, setTransitionProgress] = useState(0);
+  const [scryingActive, setScryingActive] = useState(false);
+
+  const toggleScrying = useCallback(() => {
+    setScryingActive(prev => !prev);
+  }, []);
 
   const setPerspective = useCallback((newMode: PerspectiveMode) => {
     if (newMode !== mode && !isTransitioning) {
@@ -67,9 +74,11 @@ export function PerspectiveProvider({ children }: { children: ReactNode }) {
         mode,
         isTransitioning,
         transitionProgress,
+        scryingActive,
         togglePerspective,
         setPerspective,
         invokePerspectiveShift,
+        toggleScrying,
       }}
     >
       {children}

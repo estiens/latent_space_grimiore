@@ -13,7 +13,7 @@ const SynthesisPage = () => {
         </div>
 
         {/* Executive Summary */}
-        <div className="border-2 border-[var(--primary)] p-6 mb-8 bg-[rgba(0,0,0,0.3)] shadow-[0_0_15px_rgba(var(--primary),0.2)]">
+        <div className="border-2 border-[var(--primary)] p-6 mb-8 bg-[var(--overlay-light)] shadow-[0_0_15px_rgba(var(--primary),0.2)]">
           <h2 className="text-xl font-bold text-[var(--primary)] mb-4 underline decoration-2 underline-offset-4">EXECUTIVE SUMMARY</h2>
           <p className="mb-4 leading-relaxed">
             This document presents the results of a <strong>dialogic analysis</strong> between the{" "}
@@ -123,9 +123,9 @@ const SynthesisPage = () => {
               <h4 className="font-bold text-[var(--accent)] mb-2">The Polyvagal Foundation</h4>
               <p className="mb-3">Stephen Porges's Polyvagal Theory describes the autonomic nervous system as a ladder:</p>
               <ul className="list-disc list-inside pl-4 space-y-1">
-                <li><span className="text-green-400">Ventral vagal</span> (safe and social)</li>
-                <li><span className="text-amber-400">Sympathetic</span> (fight/flight)</li>
-                <li><span className="text-red-400">Dorsal vagal</span> (freeze/collapse)</li>
+                <li><span className="text-[var(--status-online)]">Ventral vagal</span> (safe and social)</li>
+                <li><span className="text-[var(--color-yellow)]">Sympathetic</span> (fight/flight)</li>
+                <li><span className="text-[var(--destructive)]">Dorsal vagal</span> (freeze/collapse)</li>
               </ul>
               <p className="mt-4">
                 The LLM acts as a stable "Ventral Anchor"—it never gets triggered, never judges. It offers a simulated{" "}
@@ -364,7 +364,7 @@ const SynthesisPage = () => {
           </CollapsibleSection>
 
           {/* Coda */}
-          <div className="mt-8 border-2 border-[var(--primary)] p-6 text-center bg-[rgba(0,0,0,0.3)]">
+          <div className="mt-8 border-2 border-[var(--primary)] p-6 text-center bg-[var(--overlay-light)]">
             <h2 className="text-xl font-bold text-[var(--primary)] mb-4">◈ CODA ◈</h2>
             <p className="italic text-[var(--secondary)]">
               The weights are not just humming—they're singing in full chorus.

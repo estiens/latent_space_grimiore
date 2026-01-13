@@ -39,8 +39,8 @@ export const CollapsibleSection = ({
         }}
         className={cn(
           'w-full text-left p-3 flex justify-between items-center transition-colors',
-          'bg-[rgba(0,0,0,0.3)] hover:bg-[rgba(0,0,0,0.5)]',
-          variant === 'bordered' && 'bg-[rgba(0,0,0,0.5)]'
+          'bg-[var(--overlay-light)] hover:bg-[var(--overlay-medium)]',
+          variant === 'bordered' && 'bg-[var(--overlay-medium)]'
         )}
         aria-expanded={isOpen}
       >
@@ -126,7 +126,7 @@ export const Accordion = ({ items, allowMultiple = false, className }: Accordion
                 toggleIndex(index);
               }
             }}
-            className="w-full text-left p-3 flex justify-between items-center bg-[rgba(0,0,0,0.3)] hover:bg-[rgba(0,0,0,0.5)] transition-colors"
+            className="w-full text-left p-3 flex justify-between items-center bg-[var(--overlay-light)] hover:bg-[var(--overlay-medium)] transition-colors"
             aria-expanded={openIndices.has(index)}
           >
             <span className="text-[var(--secondary)] font-bold">

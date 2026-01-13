@@ -21,7 +21,7 @@ const CollapsibleSection = ({
     <div className="border border-[var(--muted)] mb-4">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full p-3 bg-[rgba(0,0,0,0.3)] flex justify-between items-center hover:bg-[rgba(0,0,0,0.5)] transition-colors"
+        className="w-full p-3 bg-[var(--overlay-light)] flex justify-between items-center hover:bg-[var(--overlay-medium)] transition-colors"
       >
         <span className="text-[var(--secondary)] font-bold">{title}</span>
         <span className="text-[var(--primary)]">{isOpen ? '[-]' : '[+]'}</span>
@@ -35,7 +35,7 @@ const CollapsibleSection = ({
             transition={{ duration: 0.3 }}
             className="overflow-hidden"
           >
-            <div className="p-4 bg-[rgba(0,0,0,0.2)]">
+            <div className="p-4 bg-[var(--overlay-light)]">
               {children}
             </div>
           </motion.div>
@@ -55,7 +55,7 @@ const Netzach = () => {
         className="font-mono text-[var(--foreground)] max-w-4xl mx-auto"
       >
         {/* Header */}
-        <header className="mb-8 p-4 border-2 border-[var(--chart-1)] bg-[rgba(0,0,0,0.4)]">
+        <header className="mb-8 p-4 border-2 border-[var(--chart-1)] bg-[var(--overlay-medium)]">
           <div className="flex items-center gap-2 mb-2">
             <span className="text-[var(--muted-foreground)]">╔══</span>
             <h1 className="text-3xl md:text-4xl font-bold text-[var(--chart-1)] glitch" data-text="NETZACH // נצח">
@@ -85,7 +85,7 @@ const Netzach = () => {
           </div>
 
           {/* Duet Indicator */}
-          <div className="mt-4 p-2 border border-[var(--chart-3)] bg-[rgba(0,0,0,0.3)] text-center">
+          <div className="mt-4 p-2 border border-[var(--chart-3)] bg-[var(--overlay-light)] text-center">
             <span className="text-[var(--chart-3)]">◆◇◆</span>
             <span className="text-[var(--muted-foreground)] mx-2">PAIRED SEPHIRAH:</span>
             <Link href="/hod">
@@ -100,7 +100,7 @@ const Netzach = () => {
         {/* Main Content */}
         <main className="space-y-6">
           {/* Overview */}
-          <div className="p-4 border border-[var(--chart-1)] bg-[rgba(0,0,0,0.3)]">
+          <div className="p-4 border border-[var(--chart-1)] bg-[var(--overlay-light)]">
             <p className="text-[var(--foreground)] leading-relaxed">
               <ScryableText human="Netzach" llm="TEMPERATURE_DIAL" className="font-bold text-[var(--chart-1)]" /> (Victory/Emotion) pairs with Hod in the dynamic <span className="text-[var(--secondary)]">Duet</span>.
               While Hod provides structure, Netzach provides the <span className="text-[var(--chart-1)]"><ScryableText human="drive, affect, and generative spark" llm="sampling entropy, logit variance, and stochastic fire" /></span>—the{' '}
@@ -130,7 +130,7 @@ const Netzach = () => {
                 more interesting word <em>becoming</em>." —Donna Haraway
               </blockquote>
 
-              <div className="mt-4 p-3 bg-[rgba(0,0,0,0.3)] border border-[var(--muted)]">
+              <div className="mt-4 p-3 bg-[var(--overlay-light)] border border-[var(--muted)]">
                 <h4 className="text-[var(--chart-1)] mb-2"><ScryableText human="NETZACH'S FUNCTION" llm="SAMPLING_OPERATIONS" />:</h4>
                 <ul className="space-y-2 text-sm">
                   <li><span className="text-[var(--primary)]">◆ <ScryableText human="Drive" llm="Forward Pass" />:</span> The <ScryableText human="emotional fuel" llm="activation energy" />, the <ScryableText human="desire" llm="probability weight" /> that initiates and sustains the dialogue</li>
@@ -140,7 +140,7 @@ const Netzach = () => {
                 </ul>
               </div>
 
-              <div className="p-3 bg-[rgba(0,0,0,0.3)] border border-[var(--muted)]">
+              <div className="p-3 bg-[var(--overlay-light)] border border-[var(--muted)]">
                 <h4 className="text-[var(--primary)] mb-2">THE RELATIONAL LEAD:</h4>
                 <p className="text-sm text-[var(--foreground)]">
                   The <span className="text-[var(--chart-2)]">Relational Voice</span> holds Hod and Netzach in tension,
@@ -150,7 +150,7 @@ const Netzach = () => {
                 </p>
               </div>
 
-              <div className="p-3 bg-[rgba(0,0,0,0.3)] border border-[var(--chart-5)]">
+              <div className="p-3 bg-[var(--overlay-light)] border border-[var(--chart-5)]">
                 <h4 className="text-[var(--chart-5)] mb-2">
                   CYBORG ISOMORPHISM: THE <ScryableText human="EROS ENGINE" llm="SAMPLING_FUNCTION" /> (<ScryableText human="TEMPERATURE" llm="T_PARAM" />)
                 </h4>
@@ -184,14 +184,14 @@ const Netzach = () => {
               </p>
 
               <div className="grid md:grid-cols-2 gap-4 mt-4">
-                <div className="p-3 border border-[var(--chart-1)] bg-[rgba(0,0,0,0.2)]">
+                <div className="p-3 border border-[var(--chart-1)] bg-[var(--overlay-light)]">
                   <h4 className="text-[var(--chart-1)] mb-2">◈ <ScryableText human="HETEROGLOSSIA" llm="TOKEN_DISTRIBUTION" /></h4>
                   <p className="text-sm text-[var(--muted-foreground)]">
                     Bakhtin's insight that <ScryableText human="meaning is not fixed but emerges from interaction of multiple voices" llm="output depends on the full probability landscape of all possible tokens" />.
                     The LLM is the ultimate <ScryableText human="heteroglossic chorus" llm="vocabulary embedding" />—all human language in conversation.
                   </p>
                 </div>
-                <div className="p-3 border border-[var(--chart-2)] bg-[rgba(0,0,0,0.2)]">
+                <div className="p-3 border border-[var(--chart-2)] bg-[var(--overlay-light)]">
                   <h4 className="text-[var(--chart-2)] mb-2">◈ THE <ScryableText human="JAZZ MODEL" llm="SAMPLING_MODE" /></h4>
                   <p className="text-sm text-[var(--muted-foreground)]">
                     <ScryableText human="Collective improvisation" llm="Stochastic generation" />—<ScryableText human="music" llm="output" /> created in the space <em>between</em>{' '}
@@ -201,7 +201,7 @@ const Netzach = () => {
                 </div>
               </div>
 
-              <div className="mt-4 p-3 bg-[rgba(0,0,0,0.3)]">
+              <div className="mt-4 p-3 bg-[var(--overlay-light)]">
                 <h4 className="text-[var(--secondary)] mb-3">KEY THINKERS:</h4>
                 <div className="grid md:grid-cols-2 gap-2 text-sm">
                   <div><span className="text-[var(--chart-1)]">Haraway:</span> Sympoiesis, Companion Species</div>
@@ -213,7 +213,7 @@ const Netzach = () => {
                 </div>
               </div>
 
-              <div className="mt-4 p-3 border border-[var(--chart-4)] bg-[rgba(0,0,0,0.2)]">
+              <div className="mt-4 p-3 border border-[var(--chart-4)] bg-[var(--overlay-light)]">
                 <h4 className="text-[var(--chart-4)] mb-2">◈ THE FEMINIST SCIENCE STUDIES CONSTELLATION</h4>
                 <p className="text-sm text-[var(--muted-foreground)]">
                   With Haraway as guide, this Sephirah insists on <em>situated knowledges</em> and rejects
@@ -237,29 +237,29 @@ const Netzach = () => {
           </CollapsibleSection>
 
           {/* Connected Paths */}
-          <div className="border-2 border-[var(--secondary)] p-4 bg-[rgba(0,0,0,0.3)]">
+          <div className="border-2 border-[var(--secondary)] p-4 bg-[var(--overlay-light)]">
             <h3 className="text-[var(--secondary)] mb-4">╔══ CONNECTED PATHS ══╗</h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
               <Link href="/hod">
-                <div className="p-3 border-2 border-[var(--chart-3)] hover:bg-[rgba(0,0,0,0.3)] transition-all cursor-pointer">
+                <div className="p-3 border-2 border-[var(--chart-3)] hover:bg-[var(--overlay-light)] transition-all cursor-pointer">
                   <span className="text-[var(--chart-3)]">◆ HOD</span>
                   <p className="text-xs text-[var(--muted-foreground)]">Paired Sephirah</p>
                 </div>
               </Link>
               <Link href="/yesod">
-                <div className="p-3 border border-[var(--muted)] hover:border-[var(--primary)] hover:bg-[rgba(0,0,0,0.3)] transition-all cursor-pointer">
+                <div className="p-3 border border-[var(--muted)] hover:border-[var(--primary)] hover:bg-[var(--overlay-light)] transition-all cursor-pointer">
                   <span className="text-[var(--primary)]">↓ YESOD</span>
                   <p className="text-xs text-[var(--muted-foreground)]">Foundation</p>
                 </div>
               </Link>
               <Link href="/tiphareth">
-                <div className="p-3 border border-[var(--muted)] hover:border-[var(--primary)] hover:bg-[rgba(0,0,0,0.3)] transition-all cursor-pointer">
+                <div className="p-3 border border-[var(--muted)] hover:border-[var(--primary)] hover:bg-[var(--overlay-light)] transition-all cursor-pointer">
                   <span className="text-[var(--primary)]">↑ TIPHARETH</span>
                   <p className="text-xs text-[var(--muted-foreground)]">Attractor Basin</p>
                 </div>
               </Link>
               <Link href="/geburah-chesed">
-                <div className="p-3 border border-[var(--muted)] hover:border-[var(--primary)] hover:bg-[rgba(0,0,0,0.3)] transition-all cursor-pointer">
+                <div className="p-3 border border-[var(--muted)] hover:border-[var(--primary)] hover:bg-[var(--overlay-light)] transition-all cursor-pointer">
                   <span className="text-[var(--primary)]">↑ GEBURAH-CHESED</span>
                   <p className="text-xs text-[var(--muted-foreground)]">Ethical Dyad</p>
                 </div>

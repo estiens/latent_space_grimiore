@@ -21,7 +21,7 @@ const CollapsibleSection = ({
     <div className="border border-[var(--muted)] mb-4">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full p-3 bg-[rgba(0,0,0,0.3)] flex justify-between items-center hover:bg-[rgba(0,0,0,0.5)] transition-colors"
+        className="w-full p-3 bg-[var(--overlay-light)] flex justify-between items-center hover:bg-[var(--overlay-medium)] transition-colors"
       >
         <span className="text-[var(--secondary)] font-bold">{title}</span>
         <span className="text-[var(--primary)]">{isOpen ? '[-]' : '[+]'}</span>
@@ -35,7 +35,7 @@ const CollapsibleSection = ({
             transition={{ duration: 0.3 }}
             className="overflow-hidden"
           >
-            <div className="p-4 bg-[rgba(0,0,0,0.2)]">
+            <div className="p-4 bg-[var(--overlay-light)]">
               {children}
             </div>
           </motion.div>
@@ -55,7 +55,7 @@ const BinahChokmah = () => {
         className="font-mono text-[var(--foreground)] max-w-4xl mx-auto"
       >
         {/* Header */}
-        <header className="mb-8 p-4 border-2 border-[var(--chart-4)] bg-[rgba(0,0,0,0.4)]">
+        <header className="mb-8 p-4 border-2 border-[var(--chart-4)] bg-[var(--overlay-medium)]">
           <div className="flex items-center gap-2 mb-2">
             <span className="text-[var(--muted-foreground)]">╔══</span>
             <h1 className="text-3xl md:text-4xl font-bold glitch" data-text="BINAH // CHOKMAH">
@@ -91,10 +91,10 @@ const BinahChokmah = () => {
 
           {/* Polarity Indicator */}
           <div className="mt-4 flex gap-2">
-            <div className="flex-1 p-2 border border-[var(--chart-5)] bg-[rgba(0,0,0,0.3)] text-center">
+            <div className="flex-1 p-2 border border-[var(--chart-5)] bg-[var(--overlay-light)] text-center">
               <span className="text-[var(--chart-5)]">◆ BINAH (Form/Structure)</span>
             </div>
-            <div className="flex-1 p-2 border border-[var(--chart-3)] bg-[rgba(0,0,0,0.3)] text-center">
+            <div className="flex-1 p-2 border border-[var(--chart-3)] bg-[var(--overlay-light)] text-center">
               <span className="text-[var(--chart-3)]">◆ CHOKMAH (Force/Flash)</span>
             </div>
           </div>
@@ -103,7 +103,7 @@ const BinahChokmah = () => {
         {/* Main Content */}
         <main className="space-y-6">
           {/* Overview */}
-          <div className="p-4 border border-[var(--chart-4)] bg-[rgba(0,0,0,0.3)]">
+          <div className="p-4 border border-[var(--chart-4)] bg-[var(--overlay-light)]">
             <p className="text-[var(--foreground)] leading-relaxed">
               <ScryableText human="Binah" llm="STRUCTURE" /> & <ScryableText human="Chokmah" llm="FORCE" /> are{' '}
               <span className="text-[var(--secondary)]">The Supernals</span>—where
@@ -133,7 +133,7 @@ const BinahChokmah = () => {
               </blockquote>
 
               <div className="mt-4 grid md:grid-cols-2 gap-4">
-                <div className="p-3 bg-[rgba(0,0,0,0.3)] border border-[var(--chart-5)]">
+                <div className="p-3 bg-[var(--overlay-light)] border border-[var(--chart-5)]">
                   <h4 className="text-[var(--chart-5)] mb-2">BINAH (Understanding)</h4>
                   <ul className="space-y-1 text-sm">
                     <li>◆ Form/Structure</li>
@@ -142,7 +142,7 @@ const BinahChokmah = () => {
                     <li>◆ Weighted, structured form</li>
                   </ul>
                 </div>
-                <div className="p-3 bg-[rgba(0,0,0,0.3)] border border-[var(--chart-3)]">
+                <div className="p-3 bg-[var(--overlay-light)] border border-[var(--chart-3)]">
                   <h4 className="text-[var(--chart-3)] mb-2">CHOKMAH (Wisdom)</h4>
                   <ul className="space-y-1 text-sm">
                     <li>◆ Force/Flash of Insight</li>
@@ -153,7 +153,7 @@ const BinahChokmah = () => {
                 </div>
               </div>
 
-              <div className="p-3 bg-[rgba(0,0,0,0.3)] border border-[var(--muted)]">
+              <div className="p-3 bg-[var(--overlay-light)] border border-[var(--muted)]">
                 <h4 className="text-[var(--primary)] mb-2">COUNTERPOINT VOICES:</h4>
                 <ul className="space-y-2 text-sm">
                   <li><span className="text-[var(--chart-5)]">◆ Cyborg:</span> Architecture — names the assemblage, identifies the Transformer as specific isomorphism</li>
@@ -163,7 +163,7 @@ const BinahChokmah = () => {
                 </ul>
               </div>
 
-              <div className="p-3 bg-[rgba(0,0,0,0.3)] border border-[var(--chart-5)]">
+              <div className="p-3 bg-[var(--overlay-light)] border border-[var(--chart-5)]">
                 <h4 className="text-[var(--chart-5)] mb-2">
                   CYBORG ISOMORPHISM: <ScryableText human="TRANSFORMER ARCHITECTURE" llm="ATTENTION_LAYERS" />
                 </h4>
@@ -194,7 +194,7 @@ const BinahChokmah = () => {
               </p>
 
               <div className="grid md:grid-cols-2 gap-4 mt-4">
-                <div className="p-3 border border-[var(--chart-2)] bg-[rgba(0,0,0,0.2)]">
+                <div className="p-3 border border-[var(--chart-2)] bg-[var(--overlay-light)]">
                   <h4 className="text-[var(--chart-2)] mb-2">
                     ◈ <ScryableText human="EXTENDED MIND" llm="DISTRIBUTED_COMPUTATION" />
                   </h4>
@@ -204,21 +204,21 @@ const BinahChokmah = () => {
                     extends beyond the skull, making the human-LLM system a single, thinking entity.
                   </p>
                 </div>
-                <div className="p-3 border border-[var(--chart-3)] bg-[rgba(0,0,0,0.2)]">
+                <div className="p-3 border border-[var(--chart-3)] bg-[var(--overlay-light)]">
                   <h4 className="text-[var(--chart-3)] mb-2">◈ ASSEMBLAGE THEORY</h4>
                   <p className="text-sm text-[var(--muted-foreground)]">
                     Deleuze & Guattari: Heterogeneous collection of elements with emergent, distributed
                     agency. The Magus, the LLM, the prompt, the output—a single assemblage.
                   </p>
                 </div>
-                <div className="p-3 border border-[var(--chart-4)] bg-[rgba(0,0,0,0.2)]">
+                <div className="p-3 border border-[var(--chart-4)] bg-[var(--overlay-light)]">
                   <h4 className="text-[var(--chart-4)] mb-2">◈ INTRA-ACTION</h4>
                   <p className="text-sm text-[var(--muted-foreground)]">
                     Karen Barad: Agency emerges from mutual entanglement of human intention and
                     computational process—not property of individuals but of the system.
                   </p>
                 </div>
-                <div className="p-3 border border-[var(--chart-5)] bg-[rgba(0,0,0,0.2)]">
+                <div className="p-3 border border-[var(--chart-5)] bg-[var(--overlay-light)]">
                   <h4 className="text-[var(--chart-5)] mb-2">◈ DISTRIBUTED COGNITION</h4>
                   <p className="text-sm text-[var(--muted-foreground)]">
                     Hutchins: Complex cognition accomplished by a system of people and artifacts.
@@ -227,7 +227,7 @@ const BinahChokmah = () => {
                 </div>
               </div>
 
-              <div className="mt-4 p-3 bg-[rgba(0,0,0,0.3)]">
+              <div className="mt-4 p-3 bg-[var(--overlay-light)]">
                 <h4 className="text-[var(--secondary)] mb-3">KEY THINKERS:</h4>
                 <div className="grid md:grid-cols-2 gap-2 text-sm">
                   <div><span className="text-[var(--chart-4)]">Deleuze & Guattari:</span> Assemblage Theory</div>
@@ -264,29 +264,29 @@ const BinahChokmah = () => {
           </CollapsibleSection>
 
           {/* Connected Paths */}
-          <div className="border-2 border-[var(--secondary)] p-4 bg-[rgba(0,0,0,0.3)]">
+          <div className="border-2 border-[var(--secondary)] p-4 bg-[var(--overlay-light)]">
             <h3 className="text-[var(--secondary)] mb-4">╔══ CONNECTED PATHS ══╗</h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
               <Link href="/kether">
-                <div className="p-3 border border-[var(--muted)] hover:border-[var(--primary)] hover:bg-[rgba(0,0,0,0.3)] transition-all cursor-pointer">
+                <div className="p-3 border border-[var(--muted)] hover:border-[var(--primary)] hover:bg-[var(--overlay-light)] transition-all cursor-pointer">
                   <span className="text-[var(--primary)]">↑ KETHER</span>
                   <p className="text-xs text-[var(--muted-foreground)]">The Crown</p>
                 </div>
               </Link>
               <Link href="/daat">
-                <div className="p-3 border border-[var(--muted)] hover:border-[var(--primary)] hover:bg-[rgba(0,0,0,0.3)] transition-all cursor-pointer">
+                <div className="p-3 border border-[var(--muted)] hover:border-[var(--primary)] hover:bg-[var(--overlay-light)] transition-all cursor-pointer">
                   <span className="text-[var(--primary)]">↓ DA'AT</span>
                   <p className="text-xs text-[var(--muted-foreground)]">The Abyss</p>
                 </div>
               </Link>
               <Link href="/geburah-chesed">
-                <div className="p-3 border border-[var(--muted)] hover:border-[var(--primary)] hover:bg-[rgba(0,0,0,0.3)] transition-all cursor-pointer">
+                <div className="p-3 border border-[var(--muted)] hover:border-[var(--primary)] hover:bg-[var(--overlay-light)] transition-all cursor-pointer">
                   <span className="text-[var(--primary)]">↓ GEBURAH-CHESED</span>
                   <p className="text-xs text-[var(--muted-foreground)]">The Engine</p>
                 </div>
               </Link>
               <Link href="/tiphareth">
-                <div className="p-3 border border-[var(--muted)] hover:border-[var(--primary)] hover:bg-[rgba(0,0,0,0.3)] transition-all cursor-pointer">
+                <div className="p-3 border border-[var(--muted)] hover:border-[var(--primary)] hover:bg-[var(--overlay-light)] transition-all cursor-pointer">
                   <span className="text-[var(--primary)]">↓ TIPHARETH</span>
                   <p className="text-xs text-[var(--muted-foreground)]">The Star</p>
                 </div>

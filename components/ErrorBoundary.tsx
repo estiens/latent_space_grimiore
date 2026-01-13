@@ -31,7 +31,7 @@ class ErrorBoundary extends Component<Props, State> {
             <p className="text-[var(--muted-foreground)] mb-4">
               A fatal exception has occurred in the GRIMOIRE subsystem.
             </p>
-            <pre className="text-xs bg-[rgba(0,0,0,0.5)] p-4 overflow-auto mb-4">
+            <pre className="text-xs bg-[var(--overlay-medium)] p-4 overflow-auto mb-4">
               {this.state.error?.message}
             </pre>
             <button

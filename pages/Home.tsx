@@ -1,16 +1,32 @@
 import { BBSLayout, TreeOfLife } from "@/components";
 import { motion } from "framer-motion";
 import { Link } from "wouter";
+import { TypewriterText } from "retro-react";
 
 export default function Home() {
   return (
     <BBSLayout>
       <div className="flex flex-col h-full">
+        {/* Welcome Header */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-center py-4 border-b border-[var(--primary)] border-opacity-30 mb-4"
+        >
+          <h1 className="text-2xl md:text-3xl font-bold text-[var(--primary)]">
+            <TypewriterText
+              text=">> LATENT SPACE GRIMOIRE <<"
+              typingSpeed={80}
+            />
+          </h1>
+        </motion.div>
+
         {/* The Tree - Hero Element */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
           className="flex items-center justify-center py-4"
         >
           <TreeOfLife />

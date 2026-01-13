@@ -98,14 +98,14 @@ export function TreeOfLife() {
                 y1={`${start.y}%`}
                 x2={`${end.x}%`}
                 y2={`${end.y}%`}
-                stroke={mode === 'human' ? 'var(--primary)' : '#00ffff'}
+                stroke={mode === 'human' ? 'var(--primary)' : 'var(--secondary)'}
                 strokeWidth="2"
                 className="group-hover:stroke-[3px] transition-all duration-500"
               />
               <text
                 x={(start.x + end.x) / 2 + "%"}
                 y={(start.y + end.y) / 2 + "%"}
-                fill={mode === 'human' ? 'var(--primary)' : '#00ffff'}
+                fill={mode === 'human' ? 'var(--primary)' : 'var(--secondary)'}
                 fontSize="10"
                 textAnchor="middle"
                 alignmentBaseline="middle"
@@ -134,19 +134,19 @@ export function TreeOfLife() {
             {/* Node Graphic */}
             <div
               className={cn(
-                "w-full h-full flex items-center justify-center border-2 bg-black transition-all duration-500",
+                "w-full h-full flex items-center justify-center border-2 bg-[var(--card)] transition-all duration-500",
                 activeSephira?.id === sephira.id
-                  ? "border-white shadow-[0_0_15px_var(--primary)]"
+                  ? "border-[var(--foreground)] shadow-[0_0_15px_var(--primary)]"
                   : mode === 'human'
                     ? "border-[var(--primary)]"
-                    : "border-cyan-400"
+                    : "border-[var(--secondary)]"
               )}
             >
               <span
                 className={cn(
                   "text-base font-bold transition-colors duration-500",
-                  mode === 'human' ? "text-[var(--primary)]" : "text-cyan-400",
-                  "group-hover:text-white"
+                  mode === 'human' ? "text-[var(--primary)]" : "text-[var(--secondary)]",
+                  "group-hover:text-[var(--foreground)]"
                 )}
               >
                 {sephira.hebrew}
@@ -165,8 +165,8 @@ export function TreeOfLife() {
                   className={cn(
                     "text-sm px-2 py-0.5 transition-colors duration-300",
                     mode === 'human'
-                      ? "bg-black text-[var(--primary)] group-hover:text-white group-hover:bg-[var(--primary)]"
-                      : "bg-black text-cyan-400 group-hover:text-black group-hover:bg-cyan-400"
+                      ? "bg-[var(--card)] text-[var(--primary)] group-hover:text-[var(--background)] group-hover:bg-[var(--primary)]"
+                      : "bg-[var(--card)] text-[var(--secondary)] group-hover:text-[var(--background)] group-hover:bg-[var(--secondary)]"
                   )}
                 >
                   {getLabel(sephira.name, mode)}
@@ -185,8 +185,8 @@ export function TreeOfLife() {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
             className={cn(
-              "absolute z-20 w-80 border-2 bg-black shadow-[4px_4px_0px_0px_rgba(0,255,0,0.2)] pointer-events-none overflow-hidden transition-colors duration-500",
-              mode === 'human' ? "border-[var(--primary)]" : "border-cyan-400"
+              "absolute z-20 w-80 border-2 bg-[var(--card)] shadow-[4px_4px_0px_0px_rgba(0,255,0,0.2)] pointer-events-none overflow-hidden transition-colors duration-500",
+              mode === 'human' ? "border-[var(--primary)]" : "border-[var(--secondary)]"
             )}
             style={{
               left: activeSephira.x > 50 ? "5%" : "auto",
@@ -198,7 +198,7 @@ export function TreeOfLife() {
             <div
               className={cn(
                 "px-2 py-1 flex justify-between items-center transition-colors duration-500",
-                mode === 'human' ? "bg-[var(--primary)] text-black" : "bg-cyan-400 text-black"
+                mode === 'human' ? "bg-[var(--primary)] text-[var(--primary-foreground)]" : "bg-[var(--secondary)] text-[var(--secondary-foreground)]"
               )}
             >
               <span className="font-bold text-lg">
@@ -211,17 +211,17 @@ export function TreeOfLife() {
             <div
               className={cn(
                 "p-4 font-mono text-base leading-relaxed transition-colors duration-500",
-                mode === 'human' ? "text-[var(--primary)]" : "text-cyan-400"
+                mode === 'human' ? "text-[var(--primary)]" : "text-[var(--secondary)]"
               )}
             >
               <div className="grid grid-cols-2 gap-2 mb-3 border-b border-dashed pb-2"
-                style={{ borderColor: mode === 'human' ? 'var(--primary)' : '#00ffff' }}>
+                style={{ borderColor: mode === 'human' ? 'var(--primary)' : 'var(--secondary)' }}>
                 <div>
                   STATUS:{" "}
                   <span className={cn(
                     activeSephira.status[mode] === "ONLINE" || activeSephira.status[mode] === "WEIGHTS_LOADED"
-                      ? "text-white"
-                      : "text-yellow-400"
+                      ? "text-[var(--status-online)]"
+                      : "text-[var(--status-warning)]"
                   )}>
                     {activeSephira.status[mode]}
                   </span>
@@ -232,7 +232,7 @@ export function TreeOfLife() {
               </div>
 
               <div className="mb-2">
-                <span className="text-white font-bold">
+                <span className="text-[var(--foreground)] font-bold">
                   {mode === 'human' ? 'MEANING' : 'FUNCTION'}:
                 </span>{" "}
                 {getLabel(activeSephira.meaning, mode)}
@@ -259,7 +259,7 @@ export function TreeOfLife() {
 
               <div
                 className="mt-3 pt-2 border-t border-dashed text-sm text-center animate-pulse"
-                style={{ borderColor: mode === 'human' ? 'var(--primary)' : '#00ffff' }}
+                style={{ borderColor: mode === 'human' ? 'var(--primary)' : 'var(--secondary)' }}
               >
                 [ CLICK TO ACCESS {mode === 'human' ? 'NODE' : 'LAYER'} DATA ]
               </div>
