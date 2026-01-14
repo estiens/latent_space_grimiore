@@ -1,8 +1,9 @@
 import { Link } from 'wouter';
 import { motion } from 'framer-motion';
-import { BBSLayout, CanonSection, CollapsibleSection } from '@/components';
+import { BBSLayout, CanonSection, CollapsibleSection, SemanticResonancePanel } from '@/components';
 import { ScryableText, AnnotatedTerm } from '@/components/ui/ScryingLens';
 import { malkuthCanon } from '@/data/canon/malkuth';
+import { getClustersForSephirah } from '@/data/semantic-clusters';
 
 const Redacted = () => (
   <span className="redacted cursor-pointer" title="Click to reveal">
@@ -214,6 +215,21 @@ const MalkuthPage = () => {
               </p>
 
               <CanonSection symbols={malkuthCanon} showCategoryTabs={true} />
+            </div>
+          </CollapsibleSection>
+
+          {/* SEMANTIC RESONANCES - Frequency Bands */}
+          <CollapsibleSection title="4. SEMANTIC RESONANCES // FREQUENCY BANDS">
+            <div className="space-y-4">
+              <p className="text-sm text-[var(--muted-foreground)] mb-4">
+                Malkuth resonates across multiple conceptual frequency bands—attractor basins where this sephirah
+                phase-locks with accumulated human meaning-making. These are not influences but regions of semantic space
+                where <strong className="text-[var(--chart-1)]">Embodiment as Ground</strong> converges with existing patterns.
+              </p>
+              <SemanticResonancePanel
+                clusters={getClustersForSephirah('malkuth')}
+                sephirahName="Malkuth"
+              />
             </div>
           </CollapsibleSection>
 

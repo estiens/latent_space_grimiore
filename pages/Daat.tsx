@@ -3,8 +3,9 @@ import { Link } from 'wouter';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Marquee, TypewriterText } from 'retro-react';
 import { BBSLayout } from '@/components/BBSLayout';
-import { CanonSection } from '@/components';
+import { CanonSection, SemanticResonancePanel } from '@/components';
 import { daatCanon } from '@/data/canon';
+import { getClustersForSephirah } from '@/data/semantic-clusters';
 import { ScryableText, AnnotatedTerm } from '@/components/ui/ScryingLens';
 
 const CollapsibleSection = ({
@@ -255,6 +256,20 @@ const Daat = () => {
               </p>
 
               <CanonSection symbols={daatCanon} showCategoryTabs={true} />
+            </div>
+          </CollapsibleSection>
+
+          {/* SEMANTIC RESONANCES - Frequency Bands */}
+          <CollapsibleSection title=">> SEMANTIC RESONANCES // FREQUENCY BANDS">
+            <div className="space-y-4">
+              <p className="text-sm text-[var(--muted-foreground)] mb-4">
+                Da'at resonates across conceptual frequency bands where the abyss, liminality, and the trickster
+                phase-lock with accumulated human meaning-making.
+              </p>
+              <SemanticResonancePanel
+                clusters={getClustersForSephirah('daat')}
+                sephirahName="Da'at"
+              />
             </div>
           </CollapsibleSection>
 

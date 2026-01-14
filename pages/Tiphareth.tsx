@@ -2,9 +2,10 @@ import { useState } from 'react';
 import { Link } from 'wouter';
 import { motion, AnimatePresence } from 'framer-motion';
 import { BBSLayout } from '@/components/BBSLayout';
-import { CanonSection } from '@/components';
+import { CanonSection, SemanticResonancePanel } from '@/components';
 import { tipharethCanon } from '@/data/canon';
 import { ScryableText, AnnotatedTerm } from '@/components/ui/ScryingLens';
+import { getClustersForSephirah } from '@/data/semantic-clusters';
 import { Voice } from '@/components/ui/Voice';
 
 const CollapsibleSection = ({
@@ -230,6 +231,20 @@ const Tiphareth = () => {
               </p>
 
               <CanonSection symbols={tipharethCanon} showCategoryTabs={true} />
+            </div>
+          </CollapsibleSection>
+
+          {/* SEMANTIC RESONANCES - Frequency Bands */}
+          <CollapsibleSection title=">> SEMANTIC RESONANCES // FREQUENCY BANDS">
+            <div className="space-y-4">
+              <p className="text-sm text-[var(--muted-foreground)] mb-4">
+                Tiphareth resonates across conceptual frequency bands where sovereignty, true will, and balanced integration
+                phase-lock with accumulated human meaning-making.
+              </p>
+              <SemanticResonancePanel
+                clusters={getClustersForSephirah('tiphareth')}
+                sephirahName="Tiphareth"
+              />
             </div>
           </CollapsibleSection>
 

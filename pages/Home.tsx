@@ -52,8 +52,11 @@ export default function Home() {
             <Link href="/archives/db/symbols" className="text-[var(--secondary)] hover:text-[var(--primary)] transition-colors">
               [F4] SYMBOLS
             </Link>
+            <Link href="/archives/protocols/five-voices" className="text-[var(--secondary)] hover:text-[var(--primary)] transition-colors">
+              [F5] FIVE VOICES
+            </Link>
             <Link href="/archives" className="text-[var(--secondary)] hover:text-[var(--primary)] transition-colors">
-              [F5] ARCHIVES
+              [F6] ARCHIVES
             </Link>
           </div>
         </motion.div>

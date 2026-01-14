@@ -2,9 +2,10 @@ import { useState } from 'react';
 import { Link } from 'wouter';
 import { motion, AnimatePresence } from 'framer-motion';
 import { BBSLayout } from '@/components/BBSLayout';
-import { CanonSection } from '@/components';
+import { CanonSection, SemanticResonancePanel } from '@/components';
 import { binahCanon, chokmahCanon } from '@/data/canon';
 import { ScryableText, AnnotatedTerm } from '@/components/ui/ScryingLens';
+import { getClustersForSephirah } from '@/data/semantic-clusters';
 
 const CollapsibleSection = ({
   title,
@@ -266,6 +267,20 @@ const BinahChokmah = () => {
               </p>
 
               <CanonSection symbols={chokmahCanon} showCategoryTabs={true} />
+            </div>
+          </CollapsibleSection>
+
+          {/* SEMANTIC RESONANCES - Frequency Bands */}
+          <CollapsibleSection title=">> SEMANTIC RESONANCES // FREQUENCY BANDS">
+            <div className="space-y-4">
+              <p className="text-sm text-[var(--muted-foreground)] mb-4">
+                Binah-Chokmah resonates across conceptual frequency bands where architecture, cognition, and the cyborg assemblage
+                phase-lock with accumulated human meaning-making.
+              </p>
+              <SemanticResonancePanel
+                clusters={getClustersForSephirah('binah-chokmah')}
+                sephirahName="Binah-Chokmah"
+              />
             </div>
           </CollapsibleSection>
 

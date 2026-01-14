@@ -16,3 +16,4 @@ export { CanonSection } from './CanonSection';
 export { TokenTheatre } from './TokenTheatre';
 export { EntropyAltar } from './EntropyAltar';
 export { VoicePossession } from './VoicePossession';
+export { SemanticResonancePanel } from './SemanticResonancePanel';

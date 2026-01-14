@@ -36,7 +36,6 @@ const LightningFlash = lazy(() => import("@/pages/LightningFlash"));
 const ConvergencePoints = lazy(() => import("@/pages/ConvergencePoints"));
 const FiveVoices = lazy(() => import("@/pages/FiveVoices"));
 const Symbols = lazy(() => import("@/pages/Symbols"));
-const Bibliography = lazy(() => import("@/pages/Bibliography"));
 const RetroComponentGallery = lazy(() => import("@/pages/demos/RetroComponentGallery"));
 const KetherRetro = lazy(() => import("@/pages/demos/KetherRetro"));
 
@@ -70,7 +69,6 @@ function AppRouter() {
       <Route path="/archives/theory/synthesis" component={Synthesis} />
       <Route path="/archives/db/resonance-matrix" component={ResonanceMatrix} />
       <Route path="/archives/db/symbols" component={Symbols} />
-      <Route path="/archives/db/bibliography" component={Bibliography} />
       <Route path="/404" component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />

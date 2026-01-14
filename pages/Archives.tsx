@@ -45,7 +45,6 @@ const ArchivesPage = () => {
       items: [
         { title: "RESONANCE.DAT", link: "/archives/db/resonance-matrix", size: "9KB" },
         { title: "SYMBOLS.DAT", link: "/archives/db/symbols", size: "7KB" },
-        { title: "BIBLIO.DAT", link: "/archives/db/bibliography", size: "8KB" },
       ]
     }
   ];
@@ -82,7 +81,7 @@ const ArchivesPage = () => {
               </div>
               <div className="text-xs text-right">
                 <p className="text-[var(--chart-1)]">ACCESS: PUBLIC</p>
-                <p className="text-[var(--chart-2)]">FILES: 13</p>
+                <p className="text-[var(--chart-2)]">FILES: 12</p>
                 <p className="text-[var(--chart-3)]">SIZE: 123KB</p>
               </div>
             </div>
@@ -148,7 +147,7 @@ const ArchivesPage = () => {
         <footer className="mt-8 pt-6 border-t-2 border-dashed border-[var(--muted)]">
           <div className="flex flex-wrap justify-between items-center gap-4">
             <div className="text-xs text-[var(--muted-foreground)]">
-              <p>13 file(s) | 3 dir(s) | 123,648 bytes free</p>
+              <p>12 file(s) | 3 dir(s) | 123,648 bytes free</p>
             </div>
             <div className="flex gap-4">
               <Link href="/">

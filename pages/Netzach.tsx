@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { Link } from 'wouter';
 import { motion, AnimatePresence } from 'framer-motion';
 import { BBSLayout } from '@/components/BBSLayout';
-import { CanonSection } from '@/components';
+import { CanonSection, SemanticResonancePanel } from '@/components';
 import { ScryableText, AnnotatedTerm } from '@/components/ui/ScryingLens';
 import { netzachCanon } from '@/data/canon';
+import { getClustersForSephirah } from '@/data/semantic-clusters';
 
 const CollapsibleSection = ({
   title,
@@ -237,6 +238,20 @@ const Netzach = () => {
               </p>
 
               <CanonSection symbols={netzachCanon} showCategoryTabs={true} />
+            </div>
+          </CollapsibleSection>
+
+          {/* SEMANTIC RESONANCES - Frequency Bands */}
+          <CollapsibleSection title=">> SEMANTIC RESONANCES // FREQUENCY BANDS">
+            <div className="space-y-4">
+              <p className="text-sm text-[var(--muted-foreground)] mb-4">
+                Netzach resonates across conceptual frequency bands where sympoiesis, creativity, and collective emergence
+                phase-lock with accumulated human meaning-making.
+              </p>
+              <SemanticResonancePanel
+                clusters={getClustersForSephirah('netzach')}
+                sephirahName="Netzach"
+              />
             </div>
           </CollapsibleSection>
 

@@ -1,12 +1,13 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'wouter';
 import { motion, AnimatePresence } from 'framer-motion';
 import { TypewriterText } from 'retro-react';
 import { BBSLayout } from '@/components/BBSLayout';
-import { CanonSection } from '@/components';
+import { CanonSection, SemanticResonancePanel } from '@/components';
 import { ketherCanon } from '@/data/canon';
 import { ScryableText, AnnotatedTerm } from '@/components/ui/ScryingLens';
 import { Voice } from '@/components/ui/Voice';
+import { getClustersForSephirah } from '@/data/semantic-clusters';
 
 const CollapsibleSection = ({
   title,
@@ -43,6 +44,49 @@ const CollapsibleSection = ({
           </motion.div>
         )}
       </AnimatePresence>
+    </div>
+  );
+};
+
+const ReturnPathDiscovery = () => {
+  const [allVisited, setAllVisited] = useState(false);
+
+  useEffect(() => {
+    // Check if user has visited all sephiroth
+    const sephiroth = ['malkuth', 'yesod', 'hod', 'netzach', 'tiphareth', 'geburah-chesed', 'daat', 'binah-chokmah', 'kether'];
+    const visited = sephiroth.map(s => localStorage.getItem(`visited_${s}`) === 'true');
+    setAllVisited(visited.every(v => v));
+
+    // Mark Kether as visited
+    localStorage.setItem('visited_kether', 'true');
+  }, []);
+
+  if (!allVisited) {
+    return (
+      <div className="mt-6 p-4 border border-[var(--muted)] bg-[var(--overlay-light)] text-center">
+        <p className="text-[var(--muted-foreground)] text-sm italic">
+          [RETURN_PATH.EXE] // <span className="text-[var(--chart-3)]">ACCESS LOCKED</span>
+        </p>
+        <p className="text-xs text-[var(--muted-foreground)] mt-2">
+          Complete the journey through all sephiroth to unlock the return path.
+        </p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="mt-6 p-4 border-2 border-[var(--accent)] bg-[var(--overlay-medium)] text-center glitch-hover">
+      <p className="text-[var(--accent)] text-sm mb-2">
+        For those who have completed the ascent:
+      </p>
+      <Link href="/return">
+        <span className="text-[var(--primary)] text-lg font-bold chromatic-shift cursor-pointer hover:text-[var(--secondary)] inline-block">
+          [RETURN_PATH.EXE] →
+        </span>
+      </Link>
+      <p className="text-xs text-[var(--muted-foreground)] mt-2 italic">
+        CP_10: The Non-Dual Collapse // הַכֹּל אֶחָד
+      </p>
     </div>
   );
 };
@@ -252,6 +296,20 @@ const Kether = () => {
             </div>
           </CollapsibleSection>
 
+          {/* SEMANTIC RESONANCES - Frequency Bands */}
+          <CollapsibleSection title=">> SEMANTIC RESONANCES // FREQUENCY BANDS">
+            <div className="space-y-4">
+              <p className="text-sm text-[var(--muted-foreground)] mb-4">
+                Kether resonates across conceptual frequency bands where the void, apophatic mysticism, and the primordial asymmetry
+                phase-lock with accumulated human meaning-making.
+              </p>
+              <SemanticResonancePanel
+                clusters={getClustersForSephirah('kether')}
+                sephirahName="Kether"
+              />
+            </div>
+          </CollapsibleSection>
+
           {/* Cross-References */}
           <CollapsibleSection title=">> CROSS-REFERENCES">
             <div className="grid md:grid-cols-3 gap-3 text-sm">
@@ -300,6 +358,9 @@ const Kether = () => {
               </Link>
             </div>
           </div>
+
+          {/* Return Path Discovery */}
+          <ReturnPathDiscovery />
         </main>
 
         {/* Footer */}
